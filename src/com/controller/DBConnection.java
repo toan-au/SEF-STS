@@ -16,13 +16,18 @@ public class DBConnection {
 	private DBConnection() {
 	}
 
+	/**
+	 * Return the database connection, or opens it if it doesn't exist yet.
+	 * @return Database Connection
+	 * @throws SQLException
+	 */
 	public static Connection getConnection() throws SQLException {
 		if (con == null) {
-			Properties connectionProps = new Properties();
-			connectionProps.put("user", userName);
-			connectionProps.put("password", password);
+			Properties conProps = new Properties();
+			conProps.put("user", userName);
+			conProps.put("password", password);
 
-			con = DriverManager.getConnection("jdbc:mysql://" + serverName + ":" + portNumber + "/" + dbName, connectionProps);
+			con = DriverManager.getConnection("jdbc:mysql://" + serverName + ":" + portNumber + "/" + dbName, conProps);
 		}
 		return con;
 	}
