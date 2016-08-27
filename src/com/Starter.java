@@ -35,9 +35,6 @@ public class Starter {
 	}
 
 	/**
-	 * Connect to MySQL and do some stuff.
-	 */
-	/**
 	 * Connect to the DB and do some stuff
 	 */
 	public static void main(String[] args) {
