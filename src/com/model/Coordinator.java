@@ -37,9 +37,12 @@ public class Coordinator extends AdvancedUser {
 		//test - Student Ana = new Student(1, 12)
 		//test - students.add(Ana);
 		//tempo code to get an idea of what's going to happen in this block
-		if(students.getCredits() == 12)
+		for (Student s:students)
 		{
-			return true;
+			if(s.getCredits() == 12)
+			{
+				return true;
+			}
 		}
 		
 		return false;
