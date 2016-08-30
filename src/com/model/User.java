@@ -3,9 +3,20 @@ package com.model;
 import java.util.Map;
 
 public abstract class User {
-	private String name;
-	private String id;
-	private String password;
+	protected String name;
+	protected String id;
+	protected String password;
+	
+	//*********************************************************
+	//Constructor
+	//**********************************************************
+	
+	//Is the ID going to be generated or assigned??
+	public User(String id, String name, String password) {
+		this.id = id;
+		this.name = name;
+		this.password = password;
+	}
 	
 	//*********************************************************
 	//Getters

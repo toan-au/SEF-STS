@@ -3,7 +3,7 @@ package com.model;
 import java.util.ArrayList;
 import java.util.Map;
 
-public abstract class AdvancedUser extends User{
+public abstract class AdvancedUser{
 
 	public void setCreditPointsNeeded(Program program, int credits){
 		
