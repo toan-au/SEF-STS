@@ -9,7 +9,7 @@ public class Student extends User{
 	private String surname;
 	private String givenNames;
 	private Date dateOfBirth;
-	private String emailAddress;
+	private String email;
 	private Map<Course, Double> courses;
 	
 	//*********************************************************
@@ -19,7 +19,7 @@ public class Student extends User{
 	public Student(String id, String name, String password, Date dateOfBirth, String email) {
 		super(id, name, password);
 		this.dateOfBirth = dateOfBirth;
-		this.emailAddress = email;
+		this.email = email;
 	}
 	
 	//*********************************************************
@@ -31,11 +31,39 @@ public class Student extends User{
 	}
 	
 	public String getEmail() {
-		return emailAddress;
+		return email;
 	}
 	
 	//*********************************************************
-	//Getters
+	//Setters
 	//**********************************************************
+	
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	//*********************************************************
+	//Enrol in a course / program
+	//**********************************************************
+	
+	public boolean enrolCourse(String courseId) {
+		//find course form list of courses
+		Course course = new Course();
+		
+		//put the course in courses variable
+		courses.put(course, (double) 0);
+		return true;
+	}
+	
+	public boolean enrolProgram(String programCode) {
+		
+		return false;
+		
+	}
+	
 	
 }
