@@ -7,9 +7,11 @@ public class Course {
 	private int latestSemester;
 	
 	//The course Constructor.
-	public Course(String courseID, int credits) {
+	public Course(String courseID, int credits, int latestYear, int latestSemester) {
 		this.courseID = courseID;
 		this.credits = credits;
+		this.latestSemester = latestSemester;
+		this.latestYear = latestYear;
 	}
 	
 	//Getting the variables
