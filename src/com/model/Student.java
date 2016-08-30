@@ -3,7 +3,7 @@ package com.model;
 import java.util.Date;
 import java.util.Map;
 
-public class Student {
+public class Student extends User{
 
 	private String studentID;
 	private String surname;

@@ -8,7 +8,7 @@ public class StudentTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		User s1 = new Student();
 	}
 
 }
