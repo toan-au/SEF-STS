@@ -17,13 +17,12 @@ public class StudentTest {
 		Date s1DateOfBirth = (Date) s1.getDateOfBirth();
 		String s1Email = s1.getEmail();
 		//s1.checkStudentResults();
-		boolean s1Enrol = s1.enrolCourse("12345");
+		s1.enrolCourse("hello");
 		
 		assertEquals("Toan Au", s1Name);
 		assertEquals("s3589104", s1Id);
 		assertEquals("password", s1Password);
 		assertEquals("s3589104@student.rmit.edu.au", s1Email);
-		assertEquals(true, s1Enrol);
 		
 	}
 

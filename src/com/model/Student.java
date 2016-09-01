@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Student extends User{
@@ -20,6 +21,7 @@ public class Student extends User{
 		super(id, name, password);
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
+		courses = new HashMap<Course, Double>(5);
 	}
 	
 	//*********************************************************
@@ -32,6 +34,10 @@ public class Student extends User{
 	
 	public String getEmail() {
 		return email;
+	}
+	
+	public Map<Course, Double> getCourses() {
+		return courses;
 	}
 	
 	//*********************************************************
@@ -50,19 +56,22 @@ public class Student extends User{
 	//Enrol in a course / program
 	//**********************************************************
 	
-	public boolean enrolCourse(String courseId) {
+	public void enrolCourse(String courseId) {
 		//find course form list of courses
-		Course course = new Course();
+		Course course = Course.apt;
 		
 		//put the course in courses variable
-		courses.put(course, (double) 0);
-		return true;
+		courses.put(course, (double)0);
 	}
 	
 	public boolean enrolProgram(String programCode) {
 		
 		return false;
 		
+	}
+	
+	public Map<Course, Double> checkStudentResults() {
+		return courses;
 	}
 	
 	

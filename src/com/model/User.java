@@ -55,11 +55,10 @@ public abstract class User {
 	//**********************************************************
 	
 	public Map<Course, Double> checkStudentResults(Student student){
-		return null;
-		
+		return student.getCourses();
 	}
 	
-	public boolean meetsCourseCompletion(Student student){
+	public boolean meetsCourseCompletion(Student student, Course course){
 		return false;
 		
 	}

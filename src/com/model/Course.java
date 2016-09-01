@@ -1,13 +1,16 @@
 package com.model;
 
 public class Course {
-	private String courseID;
+	private String courseID, courseName;
 	private int credits;
 	private int latestYear;
 	private int latestSemester;
 	
+	//TEMP static variables to hold course objects
+	public static Course apt = new Course("COSC1076","Advanced Programming Techniques", 4, 2016, 2);
+	
 	//The course Constructor.
-	public Course(String courseID, int credits, int latestYear, int latestSemester) {
+	public Course(String courseID, String courseName, int credits, int latestYear, int latestSemester) {
 		this.courseID = courseID;
 		this.credits = credits;
 		this.latestSemester = latestSemester;
@@ -17,6 +20,10 @@ public class Course {
 	//Getting the variables
 	public String getCourseID() {
 		return courseID;
+	}
+	
+	public String getCourseName() {
+		return courseName;
 	}
 	
 	public int getCredits() {
@@ -34,6 +41,10 @@ public class Course {
 	//Setting the course
 	public void setCourseID(String courseID) {
 		this.courseID = courseID;
+	}
+	
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 	
 	public void setCredits(int credits) {
