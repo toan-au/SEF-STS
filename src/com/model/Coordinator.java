@@ -18,16 +18,17 @@ public class Coordinator extends AdvancedUser {
 		return meetRequirements;
 	}
 	
-	public setMeetRequirements(boolean meetRequirements)
+	public void setMeetRequirements(boolean meetRequirements)
 	{
 		this.meetRequirements = meetRequirements;
+          
 	}
 	
-	ArrayList<Student> meetsProgramRequirement(File file, boolean meetRequirements) 
+	public ArrayList<Student> meetsProgramRequirement(File file, boolean meetRequirements) 
 	{
 		//Commented textfile is filepath
 		//Read each student from file
-		Scanner student = new Scanner(new File("/*students.txt*/");
+		Scanner student = new Scanner(new File("/*students.txt*/"));
 		ArrayList<Student> students = new ArrayList<Student>();
 		while (student.hasNext())
 		{
@@ -41,11 +42,11 @@ public class Coordinator extends AdvancedUser {
 		{
 			if(s.getCredits() == 12)
 			{
-				return true;
+				System.out.println("The student meets the program requirements.");
 			}
 		}
 		
-		return false;
+		return students;
 
 	}
 }
