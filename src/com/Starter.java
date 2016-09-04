@@ -8,15 +8,8 @@ import com.controller.DBConnection;
 
 public class Starter {
 
-	/** The name of the table we are testing with */
 	private final static String tableName = "JDBC_TEST";
 
-	/**
-	 * Run a SQL command which does not return a recordset: CREATE/INSERT/UPDATE/DELETE/DROP/etc.
-	 * 
-	 * @throws SQLException
-	 *             If something goes wrong
-	 */
 	public static boolean executeUpdate(Connection conn, String command) throws SQLException {
 		Statement stmt = null;
 		try {
@@ -29,9 +22,6 @@ public class Starter {
 		}
 	}
 
-	/**
-	 * Connect to the DB and do some stuff
-	 */
 	public static void main(String[] args) {
 		// Connect to MySQL
 		Connection conn = null;
