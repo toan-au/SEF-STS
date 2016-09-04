@@ -10,7 +10,7 @@ public class SysAdmin extends AdvancedUser {
 	
 	}
 
-	public void SetUpNewProgram(Program program) {
+	public void setUpNewProgram(Program program) {
 
 	}
 }
