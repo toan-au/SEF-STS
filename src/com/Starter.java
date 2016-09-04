@@ -10,18 +10,6 @@ public class Starter {
 
 	private final static String tableName = "JDBC_TEST";
 
-	public static boolean executeUpdate(Connection conn, String command) throws SQLException {
-		Statement stmt = null;
-		try {
-			stmt = conn.createStatement();
-			stmt.executeUpdate(command); // This will throw a SQLException if it fails
-			return true;
-		} finally {
-			if (stmt != null)
-				stmt.close();
-		}
-	}
-
 	public static void main(String[] args) {
 		// Connect to MySQL
 		Connection conn = null;
@@ -33,7 +21,10 @@ public class Starter {
 			e.printStackTrace();
 			return;
 		}
+		testMethodBeforeProperImplementation(conn);
+	}
 
+	public static void testMethodBeforeProperImplementation(Connection conn) {
 		// Create a table
 		try {
 			String createString = "CREATE TABLE " + tableName + " ( " + "ID INTEGER NOT NULL, " + "NAME varchar(40) NOT NULL, "
@@ -56,6 +47,18 @@ public class Starter {
 			System.out.println("ERROR: Could not drop the table");
 			e.printStackTrace();
 			return;
+		}
+	}
+
+	public static boolean executeUpdate(Connection conn, String command) throws SQLException {
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			stmt.executeUpdate(command); // This will throw a SQLException if it fails
+			return true;
+		} finally {
+			if (stmt != null)
+				stmt.close();
 		}
 	}
 
