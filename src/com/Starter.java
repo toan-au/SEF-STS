@@ -11,8 +11,6 @@ public class Starter {
 	/** The name of the table we are testing with */
 	private final static String tableName = "JDBC_TEST";
 
-	private static boolean isSetUp = true;
-	
 	/**
 	 * Run a SQL command which does not return a recordset: CREATE/INSERT/UPDATE/DELETE/DROP/etc.
 	 * 
@@ -26,11 +24,8 @@ public class Starter {
 			stmt.executeUpdate(command); // This will throw a SQLException if it fails
 			return true;
 		} finally {
-
-			// This will run whether we throw an exception or not
-			if (stmt != null) {
+			if (stmt != null)
 				stmt.close();
-			}
 		}
 	}
 
@@ -72,7 +67,6 @@ public class Starter {
 			e.printStackTrace();
 			return;
 		}
-		
 	}
 
 }
