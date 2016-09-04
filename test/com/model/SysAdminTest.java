@@ -3,6 +3,7 @@ package com.model;
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class SysAdminTest {
 
 	@Test
 	public void newStudentTest() {
-		Student testStudent = new Student("125", "test", "test", new Calendar().set(01, 01, 1996), "a@b.com");
+		Student testStudent = new Student("125", "test", "test", "Doe", "John", new GregorianCalendar(01, 01, 1996), "a@b.com");
 		testAdmin.setUpRoles(testStudent);
 
 		// find new user in Database. Code to do this is not yet planned out
