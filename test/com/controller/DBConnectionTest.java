@@ -8,13 +8,9 @@ import java.sql.SQLException;
 public class DBConnectionTest {
 
 	@Test
-	public void connectionExistsTest() {
-		try {
-			Connection con = DBConnection.getConnection();
-			assertNotEquals(con, null);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public void connectionExistsTest() throws SQLException {
+		Connection con = DBConnection.getConnection();
+		assertNotNull(con);
 	}
 
 }
