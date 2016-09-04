@@ -11,7 +11,7 @@ public class AdvancedUserTest {
 		AdvancedUser advUser = new AdvancedUser("s3514782","Ana Teo","password", 123, "Super special");
                 String advUserId = advUser.getId();
                 String advUserName = advUser.getName();
-                String advUserPass = advUser.getPass();
+                String advUserPass = advUser.getPassword();
                 int advUserCreds = advUser.getCredits();
                 String advUserSpecialization = advUser.getSpecialization();
                 
