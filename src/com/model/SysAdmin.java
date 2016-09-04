@@ -1,18 +1,16 @@
 package com.model;
 
 public class SysAdmin extends AdvancedUser {
-	
-	public SysAdmin(String id, String name, String password)
-	{
+
+	public SysAdmin(String id, String name, String password) {
 		super(id, name, password);
 	}
-	public void setUpRoles(User user){
-		
-		User user = new User();
-		
-	}
+
+	public void setUpRoles(User user) {
 	
-	public void SetUpNewProgram(Program program){
-		Program program = new Program();
+	}
+
+	public void SetUpNewProgram(Program program) {
+
 	}
 }
