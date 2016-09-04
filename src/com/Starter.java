@@ -16,38 +16,25 @@ public class Starter {
 		try {
 			conn = DBConnection.getConnection();
 			System.out.println("Connected to database");
+			testMethodBeforeProperImplementation(conn);
 		} catch (SQLException e) {
-			System.out.println("ERROR: Could not connect to the database");
 			e.printStackTrace();
 			return;
 		}
-		testMethodBeforeProperImplementation(conn);
 	}
 
-	public static void testMethodBeforeProperImplementation(Connection conn) {
+	public static void testMethodBeforeProperImplementation(Connection conn) throws SQLException {
 		// Create a table
-		try {
-			String createString = "CREATE TABLE " + tableName + " ( " + "ID INTEGER NOT NULL, " + "NAME varchar(40) NOT NULL, "
-					+ "STREET varchar(40) NOT NULL, " + "CITY varchar(20) NOT NULL, " + "STATE char(2) NOT NULL, " + "ZIP char(5), "
-					+ "PRIMARY KEY (ID))";
-			executeUpdate(conn, createString);
-			System.out.println("Created a table");
-		} catch (SQLException e) {
-			System.out.println("ERROR: Could not create the table");
-			e.printStackTrace();
-			return;
-		}
+		String createString = "CREATE TABLE " + tableName + " ( " + "ID INTEGER NOT NULL, " + "NAME varchar(40) NOT NULL, "
+				+ "STREET varchar(40) NOT NULL, " + "CITY varchar(20) NOT NULL, " + "STATE char(2) NOT NULL, " + "ZIP char(5), "
+				+ "PRIMARY KEY (ID))";
+		executeUpdate(conn, createString);
+		System.out.println("Created a table");
 
 		// Drop the table
-		try {
-			String dropString = "DROP TABLE " + tableName;
-			executeUpdate(conn, dropString);
-			System.out.println("Dropped the table");
-		} catch (SQLException e) {
-			System.out.println("ERROR: Could not drop the table");
-			e.printStackTrace();
-			return;
-		}
+		String dropString = "DROP TABLE " + tableName;
+		executeUpdate(conn, dropString);
+		System.out.println("Dropped the table");
 	}
 
 	public static boolean executeUpdate(Connection conn, String command) throws SQLException {
