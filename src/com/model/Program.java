@@ -25,7 +25,6 @@ public class Program {
 		this.specializations = specializations;
 	}
 	
-	//Getting the variables
 	public String getProgramCode() {
 		return programCode;
 	}
@@ -58,7 +57,6 @@ public class Program {
 		return specializations;
 	}
 	
-	//Setting variables
 	public void setProgramCode(String programCode){
 		this.programCode = programCode;
 	}
@@ -91,5 +89,4 @@ public class Program {
 		this.specializations = specializations;
 	}
 	
-	//Others?
 }
