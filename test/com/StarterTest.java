@@ -1,13 +1,25 @@
 package com;
-import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.junit.*;
+
+import com.controller.DBConnection;
 
 public class StarterTest {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
+	Connection conn;
+
+	@BeforeClass
+	public void getConnection() throws SQLException {
+		conn = DBConnection.getConnection();
+	}
+
+	@Test(expected = SQLException.class)
+	public void dropNonExistentTableTest() throws SQLException {
+
+		Starter.executeUpdate(conn, "DROP TABLE blub");
 	}
 
 }
