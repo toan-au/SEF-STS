@@ -17,14 +17,13 @@ public class StorageTest {
 		Course course1 = new Course("COSC1024", "Software Engineering Fundamentals", 4, 2016, 2);
 		Storage.courses.add( course1 );
 		
-		System.out.println(Storage.getUser("s1234567").getName());
-		System.out.println(Storage.getCourse("COSC1024").getLatestSemester());
-		
 		for (User user : Storage.users) {
 			System.out.println(user.getId());
 		}
 		
-		
+		assertEquals("Toan", Storage.getUser("s1234567").getName());
+		assertEquals("Software Engineering Fundamentals", Storage.getCourse("COSC1024").getCourseID());
+		//assertEquals("Computer Science", Storage.getProgram("BP024"));
 	}
 
 }
