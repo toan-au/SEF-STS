@@ -33,6 +33,16 @@ public class Storage {
 		return null;
 	}
 	
-	
+	// Return a course object with the same id or null
+		public static Program getProgram(String programCode) {
+			if (programs.isEmpty())
+				return null;
+			for (int i = 0; i < programs.size(); i++) {
+				if (programs.get(i) != null && programs.get(i).getProgramCode() == programCode) {
+					return programs.get(i);			// return the user if tehre is a match
+				}
+			}
+			return null;
+		}
 	
 }
