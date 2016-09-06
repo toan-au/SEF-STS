@@ -21,7 +21,6 @@ public class Storage {
 		return null;
 	}
 	
-	
 	// Return a course object with the same id or null
 	public static Course getCourse(String id) {
 		if (courses.isEmpty())
