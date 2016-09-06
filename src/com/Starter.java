@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.controller.DBConnection;
+import com.model.Storage;
 
 public class Starter {
 
@@ -12,15 +13,18 @@ public class Starter {
 
 	public static void main(String[] args) {
 		// Connect to MySQL
-		Connection conn = null;
-		try {
-			conn = DBConnection.getConnection();
-			System.out.println("Connected to database");
-			testMethodBeforeProperImplementation(conn);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return;
-		}
+//		Connection conn = null;
+//		try {
+//			conn = DBConnection.getConnection();
+//			System.out.println("Connected to database");
+//			testMethodBeforeProperImplementation(conn);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return;
+//		}
+		
+		Storage.users.add(0, element);
+		
 	}
 
 	public static void testMethodBeforeProperImplementation(Connection conn) throws SQLException {
