@@ -3,9 +3,12 @@ package com;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-import com.controller.DBConnection;
 import com.model.Storage;
+import com.model.Student;
+import com.model.User;
 
 public class Starter {
 
@@ -23,8 +26,12 @@ public class Starter {
 //			return;
 //		}
 		
-		Storage.users.add(0, element);
+		Student student1 = new Student("s1234567", "Toan", "12345", "Au", new GregorianCalendar(1993, 12, 25), "toan@au.com");
+		Storage.users.add( student1);
 		
+		for (User user : Storage.users) {
+			System.out.println(user.getId());
+		}
 	}
 
 	public static void testMethodBeforeProperImplementation(Connection conn) throws SQLException {
