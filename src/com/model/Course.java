@@ -8,6 +8,7 @@ public class Course {
 
 	public Course(String courseID, String courseName, int credits, int latestYear, int latestSemester) {
 		this.courseID = courseID;
+		this.courseName = courseName;
 		this.credits = credits;
 		this.latestSemester = latestSemester;
 		this.latestYear = latestYear;

@@ -22,7 +22,7 @@ public class StorageTest {
 		}
 		
 		assertEquals("Toan", Storage.getUser("s1234567").getName());
-		assertEquals("Software Engineering Fundamentals", Storage.getCourse("COSC1024").getCourseID());
+		assertEquals("Software Engineering Fundamentals", Storage.getCourse("COSC1024").getCourseName());
 		//assertEquals("Computer Science", Storage.getProgram("BP024"));
 	}
 
