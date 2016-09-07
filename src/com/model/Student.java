@@ -6,8 +6,7 @@ import java.util.Map;
 
 public class Student extends User {
 
-	private String studentID; // there are still open discussions if studentID = User.id
-	private String givenNames;
+	private String name;
 	private Calendar dateOfBirth;
 	private String email;
 	private Map<Course, Double> courses;
@@ -21,7 +20,7 @@ public class Student extends User {
 	}
 
 	public String getGivenNames() {
-		return givenNames;
+		return name;
 	}
 
 	public Calendar getDateOfBirth() {
@@ -37,7 +36,7 @@ public class Student extends User {
 	}
 
 	public void setGivenNames(String givenNames) {
-		this.givenNames = givenNames;
+		this.name = givenNames;
 	}
 
 	public void setDateOfBirth(Calendar dateOfBirth) {
