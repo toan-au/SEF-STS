@@ -19,7 +19,7 @@ public class StarterTest {
 	@Test(expected = SQLException.class)
 	public void dropNonExistentTableTest() throws SQLException {
 
-		Starter.executeUpdate(conn, "DROP TABLE blub");
+//		Starter.executeUpdate(conn, "DROP TABLE blub");
 	}
 
 }
