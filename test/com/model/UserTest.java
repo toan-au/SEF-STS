@@ -19,6 +19,8 @@ public class UserTest {
 		assertEquals("s3534987", user1ID);
 		assertEquals("Harold", user1Name);
 		assertEquals("password", user1Password);
+		
+		//System.out.println("Hello World");
 	}
 
 }
