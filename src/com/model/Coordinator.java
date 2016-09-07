@@ -7,8 +7,14 @@ import java.util.Scanner;
 
 public class Coordinator extends AdvancedUser {
 
+	Program program;
+
 	public Coordinator(String id, String name, String password) {
 		super(id, name, password);
+	}
+
+	public void setCoreCourses(ArrayList<Course> course) {
+		setCoreCourses(program, course);
 	}
 
 	public ArrayList<Student> meetsProgramRequirement(File file, boolean meetRequirements) {
