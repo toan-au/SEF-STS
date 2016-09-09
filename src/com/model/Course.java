@@ -1,21 +1,21 @@
 package com.model;
 
 public class Course {
-	private String courseID, courseName;
+	private String courseId, courseName;
 	private int credits;
 	private int latestYear;
 	private int latestSemester;
 
-	public Course(String courseID, String courseName, int credits, int latestYear, int latestSemester) {
-		this.courseID = courseID;
+	public Course(String courseId, String courseName, int credits, int latestYear, int latestSemester) {
+		this.courseId = courseId;
 		this.courseName = courseName;
 		this.credits = credits;
 		this.latestSemester = latestSemester;
 		this.latestYear = latestYear;
 	}
 
-	public String getCourseID() {
-		return courseID;
+	public String getCourseId() {
+		return courseId;
 	}
 
 	public String getCourseName() {
@@ -34,8 +34,8 @@ public class Course {
 		return latestSemester;
 	}
 
-	public void setCourseID(String courseID) {
-		this.courseID = courseID;
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
 	}
 
 	public void setCourseName(String courseName) {
