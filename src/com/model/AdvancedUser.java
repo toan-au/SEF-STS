@@ -1,9 +1,13 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Map;
+import java.util.Scanner;
 
 public abstract class AdvancedUser extends User {
+	
+	Scanner input = new Scanner(System.in);
 
 	public AdvancedUser(String id, String name, String password) {
 		super(id, name, password);
@@ -25,8 +29,37 @@ public abstract class AdvancedUser extends User {
 
 	}
 
-	public void createStudentAccount(Student student) {
-
+	public void createStudentAccount() {
+		String inputName, inputId, inputPassword, inputDOB, inputEmail;
+		
+		System.out.println("Enter the student's ID");
+		inputId = input.next();
+		
+		System.out.println("Enter the student's password");
+		inputPassword = input.next();
+		
+		System.out.println("Enter the student's Name");
+		inputName = input.next();
+		
+		System.out.println("Enter the student's Date of birth e.g '30/12/1990'");
+		inputDOB = input.next();
+		
+		System.out.println("Enter the student's Email");
+		inputEmail = input.next();
+		
+		//split the inputDOB into 3 ints
+		String[] stringDates = inputDOB.split("/");
+		int day = Integer.parseInt(stringDates[0]);
+		int month = Integer.parseInt(stringDates[1]);
+		int year = Integer.parseInt(stringDates[2]);
+		
+		//convert inputDOB into calender
+		GregorianCalendar DOB = new GregorianCalendar(year, month, day);
+		
+		Student newStudent = new Student(inputId, inputName, inputPassword, DOB, inputEmail);
+		
+		//push the new student object into the User Storage list
+		Storage.users.add(newStudent);
 	}
 
 	public void createStudentAccount(ArrayList<Student> student) {
