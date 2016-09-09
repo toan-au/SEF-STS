@@ -22,6 +22,26 @@ public class StudentProgressSystem {
 		@SuppressWarnings("unused")
 		SysAdmin fancyAdmin = new SysAdmin("temp", "temp", "temp");
 		System.out.println("fancy admin mode activated");
+
+		Scanner fancyScanner = new Scanner(System.in);
+		System.out.println("Create a new User Account:\n" + "Please add an Id:");
+		String userId = fancyScanner.next();
+		System.out.println("Please add a password:");
+		String password = fancyScanner.next();
+		
+		if (userId.startsWith("S")) {
+			System.out.println("Please enter all the other stuff, Anna, this is your job, I'm too lazy");
+			String something = fancyScanner.next();
+		} else if (userId.startsWith("F")) {
+			System.out.println("Please enter all the other stuff, Anna, this is your job, I'm too lazy");
+			String something = fancyScanner.next();
+		} else if (userId.startsWith("C")) {
+			System.out.println("Please enter all the other stuff, Ana, this is your job, I'm too lazy");
+			String something = fancyScanner.next();
+		} else if (userId.startsWith("A")) {
+			System.out.println("Please enter all the other stuff, Ana, this is your job, I'm too lazy");
+			String something = fancyScanner.next();
+		}
 	}
 
 	public void run() {
