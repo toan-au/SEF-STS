@@ -102,6 +102,7 @@ public class StudentProgressSystem {
 	private void coorMenu()
 	{
 		System.out.println("Hello, ."+tempUser+"What would you like to do?")
+		System.out.println("1.) Check student results\n2.) Create a student account\n3.) Upload enrolment")
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
 		
@@ -122,6 +123,7 @@ public class StudentProgressSystem {
 	private void sysadMenu()
 	{
 		System.out.println("Hello, ."+tempUser+"What would you like to do?")
+		System.out.println("1.) Set up roles\n2.Set up a new program\n3.) Create a student account\n4.) Upload enrolment")
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();	
 		
