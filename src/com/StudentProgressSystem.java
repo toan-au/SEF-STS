@@ -13,22 +13,52 @@ public class StudentProgressSystem {
 
 	public StudentProgressSystem() {
 		logInScanner = new Scanner(System.in);
-		System.out.println("Welcome to this thing. Press Enter to begin.");
-		if (logInScanner.nextLine().equals("UpUpDownDownLeftRightLeftRightBA"))
-			fancyAdminMode();
-		SysAdmin fancyAdmin = new SysAdmin("temp", "temp", "temp");
+		
 	}
 
 	private void fancyAdminMode() {
+		SysAdmin fancyAdmin = new SysAdmin("temp", "temp", "temp");
 		System.out.println("fancy admin mode activated");
 		// TODO Auto-generated method stub
 
 	}
 
 	public void run() {
+		System.out.println("Welcome to this thing. Press Enter to begin.");
+		if (logInScanner.nextLine().equals("UpUpDownDownLeftRightLeftRightBA"))
+			fancyAdminMode();
+		
 		validate();
-
+		
+		Class userClass = currentUser.getClass();
+		switch userClass:
+		case Student:
+			displayStudentMenu();
+			displayFacAdminMenu();
+			displaySysadminMenu();
+			displayCoordinatorMenu();
+			
 		logInScanner.close();
+	}
+
+	private void displayCoordinatorMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void displaySysadminMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void displayFacAdminMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void displayStudentMenu() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void validate() {
