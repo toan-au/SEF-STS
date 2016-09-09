@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Program {
 	private String programCode;
@@ -12,6 +13,7 @@ public class Program {
 	private ArrayList<Course> coreCourses;
 	private SpecializationMode specializationMode;
 	private Map<String, ArrayList<Course>> specializations;
+	Scanner input = new Scanner(System.in);
 
 	public Program(String programCode, int versionNumber, int requiredCredits, boolean isActive, ProgramType programType,
 			ArrayList<Course> coreCourses, SpecializationMode specializationMode, Map<String, ArrayList<Course>> specializations) {
@@ -23,6 +25,44 @@ public class Program {
 		this.coreCourses = coreCourses;
 		this.specializationMode = specializationMode;
 		this.specializations = specializations;
+	}
+	
+	public void createProgram(){
+		String inputProgramCode;
+		int inputVersionNumber;
+		int inputRequiredCredits;
+		boolean inputIsActive;
+		ProgramType inputProgramType;
+		ArrayList<Course> inputCoreCourses;
+		SpecializationMode inputSpecializationMode;
+		Map<String, ArrayList<Course>> inputSpecializations;
+		
+		System.out.println("Enter the Program's Code");
+		inputProgramCode = input.next();
+
+		System.out.println("Enter the Version Number");
+		inputVersionNumber = input.nextInt();
+		
+		System.out.println("Enter the Program's Credit");
+		inputRequiredCredits = input.nextInt();
+		
+		System.out.println("Enter the Program's status, active or inactive");
+		inputIsActive = input.nextBoolean();
+		
+		System.out.println("Enter the Program's type");
+		inputProgramType = input.next();
+		
+		System.out.println("Enter the Core Course");
+		inputCoreCourses = input.next();
+		
+		System.out.println("Enter the Specialization Mode");
+		inputSpecializationMode = input.next();
+		
+		System.out.println("Enter the Specialization");
+		inputSpecializations = input.next();
+		
+		//not finish yet, just submit for backup
+		
 	}
 
 	public String getProgramCode() {
