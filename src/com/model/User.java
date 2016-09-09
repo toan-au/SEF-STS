@@ -12,6 +12,7 @@ public abstract class User {
 		this.id = id;
 		this.name = name;
 		this.password = password;
+		Storage.users.add(this);
 	}
 
 	public String getName() {
