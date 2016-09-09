@@ -30,10 +30,13 @@ public abstract class AdvancedUser extends User {
 	}
 
 	public void createStudentAccount() {
-		String inputName, inputId, inputDOB, inputEmail;
+		String inputName, inputId, inputPassword, inputDOB, inputEmail;
 		
 		System.out.println("Enter the student's ID");
 		inputId = input.next();
+		
+		System.out.println("Enter the student's password");
+		inputPassword = input.next();
 		
 		System.out.println("Enter the student's Name");
 		inputName = input.next();
@@ -54,6 +57,7 @@ public abstract class AdvancedUser extends User {
 		GregorianCalendar DOB = new GregorianCalendar(year, month, day);
 		
 		Student newStudent = new Student(inputId, inputName, inputPassword, DOB, inputEmail);
+		System.out.println(newStudent);
 	}
 
 	public void createStudentAccount(ArrayList<Student> student) {

@@ -11,9 +11,8 @@ public class Student extends User {
 	private String email;
 	private Map<Course, Double> courses;
 
-	public Student(String id, String name, String password, String givenNames, Calendar dateOfBirth, String email) {
+	public Student(String id, String name, String password, Calendar dateOfBirth, String email) {
 		super(id, name, password);
-		this.setGivenNames(givenNames);
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		courses = new HashMap<Course, Double>(5);
@@ -33,10 +32,6 @@ public class Student extends User {
 
 	public Map<Course, Double> getCourses() {
 		return courses;
-	}
-
-	public void setGivenNames(String givenNames) {
-		this.name = givenNames;
 	}
 
 	public void setDateOfBirth(Calendar dateOfBirth) {

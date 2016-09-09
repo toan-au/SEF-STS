@@ -11,7 +11,7 @@ public class StorageTest {
 	@Test
 	public void test() {
 		//add a student
-		Student student1 = new Student("s1234567", "Toan", "12345", "Au", new GregorianCalendar(1993, 12, 25), "toan@au.com");
+		Student student1 = new Student("s1234567", "Toan", "12345", new GregorianCalendar(1993, 12, 25), "toan@au.com");
 		Storage.users.add( student1) ;
 		
 		//add a course
