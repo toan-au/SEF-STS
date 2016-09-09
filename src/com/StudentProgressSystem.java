@@ -72,10 +72,15 @@ public class StudentProgressSystem {
 			FacAdmin facAdmin = new FacAdmin();
 			facadMenu();
 		}
-		else if (tempUser.startswith(C))
+		else if (tempUser.startsWith(C))
 		{
 			Coordinator coordinator = new Coordinator();
 			coorMenu();
+		}
+		else if (tempUser.startsWith(A))
+		{
+			SysAdmin sysAdmin = new SysAdmin();
+			sysadMenu();
 		}
 	}
 	
@@ -112,6 +117,25 @@ public class StudentProgressSystem {
 				coordinator.uploadEnrolment();
 				break;
 		)
+	}
+	
+	private void sysadMenu()
+	{
+		System.out.println("Hello, ."+tempUser+"What would you like to do?")
+		Scanner scanner = new Scanner(System.in);
+		int choice = scanner.nextInt();	
+		
+		switch (choice)
+		{
+			case 1:
+				sysAdmin.setUpRoles();
+			case 2:
+				sysAdmin.setUpNewProgram();
+			case 3:
+				sysAdmin.creatStudentAccount();
+			case 4:
+				sysAdmin.uploadEnrolment();
+		}
 	}
 	
 	
