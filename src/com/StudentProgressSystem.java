@@ -1,5 +1,6 @@
 package com;
 
+import com.model.Coordinator;
 import com.model.User;
 
 public class StudentProgressSystem {
@@ -11,10 +12,13 @@ public class StudentProgressSystem {
 	}
 	
 	public void run() {
-		
+		validate();
 	}
 	
 	private void validate() {
+		Coordinator c1 = new Coordinator("e12345", "Matt", "password");
+		c1.createStudentAccount();
+		
 		// prompt User for login
 		
 		// save user input as variables

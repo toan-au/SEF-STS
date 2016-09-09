@@ -59,5 +59,4 @@ public class Student extends User {
 	public Map<Course, Double> checkStudentResults() {
 		return courses;
 	}
-
 }
