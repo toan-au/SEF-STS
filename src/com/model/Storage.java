@@ -1,5 +1,11 @@
 package com.model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Storage {
@@ -29,6 +35,39 @@ public class Storage {
 				return program;
 		}
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	void fetchStoredData() {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ISL_filepath.dat"));
+			users = (ArrayList<User>) ois.readObject();
+			System.out.println("Users loaded");
+			courses = (ArrayList<Course>) ois.readObject();
+			System.out.println("Courses loaded");
+			programs = (ArrayList<Program>) ois.readObject();
+			System.out.println("Programs loaded");
+			ois.close();
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println("Could not fetch saved data.");
+			e.printStackTrace();
+		}
+	}
+
+	void saveStoredData() {
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ISL_filepath.dat"));
+			oos.writeObject(users);
+			System.out.println("Users saved");
+			oos.writeObject(courses);
+			System.out.println("Courses saved");
+			oos.writeObject(programs);
+			System.out.println("Programs saved");
+			oos.close();
+		} catch (IOException e) {
+			System.out.println("Could not save data	.");
+			e.printStackTrace();
+		}
 	}
 
 }
