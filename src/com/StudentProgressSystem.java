@@ -72,6 +72,11 @@ public class StudentProgressSystem {
 			FacAdmin facAdmin = new FacAdmin();
 			facadMenu();
 		}
+		else if (tempUser.startswith(C))
+		{
+			Coordinator coordinator = new Coordinator();
+			coorMenu();
+		}
 	}
 	
 	
@@ -94,6 +99,19 @@ public class StudentProgressSystem {
 		System.out.println("Hello, ."+tempUser+"What would you like to do?")
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
+		
+		switch (choice)
+		{
+			case 1: 
+				coordinator.checkStudentResults();
+				break;
+			case 2:
+				coordinator.createStudentAccount();
+				break;
+			case 3:
+				coordinator.uploadEnrolment();
+				break;
+		)
 	}
 	
 	
