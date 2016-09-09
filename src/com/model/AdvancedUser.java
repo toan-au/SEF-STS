@@ -57,7 +57,9 @@ public abstract class AdvancedUser extends User {
 		GregorianCalendar DOB = new GregorianCalendar(year, month, day);
 		
 		Student newStudent = new Student(inputId, inputName, inputPassword, DOB, inputEmail);
-		System.out.println(newStudent);
+		
+		//push the new student object into the User Storage list
+		Storage.users.add(newStudent);
 	}
 
 	public void createStudentAccount(ArrayList<Student> student) {

@@ -10,16 +10,16 @@ public class StorageTest {
 
 	@Test
 	public void test() {
-		//add a student
+		// add a student
 		Student student1 = new Student("s1234567", "Toan", "12345", new GregorianCalendar(1993, 12, 25), "toan@au.com");
 		Storage.users.add( student1) ;
 		
-		//add a course
+		// add a course
 		Course course1 = new Course("COSC1024", "Software Engineering Fundamentals", 4, 2016, 2);
 		Storage.courses.add( course1 );
 		
-		//add a program
-		//Program program1 = new Program();
+		// add a program
+		// Program program1 = new Program();
 		
 		for (User user : Storage.users) {
 			System.out.println(user.getId());
