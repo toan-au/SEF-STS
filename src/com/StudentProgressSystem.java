@@ -29,6 +29,7 @@ public class StudentProgressSystem {
 	public void run() {
 		validate();
 		logInScanner.close();
+		menu();
 	}
 
 	private void validate() {
@@ -57,5 +58,44 @@ public class StudentProgressSystem {
 		}
 
 	}
+	
+	private void menu()
+	{
+		
+		if (tempUser.startsWith(S))
+		{
+			Student student = new Student();
+			studentMenu();
+		}
+		else if (tempUser.startsWith(F))
+		{
+			FacAdmin facAdmin = new FacAdmin();
+			facadMenu();
+		}
+	}
+	
+	
+	private void studentMenu()
+	{
+		System.out.println("Here are your results...");
+		student.checkStudentResults();
+		
+	}
+	
+	private void facadMenu()
+	{
+		System.out.println("Here are your students' results...");
+			facAdmin.checkStudentResults();
+		
+	}
+	
+	private void coorMenu()
+	{
+		System.out.println("Hello, ."+tempUser+"What would you like to do?")
+		Scanner scanner = new Scanner(System.in);
+		int choice = scanner.nextInt();
+	}
+	
+	
 
 }
