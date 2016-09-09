@@ -34,25 +34,7 @@ public class StudentProgressSystem {
 		menu();
 	}
 
-	private void displayCoordinatorMenu() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	private void displaySysadminMenu() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void displayFacAdminMenu() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void displayStudentMenu() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	private void validate() {
 		boolean isLoggedIn = false;
