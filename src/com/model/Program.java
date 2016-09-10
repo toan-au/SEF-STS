@@ -33,6 +33,7 @@ public class Program {
 		int inputRequiredCredits;
 		boolean inputIsActive;
 		ProgramType inputProgramType;
+		String tempProgramType;
 		ArrayList<Course> inputCoreCourses;
 		SpecializationMode inputSpecializationMode;
 		Map<String, ArrayList<Course>> inputSpecializations;
@@ -50,7 +51,20 @@ public class Program {
 		inputIsActive = input.nextBoolean();
 		
 		System.out.println("Enter the Program's type");
-		inputProgramType = input.next();
+		tempProgramType = input.next();
+		//change input to upper case
+		tempProgramType = tempProgramType.toUpperCase( );
+		if (tempProgramType.equals("BACHELOR")){
+			inputProgramType = enum BACHELOR;
+		}else if (tempProgramType.equals("HONOURS")){
+			inputProgramType = enum HONOURS;
+		}else if (tempProgramType.equals("GRADDIPLOMA")){
+			inputProgramType = enum GRADDIPLOMA;
+		}else if (tempProgramType.equals("MASTERS")){
+			inputProgramType = enum MASTERS;
+		}else{
+			System.out.println("This type is not exist!!");
+		}
 		
 		System.out.println("Enter the Core Course");
 		inputCoreCourses = input.next();
