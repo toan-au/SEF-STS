@@ -45,6 +45,7 @@ public class StudentProgressSystem {
 	}
 
 	public void run() {
+		Storage.init();
 		System.out.println("Welcome to this thing. Press Enter to begin.");
 		if (logInScanner.nextLine().equals("UpUpDownDownLeftRightLeftRightBA"))
 			fancyAdminMode();

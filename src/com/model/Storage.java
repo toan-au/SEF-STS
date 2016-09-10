@@ -22,7 +22,7 @@ public class Storage {
 	private static Student student6 = new Student("s6666666", "Julie Nguyen", "password", new GregorianCalendar(0001, 1, 1), "julie@email.com");
 
 
-	public static void initStorage() {
+	public static void init() {
 		Storage.users.add( student1);
 		Storage.users.add( student2);
 		Storage.users.add( student3);
