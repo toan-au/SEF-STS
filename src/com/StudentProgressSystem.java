@@ -62,7 +62,7 @@ public class StudentProgressSystem {
 		System.out.println("Please enter your account details");
 		while (!isLoggedIn) {
 			System.out.println("ID: ");
-			String inputId = logInScanner.next();
+			String inputId = logInScanner.nextLine();
 			tempUser = Storage.getUser(inputId);
 			System.out.println(inputId);
 			if (tempUser == null) {
@@ -86,13 +86,13 @@ public class StudentProgressSystem {
 	private void menu() {
 		String userId = currentUser.getId();
 
-		if (userId.startsWith("S"))
+		if (userId.startsWith("s"))
 			displayStudentMenu();
-		else if (userId.startsWith("F"))
+		else if (userId.startsWith("f"))
 			displayFacAdminMenu();
-		else if (userId.startsWith("C"))
+		else if (userId.startsWith("c"))
 			displayCoordinatorMenu();
-		else if (userId.startsWith("A"))
+		else if (userId.startsWith("a"))
 			displaySysAdminMenu();
 	}
 
