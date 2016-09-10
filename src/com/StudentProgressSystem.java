@@ -60,17 +60,17 @@ public class StudentProgressSystem {
 
 		System.out.println("Please enter your account details");
 		while (!isLoggedIn) {
-			System.out.println("User Name: ");
+			System.out.println("ID: ");
 			tempUser = Storage.getUser(logInScanner.nextLine());
 			if (tempUser == null) {
-				System.out.println("The User Name you entered does not exist. Please try again");
+				System.out.println("The ID you entered does not exist. Please try again");
 				continue;
 			}
 
 			System.out.println("Pasword: ");
 			String passwordEntry = logInScanner.nextLine();
 			if (!tempUser.getPassword().equals(passwordEntry)) {
-				System.out.println("The Password you entered does not match the user name. Please try again");
+				System.out.println("The Password you entered does not match the ID. Please try again");
 				continue;
 			}
 
