@@ -61,7 +61,9 @@ public class StudentProgressSystem {
 		System.out.println("Please enter your account details");
 		while (!isLoggedIn) {
 			System.out.println("ID: ");
-			tempUser = Storage.getUser(logInScanner.next());
+			String inputId = logInScanner.next();
+			tempUser = Storage.getUser(inputId);
+			System.out.println(inputId);
 			if (tempUser == null) {
 				System.out.println("The ID you entered does not exist. Please try again");
 				continue;
