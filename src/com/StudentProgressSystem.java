@@ -29,16 +29,16 @@ public class StudentProgressSystem {
 		String password = scanner.next();
 		
 		if (userId.startsWith("S")) {
-			System.out.println("Please enter all the other stuff, Anna, this is your job, I'm too lazy");
+			System.out.println("You have just created a student account.");
 			String something = scanner.next();
 		} else if (userId.startsWith("F")) {
-			System.out.println("Please enter all the other stuff, Anna, this is your job, I'm too lazy");
+			System.out.println("You have just created a faculty admin account.");
 			String something = scanner.next();
 		} else if (userId.startsWith("C")) {
-			System.out.println("Please enter all the other stuff, Ana, this is your job, I'm too lazy");
+			System.out.println("You have just created a coordinator account.");
 			String something = scanner.next();
 		} else if (userId.startsWith("A")) {
-			System.out.println("Please enter all the other stuff, Ana, this is your job, I'm too lazy");
+			System.out.println("You have just created a system admin account.");
 			String something = scanner.next();
 		}
 		
