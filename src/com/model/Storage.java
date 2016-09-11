@@ -24,6 +24,15 @@ public class Storage {
 	private static SysAdmin sysAdmin1 = new SysAdmin("a1111111", "Halil", "password");
 	
 	// add courses
+	
+	
+	//add Programs
+	private static Program program1 = new Program("BP094", 1, 48, true, ProgramType.BACHELOR);
+	private static Program progtam2 = new Program("BP129", 2, 48, true, ProgramType.BACHELOR);
+	private static Program progtam3 = new Program("BP229", 3, 48, true, ProgramType.BACHELOR);
+	private static Program progtam4 = new Program("BP254", 4, 48, true, ProgramType.BACHELOR);
+	
+	
 
 
 	public static void init() {
