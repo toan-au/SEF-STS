@@ -12,10 +12,10 @@ import com.model.User;
 public class StudentProgressSystem {
 
 	User currentUser;
-	Scanner logInScanner;
+	Scanner scanner;
 
 	public StudentProgressSystem() {
-		logInScanner = new Scanner(System.in);
+		scanner = new Scanner(System.in);
 	}
 
 	private void fancyAdminMode() {
@@ -23,38 +23,36 @@ public class StudentProgressSystem {
 		SysAdmin fancyAdmin = new SysAdmin("temp", "temp", "temp");
 		System.out.println("fancy admin mode activated");
 
-		Scanner fancyScanner = new Scanner(System.in);
 		System.out.println("Create a new User Account:\n" + "Please add an Id:");
-		String userId = fancyScanner.next();
+		String userId = scanner.next();
 		System.out.println("Please add a password:");
-		String password = fancyScanner.next();
+		String password = scanner.next();
 		
 		if (userId.startsWith("S")) {
 			System.out.println("Please enter all the other stuff, Anna, this is your job, I'm too lazy");
-			String something = fancyScanner.next();
+			String something = scanner.next();
 		} else if (userId.startsWith("F")) {
 			System.out.println("Please enter all the other stuff, Anna, this is your job, I'm too lazy");
-			String something = fancyScanner.next();
+			String something = scanner.next();
 		} else if (userId.startsWith("C")) {
 			System.out.println("Please enter all the other stuff, Ana, this is your job, I'm too lazy");
-			String something = fancyScanner.next();
+			String something = scanner.next();
 		} else if (userId.startsWith("A")) {
 			System.out.println("Please enter all the other stuff, Ana, this is your job, I'm too lazy");
-			String something = fancyScanner.next();
+			String something = scanner.next();
 		}
 		
-		fancyScanner.close();
 	}
 
 	public void run() {
 		Storage.init();
 		System.out.println("Welcome to this thing. Press Enter to begin.");
-		if (logInScanner.nextLine().equals("UpUpDownDownLeftRightLeftRightBA"))
+		if (scanner.nextLine().equals("UpUpDownDownLeftRightLeftRightBA"))
 			fancyAdminMode();
 
 		validate();
-		logInScanner.close();
 		menu();
+		scanner.close();
 	}
 
 	private void validate() {
@@ -64,7 +62,7 @@ public class StudentProgressSystem {
 		System.out.println("Please enter your account details");
 		while (!isLoggedIn) {
 			System.out.println("ID: ");
-			String inputId = logInScanner.nextLine();
+			String inputId = scanner.nextLine();
 			tempUser = Storage.getUser(inputId);
 			System.out.println(inputId);
 			if (tempUser == null) {
@@ -73,7 +71,7 @@ public class StudentProgressSystem {
 			}
 
 			System.out.println("Pasword: ");
-			String passwordEntry = logInScanner.nextLine();
+			String passwordEntry = scanner.nextLine();
 			if (!tempUser.getPassword().equals(passwordEntry)) {
 				System.out.println("The Password you entered does not match the ID. Please try again");
 				continue;
@@ -128,13 +126,11 @@ public class StudentProgressSystem {
 			break;
 		}
 		
-		scanner.close();
 	}
 
 	private void displaySysAdminMenu() {
 		System.out.println("Hello, ." + currentUser.getId() + "\nWhat would you like to do?\n");
 		System.out.println("1.) Set up roles\n" + "2)Set up a new program\n" + "3.) Create a student account\n" + "4.) Upload enrolment");
-		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
 
 		switch (choice) {
@@ -145,7 +141,7 @@ public class StudentProgressSystem {
 			//currentUser.setUpNewProgram();
 			break;
 		case 3:
-			((SysAdmin) currentUser).createStudentAccount();
+			//((SysAdmin) currentUser).createStudentAccount();
 			break;
 		case 4:
 			//currentUser.uploadEnrolment();
@@ -154,7 +150,6 @@ public class StudentProgressSystem {
 			System.out.println("Please input a valid choice");
 		}
 		
-		scanner.close();
 	}
 
 }
