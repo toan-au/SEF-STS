@@ -133,14 +133,14 @@ public class StudentProgressSystem {
 		//boolean to determine if we should loop
 		boolean loop = true;
 		
-		System.out.println("Hello, ." + currentUser.getId() + "\nWhat would you like to do?\n");
-		System.out.println("1 - Set up roles");
-		System.out.println("2 - Set up a new program");
-		System.out.println("3 - Create a student account");
-		System.out.println("4 - Upload enrolment");
-		System.out.println("5 - log out");
-		
 		while(loop) {
+			System.out.println("Hello, ." + currentUser.getId() + "\nWhat would you like to do?\n");
+			System.out.println("1 - Set up roles");
+			System.out.println("2 - Set up a new program");
+			System.out.println("3 - Create a student account");
+			System.out.println("4 - Upload enrolment");
+			System.out.println("5 - log out");
+			
 			int choice = scanner.nextInt();
 			switch (choice) {
 			case 1:

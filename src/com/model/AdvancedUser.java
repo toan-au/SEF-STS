@@ -60,6 +60,9 @@ public abstract class AdvancedUser extends User {
 		
 		//push the new student object into the User Storage list
 		Storage.users.add(newStudent);
+		
+		//inform the user that student has been created
+		System.out.println("Student " + newStudent.getName() + " has been created.");
 	}
 
 	public void createStudentAccount(ArrayList<Student> student) {
