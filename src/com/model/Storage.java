@@ -24,7 +24,20 @@ public class Storage {
 	private static SysAdmin sysAdmin1 = new SysAdmin("a1111111", "Halil", "password");
 	
 	// add courses
-
+	private static Course course1 = new Course("COSC2102B", "Software Engineering Project (PtB)", 4);
+	private static Course course2 = new Course("AERO2394", "Aeronautical Design", 4);
+	private static Course course3 = new Course("EEET2032", "Simulation Based Design", 4);
+	private static Course course4 = new Course("ISYS1013", "Systems Design", 4);
+	
+	private static Course course5 = new Course("GRAP2324", "Advanced Imaging in 2D and 3D", 4);
+	private static Course course6 = new Course("VART2992", "3D Animation Advanced", 4);
+	private static Course course7 = new Course("GRAP2326", "3D Character: Create and Animate and Special Effects", 4);
+	private static Course course8 = new Course("INTE1033", "E-Commerce Development 2", 4);
+	
+	private static Course course9 = new Course("ISYS2064", "Applications Development for PCs - Spreadsheets", 4);
+	private static Course course10 = new Course("MKTG1227", "Theory Development and Critical Analysis", 4);
+	private static Course course11 = new Course("HUSO2177", "Practicing Development", 4);
+	private static Course course12 = new Course("BUIL1161", "International Development", 4);
 
 	public static void init() {
 		//enrol students in courses
