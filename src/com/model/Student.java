@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class Student extends User {
@@ -53,7 +54,8 @@ public class Student extends User {
 		this.program = program;
 	}
 
-	public Map<Course, Double> checkStudentResults() {
-		return courses;
+	public void checkStudentResults() {
+		System.out.println("Your results are:");
+		
 	}
 }
