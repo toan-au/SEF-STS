@@ -41,7 +41,10 @@ public class Storage {
 
 	public static void init() {
 		//enrol students in courses
-		
+		student1.enrolCourse("COSC2102B");
+		student1.enrolCourse("AERO2394");
+		student1.enrolCourse("GRAP2324");
+		student1.enrolCourse("HUSO2177");
 		
 		users.add( student1);
 		users.add( student2);
