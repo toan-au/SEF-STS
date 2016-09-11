@@ -22,9 +22,14 @@ public class Storage {
 	private static Student student6 = new Student("s6666666", "Julie Nguyen", "password", new GregorianCalendar(0001, 1, 1), "julie@email.com");
 	
 	private static SysAdmin sysAdmin1 = new SysAdmin("a1111111", "Halil", "password");
+	
+	// add courses
 
 
 	public static void init() {
+		//enrol students in courses
+		
+		
 		users.add( student1);
 		users.add( student2);
 		users.add( student3);
