@@ -35,7 +35,7 @@ public class SysAdmin extends AdvancedUser {
 		System.out.println("Enter the Program's Credit");
 		inputRequiredCredits = input.nextInt();
 		
-		System.out.println("Enter the Program's status, active or inactive");
+		System.out.println("Is the program active? true/false");
 		inputIsActive = input.nextBoolean();
 		
 		System.out.println("Enter the Program's type");
@@ -43,13 +43,13 @@ public class SysAdmin extends AdvancedUser {
 		//change input to upper case
 		tempProgramType = tempProgramType.toUpperCase();
 		if (tempProgramType.equals("BACHELOR")){
-			inputProgramType = enum BACHELOR;
+			inputProgramType = ProgramType.BACHELOR;
 		}else if (tempProgramType.equals("HONOURS")){
-			inputProgramType = enum HONOURS;
+			inputProgramType = ProgramType.HONOURS;
 		}else if (tempProgramType.equals("GRADDIPLOMA")){
-			inputProgramType = enum GRADDIPLOMA;
+			inputProgramType = ProgramType.GRADDIPLOMA;
 		}else if (tempProgramType.equals("MASTERS")){
-			inputProgramType = enum MASTERS;
+			inputProgramType = ProgramType.MASTERS;
 		}else{
 			System.out.println("This type is not exist!!");
 		}
@@ -72,9 +72,9 @@ public class SysAdmin extends AdvancedUser {
 		tempSpMode = tempSpMode.toUpperCase();
 		
 		if (tempSpMode.equals("FIXEDSET")){
-			inputSpecializationMode = enum FIXEDSET;
+			inputSpecializationMode = SpecializationMode.FIXEDSET;
 		}else if (tempSpMode.equals("COURSEPOOL")){
-			inputSpecializationMode = enum COURSEPOOL;
+			inputSpecializationMode = SpecializationMode.COURSEPOOL;
 		}else{
 			System.out.println("This Mode is not exist!!");
 		}
