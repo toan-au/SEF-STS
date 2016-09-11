@@ -120,7 +120,7 @@ public class StudentProgressSystem {
 			// currentUser.checkStudentResults();
 			break;
 		case 2:
-			// currentUser.createStudentAccount();
+			((Coordinator)currentUser).createStudentAccount();
 			break;
 		case 3:
 			// currentUser.uploadEnrolment();
@@ -147,10 +147,10 @@ public class StudentProgressSystem {
 				//currentUser.setUpRoles();
 				break;
 			case 2:
-				//currentUser.setUpNewProgram();
+				((SysAdmin)currentUser).setUpNewProgram();
 				break;
 			case 3:
-				((SysAdmin) currentUser).createStudentAccount();
+				((SysAdmin)currentUser).createStudentAccount();
 				break;
 			case 4:
 				//currentUser.uploadEnrolment();

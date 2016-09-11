@@ -13,7 +13,7 @@ public class SysAdmin extends AdvancedUser {
 	
 	}
 
-	public void setUpNewProgram(Program program) {
+	public void setUpNewProgram() {
 		String inputProgramCode;
 		int inputVersionNumber;
 		int inputRequiredCredits;
@@ -83,9 +83,12 @@ public class SysAdmin extends AdvancedUser {
 //		System.out.println("Enter the Specialization");
 //		inputSpecializations = input.next();
 		
-		Program newCourse = new Program(inputProgramCode, inputVersionNumber, inputRequiredCredits, inputIsActive, inputProgramType);
+		Program newProgram = new Program(inputProgramCode, inputVersionNumber, inputRequiredCredits, inputIsActive, inputProgramType);
 		
 		//Store the new course to the array.
-		Storage.programs.add(newCourse);
+		Storage.programs.add(newProgram);
+		
+		//inform user that the program has been created
+		System.out.println("Program " + newProgram.getProgramCode() + " has been created and added to the database");
 	}
 }
