@@ -42,6 +42,8 @@ public class StudentProgressSystem {
 			System.out.println("Please enter all the other stuff, Ana, this is your job, I'm too lazy");
 			String something = fancyScanner.next();
 		}
+		
+		fancyScanner.close();
 	}
 
 	public void run() {
@@ -125,24 +127,34 @@ public class StudentProgressSystem {
 			// currentUser.uploadEnrolment();
 			break;
 		}
+		
+		scanner.close();
 	}
 
 	private void displaySysAdminMenu() {
-		System.out.println("Hello, ." + currentUser.getId() + "What would you like to do?");
-		System.out.println("1.) Set up roles\n" + "2.Set up a new program\n" + "3.) Create a student account\n" + "4.) Upload enrolment");
+		System.out.println("Hello, ." + currentUser.getId() + "\nWhat would you like to do?\n");
+		System.out.println("1.) Set up roles\n" + "2)Set up a new program\n" + "3.) Create a student account\n" + "4.) Upload enrolment");
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
 
 		switch (choice) {
 		case 1:
 			//currentUser.setUpRoles();
+			break;
 		case 2:
 			//currentUser.setUpNewProgram();
+			break;
 		case 3:
 			((SysAdmin) currentUser).createStudentAccount();
+			break;
 		case 4:
 			//currentUser.uploadEnrolment();
+			break;
+		default:
+			System.out.println("Please input a valid choice");
 		}
+		
+		scanner.close();
 	}
 
 }
