@@ -20,15 +20,18 @@ public class Storage {
 	private static Student student4 = new Student("s4444444", "Sophie Au", "password", new GregorianCalendar(1800, 5, 25), "sophie@email.com");
 	private static Student student5 = new Student("s5555555", "Ana Teo", "password", new GregorianCalendar(1700, 12, 12), "ana@email.com");
 	private static Student student6 = new Student("s6666666", "Julie Nguyen", "password", new GregorianCalendar(0001, 1, 1), "julie@email.com");
+	
+	private static SysAdmin sysAdmin1 = new SysAdmin("a1111111", "Halil", "password");
 
 
 	public static void init() {
-		Storage.users.add( student1);
-		Storage.users.add( student2);
-		Storage.users.add( student3);
-		Storage.users.add( student4);
-		Storage.users.add( student5);
-		Storage.users.add( student6);
+		users.add( student1);
+		users.add( student2);
+		users.add( student3);
+		users.add( student4);
+		users.add( student5);
+		users.add( student6);
+		users.add(sysAdmin1);
 	}
 	
 	public static User getUser(String id) {

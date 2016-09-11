@@ -99,7 +99,7 @@ public class StudentProgressSystem {
 	private void displayStudentMenu() {
 		System.out.println("Here are your results...");
 		currentUser.checkStudentResults((Student) currentUser);
-
+		
 	}
 
 	private void displayFacAdminMenu() {
