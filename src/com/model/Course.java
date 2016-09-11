@@ -6,12 +6,12 @@ public class Course {
 	private int latestYear;
 	private int latestSemester;
 
-	public Course(String courseId, String courseName, int credits, int latestYear, int latestSemester) {
+	public Course(String courseId, String courseName, int credits) {
 		this.courseId = courseId;
 		this.courseName = courseName;
 		this.credits = credits;
-		this.latestSemester = latestSemester;
-		this.latestYear = latestYear;
+//		this.latestSemester = latestSemester;
+//		this.latestYear = latestYear;
 	}
 
 	public String getCourseId() {
