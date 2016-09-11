@@ -98,8 +98,28 @@ public class StudentProgressSystem {
 	}
 
 	private void displayStudentMenu() {
-		System.out.println("Here are your results...");
-		currentUser.checkStudentResults((Student) currentUser);
+		System.out.println("Hello, ." + currentUser.getId() + "What would you like to do?");
+		System.out.println("1 - Check your results\n");
+		System.out.println("2 - log out\n");
+		Scanner scanner = new Scanner(System.in);
+		int choice = scanner.nextInt();
+		
+		//set a flag for continue run the loop until log out.
+		boolean studentFlag = true;
+		while (studentFlag){
+			switch (choice) {
+			case 1:
+				System.out.println("Here are your results...");
+				currentUser.checkStudentResults((Student) currentUser);
+				break;
+			case 2:
+				studentFlag = false;
+				break;
+			default:
+				System.out.println("Please input a valid choice");
+			}
+		}
+		
 		
 	}
 
@@ -111,20 +131,33 @@ public class StudentProgressSystem {
 
 	private void displayCoordinatorMenu() {
 		System.out.println("Hello, ." + currentUser.getId() + "What would you like to do?");
-		System.out.println("1.) Check student results\n" + "2.) Create a student account\n" + "3.) Upload enrolment");
+		//System.out.println("1.) Check student results\n" + "2.) Create a student account\n" + "3.) Upload enrolment");
+		System.out.println("1 - Check student results\n");
+		System.out.println("2 - Create a student account\n");
+		System.out.println("3 - Upload enrolment\n");
+		System.out.println("4 - log out\n");
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
 
-		switch (choice) {
-		case 1:
-			// currentUser.checkStudentResults();
-			break;
-		case 2:
-			((Coordinator)currentUser).createStudentAccount();
-			break;
-		case 3:
-			// currentUser.uploadEnrolment();
-			break;
+		//set a flag for continue run the loop until log out.
+		boolean coordinatorFlag = true;
+		while (coordinatorFlag){
+			switch (choice) {
+			case 1:
+				// currentUser.checkStudentResults();
+				break;
+			case 2:
+				((Coordinator)currentUser).createStudentAccount();
+				break;
+			case 3:
+				// currentUser.uploadEnrolment();
+				break;
+			case 4:
+				coordinatorFlag = false;
+				break;
+			default:
+				System.out.println("Please input a valid choice");
+			}
 		}
 		
 	}
