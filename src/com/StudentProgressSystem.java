@@ -135,13 +135,13 @@ public class StudentProgressSystem {
 
 		switch (choice) {
 		case 1:
-			// currentUser.setUpRoles();
+			//currentUser.setUpRoles();
 		case 2:
-			// currentUser.setUpNewProgram();
+			//currentUser.setUpNewProgram();
 		case 3:
-			// currentUser.creatStudentAccount();
+			((SysAdmin) currentUser).createStudentAccount();
 		case 4:
-			// currentUser.uploadEnrolment();
+			//currentUser.uploadEnrolment();
 		}
 	}
 
