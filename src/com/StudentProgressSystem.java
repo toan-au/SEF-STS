@@ -29,19 +29,27 @@ public class StudentProgressSystem {
 		String password = scanner.next();
 		
 		if (userId.startsWith("S")) {
-			System.out.println("You have just created a student account.");
+			Student newStudent = new Student(userId, password);
+			Storage.users.add(newStudent);
+			System.out.println("You have just created a student account with the user name "+userId+"and password "+password".");
 			System.out.println("You will now be taken back to the menu...");
 			run();
 		} else if (userId.startsWith("F")) {
-			System.out.println("You have just created a faculty admin account.");
+			FacAdmin newFacAdmin = new FacAdmin(userId, password);
+			Storage.users.add(newFacAdmin);
+			System.out.println("You have just created a faculty admin account with the user name "+userId+"and password "+password".");
 			System.out.println("You will now be taken back to the menu...");
 			run();
 		} else if (userId.startsWith("C")) {
-			System.out.println("You have just created a coordinator account.");
+			Coordinator newCoordinator = new Coordinator(userId, password);
+			Storage.users.add(newCoordinator);
+			System.out.println("You have just created a coordinator account with the user name "+userId+"and password "+password".");
 			System.out.println("You will now be taken back to the menu...");
 			run();
 		} else if (userId.startsWith("A")) {
-			System.out.println("You have just created a system admin account.");
+			SysAdmin newSysAdmin = new SysAdmin(userId, password);
+			Storage.users.add(newSysAdmin);
+			System.out.println("You have just created a system admin account with the user name "+userId+"and password "+password".");
 			System.out.println("You will now be taken back to the menu...");
 			run();
 		}
