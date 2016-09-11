@@ -30,16 +30,20 @@ public class StudentProgressSystem {
 		
 		if (userId.startsWith("S")) {
 			System.out.println("You have just created a student account.");
-			String something = scanner.next();
+			System.out.println("You will now be taken back to the menu...");
+			run();
 		} else if (userId.startsWith("F")) {
 			System.out.println("You have just created a faculty admin account.");
-			String something = scanner.next();
+			System.out.println("You will now be taken back to the menu...");
+			run();
 		} else if (userId.startsWith("C")) {
 			System.out.println("You have just created a coordinator account.");
-			String something = scanner.next();
+			System.out.println("You will now be taken back to the menu...");
+			run();
 		} else if (userId.startsWith("A")) {
 			System.out.println("You have just created a system admin account.");
-			String something = scanner.next();
+			System.out.println("You will now be taken back to the menu...");
+			run();
 		}
 		
 
