@@ -42,6 +42,7 @@ public class StudentProgressSystem {
 			String something = scanner.next();
 		}
 		
+
 	}
 
 	public void run() {
@@ -129,27 +130,39 @@ public class StudentProgressSystem {
 	}
 
 	private void displaySysAdminMenu() {
-		System.out.println("Hello, ." + currentUser.getId() + "\nWhat would you like to do?\n");
-		System.out.println("1.) Set up roles\n" + "2)Set up a new program\n" + "3.) Create a student account\n" + "4.) Upload enrolment");
-		int choice = scanner.nextInt();
-
-		switch (choice) {
-		case 1:
-			//currentUser.setUpRoles();
-			break;
-		case 2:
-			//currentUser.setUpNewProgram();
-			break;
-		case 3:
-			//((SysAdmin) currentUser).createStudentAccount();
-			break;
-		case 4:
-			//currentUser.uploadEnrolment();
-			break;
-		default:
-			System.out.println("Please input a valid choice");
-		}
+		//boolean to determine if we should loop
+		boolean loop = true;
 		
+		System.out.println("Hello, ." + currentUser.getId() + "\nWhat would you like to do?\n");
+		System.out.println("1 - Set up roles");
+		System.out.println("2 - Set up a new program");
+		System.out.println("3 - Create a student account");
+		System.out.println("4 - Upload enrolment");
+		System.out.println("5 - log out");
+		
+		while(loop) {
+			int choice = scanner.nextInt();
+			switch (choice) {
+			case 1:
+				//currentUser.setUpRoles();
+				break;
+			case 2:
+				//currentUser.setUpNewProgram();
+				break;
+			case 3:
+				((SysAdmin) currentUser).createStudentAccount();
+				break;
+			case 4:
+				//currentUser.uploadEnrolment();
+				break;
+			case 5:
+				System.out.println("Logging out...\n");
+				loop = false;
+				break;
+			default:
+				System.out.println("Please input a valid choice");
+			}
+		}
 	}
 
 }
