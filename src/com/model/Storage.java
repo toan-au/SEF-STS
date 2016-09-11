@@ -38,6 +38,12 @@ public class Storage {
 	private static Course course10 = new Course("MKTG1227", "Theory Development and Critical Analysis", 4);
 	private static Course course11 = new Course("HUSO2177", "Practicing Development", 4);
 	private static Course course12 = new Course("BUIL1161", "International Development", 4);
+	
+	//add Programs
+	private static Program program1 = new Program("BP094", 1, 48, true, ProgramType.BACHELOR);
+	private static Program progtam2 = new Program("BP129", 2, 48, true, ProgramType.BACHELOR);
+	private static Program progtam3 = new Program("BP229", 3, 48, true, ProgramType.BACHELOR);
+	private static Program progtam4 = new Program("BP254", 4, 48, true, ProgramType.BACHELOR);
 
 	public static void init() {
 		//enrol students in courses
