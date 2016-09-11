@@ -15,16 +15,15 @@ public class Program {
 	private Map<String, ArrayList<Course>> specializations;
 	Scanner input = new Scanner(System.in);
 
-	public Program(String programCode, int versionNumber, int requiredCredits, boolean isActive, ProgramType programType,
-			ArrayList<Course> coreCourses, SpecializationMode specializationMode, Map<String, ArrayList<Course>> specializations) {
+	public Program(String programCode, int versionNumber, int requiredCredits, boolean isActive, ProgramType programType) {
 		this.programCode = programCode;
 		this.versionNumber = versionNumber;
 		this.requiredCredits = requiredCredits;
 		this.isActive = isActive;
 		this.programType = programType;
-		this.coreCourses = coreCourses;
-		this.specializationMode = specializationMode;
-		this.specializations = specializations;
+//		this.coreCourses = coreCourses;
+//		this.specializationMode = specializationMode;
+//		this.specializations = specializations;
 	}
 
 	public String getProgramCode() {
