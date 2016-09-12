@@ -1,4 +1,4 @@
-package com;
+package com.view;
 
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -14,8 +14,22 @@ public class StudentProgressSystem {
 
 	Scanner scanner;
 
-	public StudentProgressSystem() {
-		Storage.init();
+	public void run() {
+		scanner = new Scanner(System.in);
+
+		while (true) {
+			System.out.println("Welcome to the Student Progress System. Press Enter to begin; q to exit.");
+			String input = scanner.nextLine();
+
+			if (input.equals("UpUpDownDownLeftRightLeftRightBA"))
+				fancyAdminMode();
+			else if (input.equals("q"))
+				break;
+
+			Menu.displayMenu(logIn());
+		}
+		scanner.close();
+		System.exit(0);
 	}
 
 	private void fancyAdminMode() {
@@ -56,25 +70,6 @@ public class StudentProgressSystem {
 
 		System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
 				+ "This account is now ready to be used.\n" + "You will now be taken back to the main menu...");
-	}
-
-	public void run() {
-		scanner = new Scanner(System.in);
-
-		while (true) {
-			System.out.println("Welcome to the Student Progress System. Press Enter to begin; q to exit.");
-			String input = scanner.nextLine();
-			
-			if (input.equals("UpUpDownDownLeftRightLeftRightBA"))
-				fancyAdminMode();
-			else if (input.equals("q"))
-				break;
-
-			Menu.displayMenu(logIn());
-		}
-
-		scanner.close();
-		System.exit(0);
 	}
 
 	private User logIn() {
