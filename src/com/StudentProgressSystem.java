@@ -62,12 +62,11 @@ public class StudentProgressSystem {
 	public void run() {
 		scanner = new Scanner(System.in);
 
-		System.out.println("Welcome to this thing. Press Enter to begin.");
+		System.out.println("Welcome to the Student Progress System. Press Enter to begin.");
 		if (scanner.nextLine().equals("UpUpDownDownLeftRightLeftRightBA"))
 			fancyAdminMode();
 
-		logIn();
-		Menu.displayMenu();
+		Menu.displayMenu(logIn());
 		scanner.close();
 	}
 
@@ -94,7 +93,7 @@ public class StudentProgressSystem {
 			}
 			isLoggedIn = true;
 		}
-		
+
 		System.out.println("Logging in...");
 		return user;
 	}

@@ -17,7 +17,8 @@ public class Menu {
 	}
 	
 	
-	public static void displayMenu() {
+	public static void displayMenu(User user) {
+		currentUser = user;
 		String userId = currentUser.getId();
 
 		System.out.println("Hello, " + userId + ". What would you like to do?");
