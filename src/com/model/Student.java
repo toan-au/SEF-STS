@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class Student extends User {
@@ -10,12 +11,13 @@ public class Student extends User {
 	private Calendar dateOfBirth;
 	private String email;
 	private Map<Course, Double> courses;
+	private Program program;
 
 	public Student(String id, String name, String password, Calendar dateOfBirth, String email) {
 		super(id, name, password);
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
-		courses = new HashMap<Course, Double>(5);
+		courses = new HashMap<Course, Double>(24);
 	}
 
 	public String getGivenNames() {
@@ -43,15 +45,17 @@ public class Student extends User {
 	}
 
 	public void enrolCourse(String courseId) {
-		// courses.put(findCourseById(courseId, 0.0);
+		Course course = Storage.getCourse(courseId);
+		courses.put( course, 0.0);
 	}
 
-	public boolean enrolProgram(String programCode) {
-
-		return false;
+	public void enrolProgram(String programCode) {
+		Program program = Storage.getProgram(programCode);
+		this.program = program;
 	}
 
-	public Map<Course, Double> checkStudentResults() {
-		return courses;
+	public void checkStudentResults() {
+		System.out.println("Your results are:");
+		
 	}
 }

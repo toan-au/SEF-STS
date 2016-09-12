@@ -118,6 +118,9 @@ public class StudentProgressSystem {
 	private void displayStudentMenu() {
 		System.out.println("1 - Check your results\n");
 		System.out.println("2 - log out\n");
+		System.out.println("Hello, ." + currentUser.getId() + " What would you like to do?");
+		System.out.println("1 - Check your results");
+		System.out.println("2 - log out");
 		int choice = scanner.nextInt();
 
 		// set a flag for continue run the loop until log out.
@@ -126,7 +129,7 @@ public class StudentProgressSystem {
 			switch (choice) {
 			case 1:
 				System.out.println("Here are your results...");
-				currentUser.checkStudentResults((Student) currentUser);
+				((Student)currentUser).checkStudentResults();
 				break;
 			case 2:
 				studentFlag = false;
