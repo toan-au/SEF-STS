@@ -38,7 +38,6 @@ public class StudentProgressSystem {
 			Storage.users.add(new FacAdmin(userId, fullName, password));
 
 		} else if (userId.startsWith("s")) {
-
 			System.out.println("Please enter the student's birthday like so: DD/MM/YYYY");
 			scanner.useDelimiter("/");
 			int day = scanner.nextInt();
@@ -62,12 +61,20 @@ public class StudentProgressSystem {
 	public void run() {
 		scanner = new Scanner(System.in);
 
-		System.out.println("Welcome to the Student Progress System. Press Enter to begin.");
-		if (scanner.nextLine().equals("UpUpDownDownLeftRightLeftRightBA"))
-			fancyAdminMode();
+		while (true) {
+			System.out.println("Welcome to the Student Progress System. Press Enter to begin; q to exit.");
+			String input = scanner.nextLine();
+			
+			if (input.equals("UpUpDownDownLeftRightLeftRightBA"))
+				fancyAdminMode();
+			else if (input.equals("q"))
+				break;
 
-		Menu.displayMenu(logIn());
+			Menu.displayMenu(logIn());
+		}
+
 		scanner.close();
+		System.exit(0);
 	}
 
 	private User logIn() {
