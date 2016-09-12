@@ -13,6 +13,7 @@ public class Menu {
 	private static Scanner scanner;
 
 	public static void displayMenu(User user) {
+		scanner = new Scanner(System.in);
 		currentUser = user;
 		String userId = currentUser.getId();
 
@@ -29,10 +30,10 @@ public class Menu {
 	}
 
 	private static void displayStudentMenu() {
-		System.out.println("1 - Check your results\n" + "2 - log out\n");
-		int choice = scanner.nextInt();
-
 		while (true) {
+			System.out.println("1 - Check your results\n" + "2 - log out");
+			int choice = scanner.nextInt();
+
 			switch (choice) {
 			case 1:
 				System.out.println("Here are your results...");
@@ -44,6 +45,7 @@ public class Menu {
 			default:
 				System.out.println("Please input a valid choice");
 			}
+			System.out.println("\n\n");
 		}
 
 	}
@@ -56,10 +58,10 @@ public class Menu {
 	}
 
 	private static void displayCoordinatorMenu() {
-		System.out.println("1 - Check student results\n" + "2 - Create a student account\n" + "3 - Upload enrolment\n" + "4 - log out\n");
-		int choice = scanner.nextInt();
-
 		while (true) {
+			System.out.println("1 - Check student results\n" + "2 - Create a student account\n" + "3 - Upload enrolment\n" + "4 - log out");
+			int choice = scanner.nextInt();
+
 			switch (choice) {
 			case 1:
 				// currentUser.checkStudentResults();
