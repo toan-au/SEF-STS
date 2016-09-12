@@ -3,6 +3,7 @@ package com;
 import java.util.Scanner;
 
 import com.model.Coordinator;
+import com.model.Storage;
 import com.model.Student;
 import com.model.SysAdmin;
 import com.model.User;
@@ -28,11 +29,7 @@ public class Menu {
 	}
 
 	private static void displayStudentMenu() {
-		System.out.println("1 - Check your results\n");
-		System.out.println("2 - log out\n");
-		System.out.println("Hello, ." + currentUser.getId() + " What would you like to do?");
-		System.out.println("1 - Check your results");
-		System.out.println("2 - log out");
+		System.out.println("1 - Check your results\n" + "2 - log out\n");
 		int choice = scanner.nextInt();
 
 		while (true) {
@@ -52,18 +49,14 @@ public class Menu {
 	}
 
 	private static void displayFacAdminMenu() {
+		System.out.println("Please enter a student id:");
+		Student student = (Student) Storage.getUser(scanner.nextLine());
 		System.out.println("Here are your students' results...");
-		// currentUser.checkStudentResults();
-
+		student.checkStudentResults();
 	}
 
 	private static void displayCoordinatorMenu() {
-		// System.out.println("1.) Check student results\n" + "2.) Create a student account\n" +
-		// "3.) Upload enrolment");
-		System.out.println("1 - Check student results\n");
-		System.out.println("2 - Create a student account\n");
-		System.out.println("3 - Upload enrolment\n");
-		System.out.println("4 - log out\n");
+		System.out.println("1 - Check student results\n" + "2 - Create a student account\n" + "3 - Upload enrolment\n" + "4 - log out\n");
 		int choice = scanner.nextInt();
 
 		while (true) {
@@ -88,15 +81,9 @@ public class Menu {
 	}
 
 	private static void displaySysAdminMenu() {
-		// boolean to determine if we should loop
-		boolean loop = true;
-
 		while (true) {
-			System.out.println("1 - Set up roles");
-			System.out.println("2 - Set up a new program");
-			System.out.println("3 - Create a student account");
-			System.out.println("4 - Upload enrolment");
-			System.out.println("5 - log out");
+			System.out.println(
+					"1 - Set up roles" + "2 - Set up a new program" + "3 - Create a student account" + "4 - Upload enrolment" + "5 - log out");
 
 			int choice = scanner.nextInt();
 			switch (choice) {
