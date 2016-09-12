@@ -10,13 +10,7 @@ import com.model.User;
 public class Menu {
 	private static User currentUser;
 	private static Scanner scanner;
-	private boolean isLoggedIn;
 
-	public Menu(boolean isLoggedIn) {
-		this.isLoggedIn = isLoggedIn;
-	}
-	
-	
 	public static void displayMenu(User user) {
 		currentUser = user;
 		String userId = currentUser.getId();
@@ -41,17 +35,15 @@ public class Menu {
 		System.out.println("2 - log out");
 		int choice = scanner.nextInt();
 
-		// set a flag for continue run the loop until log out.
-		boolean studentFlag = true;
-		while (studentFlag) {
+		while (true) {
 			switch (choice) {
 			case 1:
 				System.out.println("Here are your results...");
 				((Student) currentUser).checkStudentResults();
 				break;
 			case 2:
-				studentFlag = false;
-				break;
+				System.out.println("Logging out...\n");
+				return;
 			default:
 				System.out.println("Please input a valid choice");
 			}
@@ -74,9 +66,7 @@ public class Menu {
 		System.out.println("4 - log out\n");
 		int choice = scanner.nextInt();
 
-		// set a flag for continue run the loop until log out.
-		boolean coordinatorFlag = true;
-		while (coordinatorFlag) {
+		while (true) {
 			switch (choice) {
 			case 1:
 				// currentUser.checkStudentResults();
@@ -88,8 +78,8 @@ public class Menu {
 				// currentUser.uploadEnrolment();
 				break;
 			case 4:
-				coordinatorFlag = false;
-				break;
+				System.out.println("Logging out...\n");
+				return;
 			default:
 				System.out.println("Please input a valid choice");
 			}
@@ -101,7 +91,7 @@ public class Menu {
 		// boolean to determine if we should loop
 		boolean loop = true;
 
-		while (loop) {
+		while (true) {
 			System.out.println("1 - Set up roles");
 			System.out.println("2 - Set up a new program");
 			System.out.println("3 - Create a student account");
@@ -124,14 +114,11 @@ public class Menu {
 				break;
 			case 5:
 				System.out.println("Logging out...\n");
-				loop = false;
-				break;
+				return;
 			default:
 				System.out.println("Please input a valid choice");
 			}
 		}
 	}
 
-	
-	
 }
