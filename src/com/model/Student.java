@@ -2,7 +2,6 @@ package com.model;
 
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Student extends User {
@@ -36,6 +35,14 @@ public class Student extends User {
 		return courses;
 	}
 
+	public Program getProgram() {
+		return program;
+	}
+
+	public void setProgram(Program program) {
+		this.program = program;
+	}
+	
 	public void setDateOfBirth(Calendar dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
@@ -46,16 +53,19 @@ public class Student extends User {
 
 	public void enrolCourse(String courseId) {
 		Course course = Storage.getCourse(courseId);
-		courses.put( course, 0.0);
+		courses.put(course, 0.0);
 	}
 
 	public void enrolProgram(String programCode) {
-		Program program = Storage.getProgram(programCode);
-		this.program = program;
+		this.setProgram(Storage.getProgram(programCode));
 	}
 
 	public void checkStudentResults() {
 		System.out.println("Your results are:");
-		
+		for (Map.Entry<Course, Double> result : courses.entrySet()) {
+			System.out.println(result.getKey() + " : " + result.getValue());
+		}
+
 	}
+
 }
