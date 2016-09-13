@@ -11,7 +11,8 @@ public class SysAdmin extends AdvancedUser {
 		super(id, name, password);
 	}
 
-	public void createAccount(Scanner scanner) {
+	public void createAccount() {
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Create a new User Account:\n" + "Please add an Id:");
 		String userId = scanner.next();
 		System.out.println("Please add a password:");
@@ -42,11 +43,13 @@ public class SysAdmin extends AdvancedUser {
 			Storage.users.add(new Student(userId, fullName, password, new GregorianCalendar(year, month, day), email));
 		} else {
 			System.out.println("The account name you have entered is not valid");
+			scanner.close();
 			return;
 		}
 
 		System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
 				+ "This account is now ready to be used.\n" + "You will now be taken back to the main menu...");
+		scanner.close();
 
 	}
 
