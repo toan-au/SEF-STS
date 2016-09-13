@@ -1,7 +1,5 @@
 package com.model;
 
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Scanner;
 
 public class SysAdmin extends AdvancedUser {
@@ -35,55 +33,41 @@ public class SysAdmin extends AdvancedUser {
 			scanner.close();
 			return;
 		}
-		if(!userId.startsWith("s"))
+		if (!userId.startsWith("s"))
 			System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
-				+ "This account is now ready to be used..");
+					+ "This account is now ready to be used..");
 		scanner.close();
-
 	}
 
 	public void setUpNewProgram() {
-		String inputProgramCode;
-		int inputVersionNumber;
-		int inputRequiredCredits;
-		boolean inputIsActive;
-		ProgramType inputProgramType;
-		String tempProgramType;
-		ArrayList<Course> inputCoreCourses;
-		String tempCoreCourse;
-		SpecializationMode inputSpecializationMode;
-		String tempSpMode;
-		Map<String, ArrayList<Course>> inputSpecializations;
-
 		System.out.println("Enter the Program's Code");
-		inputProgramCode = scanner.next();
+		String inputProgramCode = scanner.next();
 
 		System.out.println("Enter the Version Number");
-		inputVersionNumber = scanner.nextInt();
+		int inputVersionNumber = scanner.nextInt();
 
 		System.out.println("Enter the Program's Credit");
-		inputRequiredCredits = scanner.nextInt();
+		int inputRequiredCredits = scanner.nextInt();
 
 		System.out.println("Is the program active? true/false");
-		inputIsActive = scanner.nextBoolean();
+		boolean inputIsActive = scanner.nextBoolean();
 
-		System.out.println("Enter the Program's type");
-		tempProgramType = scanner.next();
-		// change input to upper case
-		tempProgramType = tempProgramType.toUpperCase();
-		if (tempProgramType.equals("BACHELOR")) {
-			inputProgramType = ProgramType.BACHELOR;
-		} else if (tempProgramType.equals("HONOURS")) {
-			inputProgramType = ProgramType.HONOURS;
-		} else if (tempProgramType.equals("GRADDIPLOMA")) {
-			inputProgramType = ProgramType.GRADDIPLOMA;
-		} else if (tempProgramType.equals("MASTERS")) {
-			inputProgramType = ProgramType.MASTERS;
-		} else {
-			inputProgramType = ProgramType.BACHELOR;
-			System.out.println("This type is not exist!!");
+		ProgramType inputProgramType = null;
+		while (inputProgramType == null) {
+			System.out.println("Enter the Program's type");
+			String tempProgramType = scanner.next().toUpperCase();
+
+			if (tempProgramType.equals("BACHELOR"))
+				inputProgramType = ProgramType.BACHELOR;
+			else if (tempProgramType.equals("HONOURS"))
+				inputProgramType = ProgramType.HONOURS;
+			else if (tempProgramType.equals("GRADDIPLOMA"))
+				inputProgramType = ProgramType.GRADDIPLOMA;
+			else if (tempProgramType.equals("MASTERS"))
+				inputProgramType = ProgramType.MASTERS;
+			else
+				System.out.println("This type is not exist!!");
 		}
-
 		// System.out.println("Enter the Core Course");
 		// tempProgramType = input.next();
 		// if (tempProgramType.equals("CoreCourse1")){
