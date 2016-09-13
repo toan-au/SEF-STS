@@ -32,6 +32,9 @@ public class StudentProgressSystem {
 		SysAdmin temp = new SysAdmin("temp", "temp", "temp");
 		temp.createAccount();
 		Storage.users.remove(temp);
+		
+		System.out.println(Storage.users.toString());
+		
 	}
 
 	private static User logIn() {
