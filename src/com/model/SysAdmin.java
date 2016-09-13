@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.Scanner;
 
+import com.view.StudentProgressSystem;
+
 public class SysAdmin extends AdvancedUser {
 
 	public SysAdmin(String id, String name, String password) {
@@ -41,21 +43,21 @@ public class SysAdmin extends AdvancedUser {
 
 	public void setUpNewProgram() {
 		System.out.println("Enter the Program's Code");
-		String inputProgramCode = scanner.next();
+		String inputProgramCode = StudentProgressSystem.scanner.next();
 
 		System.out.println("Enter the Version Number");
-		int inputVersionNumber = scanner.nextInt();
+		int inputVersionNumber = StudentProgressSystem.scanner.nextInt();
 
 		System.out.println("Enter the Program's Credit");
-		int inputRequiredCredits = scanner.nextInt();
+		int inputRequiredCredits = StudentProgressSystem.scanner.nextInt();
 
 		System.out.println("Is the program active? true/false");
-		boolean inputIsActive = scanner.nextBoolean();
+		boolean inputIsActive = StudentProgressSystem.scanner.nextBoolean();
 
 		ProgramType inputProgramType = null;
 		while (inputProgramType == null) {
 			System.out.println("Enter the Program's type");
-			String tempProgramType = scanner.next().toUpperCase();
+			String tempProgramType = StudentProgressSystem.scanner.next().toUpperCase();
 
 			if (tempProgramType.equals("BACHELOR"))
 				inputProgramType = ProgramType.BACHELOR;

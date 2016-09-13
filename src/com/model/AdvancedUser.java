@@ -5,9 +5,10 @@ import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.view.StudentProgressSystem;
+
 public abstract class AdvancedUser extends User {
 
-	Scanner scanner = new Scanner(System.in);
 
 	public AdvancedUser(String id, String name, String password) {
 		super(id, name, password);
@@ -31,27 +32,27 @@ public abstract class AdvancedUser extends User {
 
 	public void createStudentAccount() {
 		System.out.println("Enter the student's ID");
-		String inputId = scanner.next();
+		String inputId = StudentProgressSystem.scanner.next();
 
 		System.out.println("Enter the student's password");
-		String inputPassword = scanner.next();
+		String inputPassword = StudentProgressSystem.scanner.next();
 
 		System.out.println("Enter the student's Name");
-		String inputName = scanner.next();
+		String inputName = StudentProgressSystem.scanner.next();
 
 		createStudentAccount(inputId, inputPassword, inputName);
 	}
 
 	protected void createStudentAccount(String userId, String password, String fullName) {
 		System.out.println("Please enter the student's birthday like so: DD/MM/YYYY");
-		scanner.useDelimiter("/");
-		int day = scanner.nextInt();
-		int month = scanner.nextInt();
-		int year = scanner.nextInt();
-		scanner.reset();
+		StudentProgressSystem.scanner.useDelimiter("/");
+		int day = StudentProgressSystem.scanner.nextInt();
+		int month = StudentProgressSystem.scanner.nextInt();
+		int year = StudentProgressSystem.scanner.nextInt();
+		StudentProgressSystem.scanner.reset();
 
 		System.out.println("Please enter the student's email.");
-		String email = scanner.next();
+		String email = StudentProgressSystem.scanner.next();
 
 		@SuppressWarnings("unused")
 		Student student = new Student(userId, fullName, password, new GregorianCalendar(year, month, day), email);
