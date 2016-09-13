@@ -12,9 +12,9 @@ import com.model.User;
 
 public class StudentProgressSystem {
 
-	Scanner scanner;
+	static Scanner scanner;
 
-	public void run() {
+	public static void run() {
 		scanner = new Scanner(System.in);
 
 		while (true) {
@@ -32,7 +32,7 @@ public class StudentProgressSystem {
 		System.exit(0);
 	}
 
-	private void fancyAdminMode() {
+	private static void fancyAdminMode() {
 		System.out.println("fancy admin mode activated");
 
 		System.out.println("Create a new User Account:\n" + "Please add an Id:");
@@ -72,7 +72,7 @@ public class StudentProgressSystem {
 				+ "This account is now ready to be used.\n" + "You will now be taken back to the main menu...");
 	}
 
-	private User logIn() {
+	private static User logIn() {
 		User user = null;
 		boolean isLoggedIn = false;
 
