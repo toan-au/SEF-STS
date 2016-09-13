@@ -1,7 +1,6 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -30,25 +29,15 @@ public class SysAdmin extends AdvancedUser {
 			Storage.users.add(new FacAdmin(userId, fullName, password));
 
 		} else if (userId.startsWith("s")) {
-			System.out.println("Please enter the student's birthday like so: DD/MM/YYYY");
-			scanner.useDelimiter("/");
-			int day = scanner.nextInt();
-			int month = scanner.nextInt();
-			int year = scanner.nextInt();
-			scanner.reset();
-
-			System.out.println("Please enter the student's email.");
-			String email = scanner.next();
-
-			Storage.users.add(new Student(userId, fullName, password, new GregorianCalendar(year, month, day), email));
+			createStudentAccount(userId, password, fullName);
 		} else {
 			System.out.println("The account name you have entered is not valid");
 			scanner.close();
 			return;
 		}
-
-		System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
-				+ "This account is now ready to be used.\n" + "You will now be taken back to the main menu...");
+		if(!userId.startsWith("s"))
+			System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
+				+ "This account is now ready to be used..");
 		scanner.close();
 
 	}
@@ -65,70 +54,70 @@ public class SysAdmin extends AdvancedUser {
 		SpecializationMode inputSpecializationMode;
 		String tempSpMode;
 		Map<String, ArrayList<Course>> inputSpecializations;
-		
+
 		System.out.println("Enter the Program's Code");
-		inputProgramCode = input.next();
+		inputProgramCode = scanner.next();
 
 		System.out.println("Enter the Version Number");
-		inputVersionNumber = input.nextInt();
-		
+		inputVersionNumber = scanner.nextInt();
+
 		System.out.println("Enter the Program's Credit");
-		inputRequiredCredits = input.nextInt();
-		
+		inputRequiredCredits = scanner.nextInt();
+
 		System.out.println("Is the program active? true/false");
-		inputIsActive = input.nextBoolean();
-		
+		inputIsActive = scanner.nextBoolean();
+
 		System.out.println("Enter the Program's type");
-		tempProgramType = input.next();
-		//change input to upper case
+		tempProgramType = scanner.next();
+		// change input to upper case
 		tempProgramType = tempProgramType.toUpperCase();
-		if (tempProgramType.equals("BACHELOR")){
+		if (tempProgramType.equals("BACHELOR")) {
 			inputProgramType = ProgramType.BACHELOR;
-		}else if (tempProgramType.equals("HONOURS")){
+		} else if (tempProgramType.equals("HONOURS")) {
 			inputProgramType = ProgramType.HONOURS;
-		}else if (tempProgramType.equals("GRADDIPLOMA")){
+		} else if (tempProgramType.equals("GRADDIPLOMA")) {
 			inputProgramType = ProgramType.GRADDIPLOMA;
-		}else if (tempProgramType.equals("MASTERS")){
+		} else if (tempProgramType.equals("MASTERS")) {
 			inputProgramType = ProgramType.MASTERS;
-		}else{
+		} else {
 			inputProgramType = ProgramType.BACHELOR;
 			System.out.println("This type is not exist!!");
 		}
-		
-//		System.out.println("Enter the Core Course");
-//		tempProgramType = input.next();
-//		if (tempProgramType.equals("CoreCourse1")){
-//			inputCoreCourses = Storage.courses[0];
-//		}else if (tempProgramType.equals("CoreCourse2")){
-//			inputCoreCourses = Storage.courses[1];
-//		}else if (tempProgramType.equals("CoreCourse3")){
-//			inputCoreCourses = Storage.courses[2];
-//		}else{
-//			System.out.println("This course is not exist!!");
-//		}
-//		
-//		System.out.println("Enter the Specialization Mode");
-//		tempSpMode = input.next();
-//		//change input to upper case
-//		tempSpMode = tempSpMode.toUpperCase();
-//		
-//		if (tempSpMode.equals("FIXEDSET")){
-//			inputSpecializationMode = SpecializationMode.FIXEDSET;
-//		}else if (tempSpMode.equals("COURSEPOOL")){
-//			inputSpecializationMode = SpecializationMode.COURSEPOOL;
-//		}else{
-//			System.out.println("This Mode is not exist!!");
-//		}
-//		
-//		System.out.println("Enter the Specialization");
-//		inputSpecializations = input.next();
-		
+
+		// System.out.println("Enter the Core Course");
+		// tempProgramType = input.next();
+		// if (tempProgramType.equals("CoreCourse1")){
+		// inputCoreCourses = Storage.courses[0];
+		// }else if (tempProgramType.equals("CoreCourse2")){
+		// inputCoreCourses = Storage.courses[1];
+		// }else if (tempProgramType.equals("CoreCourse3")){
+		// inputCoreCourses = Storage.courses[2];
+		// }else{
+		// System.out.println("This course is not exist!!");
+		// }
+		//
+		// System.out.println("Enter the Specialization Mode");
+		// tempSpMode = input.next();
+		// //change input to upper case
+		// tempSpMode = tempSpMode.toUpperCase();
+		//
+		// if (tempSpMode.equals("FIXEDSET")){
+		// inputSpecializationMode = SpecializationMode.FIXEDSET;
+		// }else if (tempSpMode.equals("COURSEPOOL")){
+		// inputSpecializationMode = SpecializationMode.COURSEPOOL;
+		// }else{
+		// System.out.println("This Mode is not exist!!");
+		// }
+		//
+		// System.out.println("Enter the Specialization");
+		// inputSpecializations = input.next();
+
 		Program newProgram = new Program(inputProgramCode, inputVersionNumber, inputRequiredCredits, inputIsActive, inputProgramType);
-		
-		//Store the new course to the array.
+
+		// Store the new course to the array.
 		Storage.programs.add(newProgram);
-		
-		//inform user that the program has been created
+
+		// inform user that the program has been created
 		System.out.println("Program " + newProgram.getProgramCode() + " has been created and added to the database");
 	}
 }

@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public abstract class AdvancedUser extends User {
-	
-	Scanner input = new Scanner(System.in);
+
+	Scanner scanner = new Scanner(System.in);
 
 	public AdvancedUser(String id, String name, String password) {
 		super(id, name, password);
@@ -30,39 +30,34 @@ public abstract class AdvancedUser extends User {
 	}
 
 	public void createStudentAccount() {
-		String inputName, inputId, inputPassword, inputDOB, inputEmail;
-		
 		System.out.println("Enter the student's ID");
-		inputId = input.next();
-		
+		String inputId = scanner.next();
+
 		System.out.println("Enter the student's password");
-		inputPassword = input.next();
-		
+		String inputPassword = scanner.next();
+
 		System.out.println("Enter the student's Name");
-		inputName = input.next();
-		
-		System.out.println("Enter the student's Date of birth e.g '30/12/1990'");
-		inputDOB = input.next();
-		
-		System.out.println("Enter the student's Email");
-		inputEmail = input.next();
-		
-		//split the inputDOB into 3 ints
-		String[] stringDates = inputDOB.split("/");
-		int day = Integer.parseInt(stringDates[0]);
-		int month = Integer.parseInt(stringDates[1]);
-		int year = Integer.parseInt(stringDates[2]);
-		
-		//convert inputDOB into calender
-		GregorianCalendar DOB = new GregorianCalendar(year, month, day);
-		
-		Student newStudent = new Student(inputId, inputName, inputPassword, DOB, inputEmail);
-		
-		//push the new student object into the User Storage list
-		Storage.users.add(newStudent);
-		
-		//inform the user that student has been created
-		System.out.println("Student " + newStudent.getName() + " has been created.\n");
+		String inputName = scanner.next();
+
+		createStudentAccount(inputId, inputPassword, inputName);
+	}
+
+	protected void createStudentAccount(String userId, String password, String fullName) {
+		System.out.println("Please enter the student's birthday like so: DD/MM/YYYY");
+		scanner.useDelimiter("/");
+		int day = scanner.nextInt();
+		int month = scanner.nextInt();
+		int year = scanner.nextInt();
+		scanner.reset();
+
+		System.out.println("Please enter the student's email.");
+		String email = scanner.next();
+
+		@SuppressWarnings("unused")
+		Student student = new Student(userId, fullName, password, new GregorianCalendar(year, month, day), email);
+
+		System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
+				+ "This account is now ready to be used.");
 	}
 
 	public void createStudentAccount(ArrayList<Student> student) {
