@@ -85,7 +85,7 @@ public class Menu {
 	private static void displaySysAdminMenu() {
 		while (true) {
 			System.out.println(
-					"1 - Set up roles" + "2 - Set up a new program" + "3 - Create a student account" + "4 - Upload enrolment" + "5 - log out");
+					"1 - Set up roles\n" + "2 - Set up a new program\n" + "3 - Create a student account\n" + "4 - Upload enrolment\n" + "5 - log out");
 
 			int choice = scanner.nextInt();
 			switch (choice) {
