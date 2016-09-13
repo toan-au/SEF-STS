@@ -17,7 +17,7 @@ public class Menu {
 		currentUser = user;
 		String userId = currentUser.getId();
 
-		System.out.println("Hello, " + userId + ". What would you like to do?");
+		System.out.println("Hello, " + currentUser.getName() + ". What would you like to do?");
 
 		if (userId.startsWith("s"))
 			displayStudentMenu();
