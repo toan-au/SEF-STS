@@ -117,5 +117,14 @@ public class Storage {
 			e.printStackTrace();
 		}
 	}
+	
+	//List all data
+	
+	
+	public static void printAllUsers() {
+		for(int i = 0; i < users.size(); i++) {
+			System.out.println(users.toArray()[i]);
+		}
+	}
 
 }
