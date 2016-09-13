@@ -86,7 +86,7 @@ public class Storage {
 	}
 
 	@SuppressWarnings("unchecked")
-	void fetchStoredData() {
+	public static void fetchStoredData() {
 		try {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ISL_filepath.dat"));
 			users = (ArrayList<User>) ois.readObject();
@@ -102,7 +102,7 @@ public class Storage {
 		}
 	}
 
-	void saveStoredData() {
+	public static void saveStoredData() {
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ISL_filepath.dat"));
 			oos.writeObject(users);

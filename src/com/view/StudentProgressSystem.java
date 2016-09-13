@@ -25,7 +25,6 @@ public class StudentProgressSystem {
 			Menu.displayMenu(logIn());
 		}
 		scanner.close();
-		System.exit(0);
 	}
 
 	private static void fancyAdminMode() {

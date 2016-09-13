@@ -1,6 +1,8 @@
 package com.model;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable{
 	private String courseId, courseName;
 	private int credits;
 	private int latestYear;

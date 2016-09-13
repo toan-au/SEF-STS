@@ -1,10 +1,11 @@
 package com.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Program {
+public class Program implements Serializable{
 	private String programCode;
 	private int versionNumber;
 	private int requiredCredits;

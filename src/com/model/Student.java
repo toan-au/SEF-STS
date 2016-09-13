@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student extends User {
+public class Student extends User{
 
 	private String name;
 	private Calendar dateOfBirth;
