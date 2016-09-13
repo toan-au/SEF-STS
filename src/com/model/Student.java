@@ -63,7 +63,7 @@ public class Student extends User {
 	public void checkStudentResults() {
 		System.out.println("Your results are:");
 		for (Map.Entry<Course, Double> result : courses.entrySet()) {
-			System.out.println(result.getKey() + " : " + result.getValue());
+			System.out.println(result.getKey().getCourseId() + " " + result.getKey().getCourseName() + " : " + result.getValue());
 		}
 
 	}
