@@ -8,7 +8,7 @@ import com.model.User;
 
 public class StudentProgressSystem {
 
-	static Scanner scanner;
+	public static Scanner scanner;
 
 	public static void run() {
 		scanner = new Scanner(System.in);
@@ -58,7 +58,7 @@ public class StudentProgressSystem {
 			}
 
 			System.out.println("Password: ");
-			String passwordEntry = scanner.nextLine();
+			String passwordEntry = scanner.next();
 			if (!user.getPassword().equals(passwordEntry)) {
 				System.out.println("The Password you entered does not match the ID. Please try again");
 				continue;
