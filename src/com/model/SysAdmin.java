@@ -9,7 +9,7 @@ public class SysAdmin extends AdvancedUser {
 		super(id, name, password);
 	}
 
-	public void setUpRoles(User user) {
+	public void createAccount() {
 	
 	}
 
