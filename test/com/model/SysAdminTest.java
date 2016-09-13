@@ -19,7 +19,7 @@ public class SysAdminTest {
 	@Test
 	public void newFacAdminTest() {
 		FacAdmin testFac = new FacAdmin("124", "test", "test");
-		testAdmin.setUpRoles(testFac);
+		testAdmin.createAccount();
 
 		// find new user in Database. Code to do this is not yet planned out
 	}
@@ -27,7 +27,7 @@ public class SysAdminTest {
 	@Test
 	public void newSysAdminTest() {
 		SysAdmin testSys = new SysAdmin("125", "test", "test");
-		testAdmin.setUpRoles(testSys);
+		testAdmin.createAccount();
 
 		// find new user in Database. Code to do this is not yet planned out
 	}
@@ -35,23 +35,23 @@ public class SysAdminTest {
 	@Test
 	public void newCoordinatorTest() {
 		Coordinator testCoordinator = new Coordinator("126", "test", "test");
-		testAdmin.setUpRoles(testCoordinator);
+		testAdmin.createAccount();
 
 		// find new user in Database. Code to do this is not yet planned out
 	}
 
 	@Test
 	public void newStudentTest() {
-		Student testStudent = new Student("125", "test", "test", "Doe", new GregorianCalendar(01, 01, 1996), "a@b.com");
-		testAdmin.setUpRoles(testStudent);
+		Student testStudent = new Student("125", "test", "test", new GregorianCalendar(01, 01, 1996), "a@b.com");
+		testAdmin.createAccount();
 
 		// find new user in Database. Code to do this is not yet planned out
 	}
 
 	@Test
 	public void newProgramTest() {
-		Program testProgram = new Program(null, 0, 0, true, null, null, null, null);
-		testAdmin.setUpNewProgram(testProgram);
+		Program testProgram = new Program(null, 0, 0, true, null);
+		testAdmin.setUpNewProgram();
 
 		assertTrue(testProgram.getIsActive());
 	}

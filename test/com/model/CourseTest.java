@@ -8,7 +8,7 @@ public class CourseTest {
 
 	@Test
 	public void test() {
-		Course course1 = new Course("ISYS1118", "Software Engineering Fundamentals", 12, 2016, 1);
+		Course course1 = new Course("ISYS1118", "Software Engineering Fundamentals", 12);
 		String course1Name = course1.getCourseId();
 		int course1Credit = course1.getCredits();
 		int course1LatestYear = course1.getLatestYear();

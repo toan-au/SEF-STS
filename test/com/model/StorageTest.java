@@ -12,7 +12,7 @@ public class StorageTest {
 	public void test() {
 		
 		// add a course
-		Course course1 = new Course("COSC1024", "Software Engineering Fundamentals", 4, 2016, 2);
+		Course course1 = new Course("COSC1024", "Software Engineering Fundamentals", 4);
 		Storage.courses.add( course1 );
 		
 		// add a program
