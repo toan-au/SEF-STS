@@ -1,7 +1,9 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Map;
+import java.util.Scanner;
 
 public class SysAdmin extends AdvancedUser {
 
@@ -9,8 +11,43 @@ public class SysAdmin extends AdvancedUser {
 		super(id, name, password);
 	}
 
-	public void createAccount() {
-	
+	public void createAccount(Scanner scanner) {
+		System.out.println("Create a new User Account:\n" + "Please add an Id:");
+		String userId = scanner.next();
+		System.out.println("Please add a password:");
+		String password = scanner.next();
+		System.out.println("Please add the user's name:");
+		String fullName = scanner.nextLine();
+
+		if (userId.startsWith("a")) {
+			Storage.users.add(new SysAdmin(userId, fullName, password));
+
+		} else if (userId.startsWith("c")) {
+			Storage.users.add(new Coordinator(userId, fullName, password));
+
+		} else if (userId.startsWith("f")) {
+			Storage.users.add(new FacAdmin(userId, fullName, password));
+
+		} else if (userId.startsWith("s")) {
+			System.out.println("Please enter the student's birthday like so: DD/MM/YYYY");
+			scanner.useDelimiter("/");
+			int day = scanner.nextInt();
+			int month = scanner.nextInt();
+			int year = scanner.nextInt();
+			scanner.reset();
+
+			System.out.println("Please enter the student's email.");
+			String email = scanner.next();
+
+			Storage.users.add(new Student(userId, fullName, password, new GregorianCalendar(year, month, day), email));
+		} else {
+			System.out.println("The account name you have entered is not valid");
+			return;
+		}
+
+		System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
+				+ "This account is now ready to be used.\n" + "You will now be taken back to the main menu...");
+
 	}
 
 	public void setUpNewProgram() {
