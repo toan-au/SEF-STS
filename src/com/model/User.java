@@ -47,4 +47,10 @@ public abstract class User implements Serializable {
 	public boolean meetsCourseCompletion(Student student, Course course) {
 		return false;
 	}
+	
+	public String toString(){
+		return "\n" + id + " " + name;
+		
+	}
+
 }

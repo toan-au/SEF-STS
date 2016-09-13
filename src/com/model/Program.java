@@ -91,5 +91,10 @@ public class Program implements Serializable{
 	public void setSpecializations(Map<String, ArrayList<Course>> specializations) {
 		this.specializations = specializations;
 	}
+	
+	@Override 
+	public String toString(){
+		return"\n" + programCode;
+	}
 
 }

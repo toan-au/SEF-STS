@@ -6,7 +6,6 @@ import java.util.Map;
 
 public class Student extends User{
 
-	private String name;
 	private Calendar dateOfBirth;
 	private String email;
 	private Map<Course, Double> courses;
@@ -66,6 +65,11 @@ public class Student extends User{
 			System.out.println(result.getKey().getCourseId() + " " + result.getKey().getCourseName() + " : " + result.getValue());
 		}
 
+	}
+	@Override 
+	public String toString(){
+		return "\n" + id + " " + name + " " + "dateOfBirth" + " " + email;
+		
 	}
 
 }

@@ -56,4 +56,9 @@ public class Course implements Serializable{
 	public void setLatestSemester(int latestSemester) {
 		this.latestSemester = latestSemester;
 	}
+	
+	@Override 
+	public String toString(){
+		return "\n" + courseId + " " + courseName;
+	}
 }
