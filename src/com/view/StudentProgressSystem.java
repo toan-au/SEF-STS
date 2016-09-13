@@ -58,7 +58,7 @@ public class StudentProgressSystem {
 			}
 			isLoggedIn = true;
 		}
-		System.out.println("Logging in...");
+		System.out.println("Logging in...\n");
 		return user;
 	}
 }

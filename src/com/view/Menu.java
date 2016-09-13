@@ -36,7 +36,6 @@ public class Menu {
 
 			switch (choice) {
 			case 1:
-				System.out.println("Here are your results...");
 				((Student) currentUser).checkStudentResults();
 				break;
 			case 2:
@@ -45,7 +44,7 @@ public class Menu {
 			default:
 				System.out.println("Please input a valid choice");
 			}
-			System.out.println("\n\n");
+			System.out.println("\n");
 		}
 
 	}
