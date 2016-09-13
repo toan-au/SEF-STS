@@ -24,6 +24,7 @@ public class Program {
 //		this.coreCourses = coreCourses;
 //		this.specializationMode = specializationMode;
 //		this.specializations = specializations;
+		Storage.programs.add(this);
 	}
 
 	public String getProgramCode() {

@@ -12,6 +12,7 @@ public class Course {
 		this.credits = credits;
 //		this.latestSemester = latestSemester;
 //		this.latestYear = latestYear;
+		Storage.courses.add(this);
 	}
 
 	public String getCourseId() {
