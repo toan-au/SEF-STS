@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student extends User{
+public class Student extends User {
 
 	private Calendar dateOfBirth;
 	private String email;
@@ -41,7 +41,7 @@ public class Student extends User{
 	public void setProgram(Program program) {
 		this.program = program;
 	}
-	
+
 	public void setDateOfBirth(Calendar dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
@@ -66,10 +66,11 @@ public class Student extends User{
 		}
 
 	}
-	@Override 
-	public String toString(){
+
+	@Override
+	public String toString() {
 		return "\n" + id + " " + name + " " + "dateOfBirth" + " " + email;
-		
+
 	}
 
 }
