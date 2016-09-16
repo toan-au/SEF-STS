@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import com.view.StudentProgressSystem;
 
+@SuppressWarnings("serial")
 public class User implements Serializable {
 	protected String name;
 	protected String id;
@@ -28,8 +29,6 @@ public class User implements Serializable {
 	public String getName() {
 		return name;
 	}
-
-	
 	
 	public String getId() {
 		return id;
@@ -41,10 +40,6 @@ public class User implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public void setPassword(String password) {
