@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.controller.Storage;
 
+@SuppressWarnings("serial")
 public class Student extends User {
 
 	private Calendar dateOfBirth;
@@ -61,7 +62,7 @@ public class Student extends User {
 		this.setProgram(Storage.getProgram(programCode));
 	}
 
-	public void checkStudentResults() {
+	public void checkResults() {
 		System.out.println("Your results are:");
 		for (Map.Entry<Course, Double> result : courses.entrySet()) {
 			System.out.println(result.getKey().getCourseId() + " " + result.getKey().getCourseName() + " : " + result.getValue());
@@ -73,6 +74,11 @@ public class Student extends User {
 	public String toString() {
 		return "\n" + id + " " + name + " " + "dateOfBirth" + " " + email;
 
+	}
+
+	public boolean meetsProgramRequirements() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -5,6 +5,8 @@ import com.view.StudentProgressSystem;
 
 public class Starter {
 
+	public static int currentIDPosition;
+	
 	public static void main(String[] args) {
 		init();
 		StudentProgressSystem.run();

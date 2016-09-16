@@ -3,6 +3,8 @@ package com.view;
 import java.util.Scanner;
 
 import com.controller.Storage;
+import com.model.Program;
+import com.model.Role;
 import com.model.Student;
 import com.model.User;
 
@@ -13,17 +15,16 @@ public class Menu {
 	public static void displayMenu(User user) {
 		scanner = new Scanner(System.in);
 		currentUser = user;
-		String userId = currentUser.getId();
 
 		System.out.println("Hello, " + currentUser.getName() + ". What would you like to do?");
 
-		if (userId.startsWith("s"))
+		if (currentUser.getRole() == Role.STUDENT)
 			displayStudentMenu();
-		else if (userId.startsWith("f"))
+		else if (currentUser.getRole() == Role.FACADMIN)
 			displayFacAdminMenu();
-		else if (userId.startsWith("c"))
+		else if (currentUser.getRole() == Role.COORDINATOR)
 			displayCoordinatorMenu();
-		else if (userId.startsWith("a"))
+		else if (currentUser.getRole() == Role.SYSADMIN)
 			displaySysAdminMenu();
 	}
 
@@ -34,7 +35,7 @@ public class Menu {
 
 			switch (choice) {
 			case 1:
-				((Student) currentUser).checkStudentResults();
+				((Student) currentUser).checkResults();
 				break;
 			case 2:
 				System.out.println("Logging out...\n");
@@ -51,7 +52,7 @@ public class Menu {
 		System.out.println("Please enter a student id:");
 		Student student = (Student) Storage.getUser(scanner.nextLine());
 		System.out.println("Here are your students' results...");
-		student.checkStudentResults();
+		student.checkResults();
 	}
 
 	private static void displayCoordinatorMenu() {
@@ -61,10 +62,11 @@ public class Menu {
 
 			switch (choice) {
 			case 1:
-				// currentUser.checkStudentResults();
+				System.out.println("Please enter the student's id: ");
+				((Student) Storage.getUser(scanner.next())).checkResults();
 				break;
 			case 2:
-				currentUser.createStudentAccount();
+				currentUser.createAccount();
 				break;
 			case 3:
 				// currentUser.uploadEnrolment();
@@ -81,8 +83,8 @@ public class Menu {
 
 	private static void displaySysAdminMenu() {
 		while (true) {
-			System.out.println(
-					"1 - Set up roles\n" + "2 - Set up a new program\n" + "3 - Create a student account\n" + "4 - Upload enrolment\n" + "5 - log out");
+			System.out.println("1 - Set up roles\n" + "2 - Set up a new program\n" + "3 - Create a student account\n" + "4 - Upload enrolment\n"
+					+ "5 - log out");
 
 			int choice = scanner.nextInt();
 			switch (choice) {
@@ -90,10 +92,10 @@ public class Menu {
 				// currentUser.setUpRoles();
 				break;
 			case 2:
-				currentUser.setUpNewProgram();
+				Program temp = new Program(null, choice, choice, false, null);
 				break;
 			case 3:
-				currentUser.createStudentAccount();
+				currentUser.createAccount();
 				break;
 			case 4:
 				// currentUser.uploadEnrolment();

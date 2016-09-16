@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import com.controller.Storage;
 
+@SuppressWarnings("serial")
 public class Program implements Serializable{
 	private String programCode;
 	private int versionNumber;

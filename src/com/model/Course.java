@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.controller.Storage;
 
+@SuppressWarnings("serial")
 public class Course implements Serializable{
 	private String courseId, courseName;
 	private int credits;
