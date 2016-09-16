@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.controller.Storage;
+
 public class Student extends User {
 
 	private Calendar dateOfBirth;

@@ -1,6 +1,6 @@
 package com;
 
-import com.model.Storage;
+import com.controller.Storage;
 import com.view.StudentProgressSystem;
 
 public class Starter {

@@ -2,6 +2,8 @@ package com.model;
 
 import java.io.Serializable;
 
+import com.controller.Storage;
+
 public class Course implements Serializable{
 	private String courseId, courseName;
 	private int credits;

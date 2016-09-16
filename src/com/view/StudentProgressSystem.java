@@ -2,8 +2,8 @@ package com.view;
 
 import java.util.Scanner;
 
+import com.controller.Storage;
 import com.model.Role;
-import com.model.Storage;
 import com.model.User;
 
 public class StudentProgressSystem {

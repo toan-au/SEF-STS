@@ -1,4 +1,4 @@
-package com.model;
+package com.controller;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,6 +7,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+
+import com.model.Course;
+import com.model.Program;
+import com.model.ProgramType;
+import com.model.Role;
+import com.model.Student;
+import com.model.User;
 
 public class Storage {
 	public static ArrayList<User> users = new ArrayList<User>();

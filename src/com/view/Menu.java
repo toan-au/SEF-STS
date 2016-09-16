@@ -2,7 +2,7 @@ package com.view;
 
 import java.util.Scanner;
 
-import com.model.Storage;
+import com.controller.Storage;
 import com.model.Student;
 import com.model.User;
 

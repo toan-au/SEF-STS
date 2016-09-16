@@ -6,6 +6,8 @@ import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
+import com.controller.Storage;
+
 public class StorageTest {
 
 	@Test
