@@ -2,8 +2,8 @@ package com.view;
 
 import java.util.Scanner;
 
+import com.model.Role;
 import com.model.Storage;
-import com.model.SysAdmin;
 import com.model.User;
 
 public class StudentProgressSystem {
@@ -29,7 +29,7 @@ public class StudentProgressSystem {
 
 	private static void fancyAdminMode() {
 		System.out.println("fancy admin mode activated");
-		SysAdmin temp = new SysAdmin("temp", "temp", "temp");
+		User temp = new User("temp", "temp", "temp", Role.SYSADMIN);
 		
 		temp.createAccount();
 		Storage.users.remove(temp);

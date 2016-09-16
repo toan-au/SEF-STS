@@ -12,7 +12,7 @@ public class Student extends User{
 	private Program program;
 
 	public Student(String id, String name, String password, Calendar dateOfBirth, String email) {
-		super(id, name, password);
+		super(id, name, password, Role.STUDENT);
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		courses = new HashMap<Course, Double>(24);

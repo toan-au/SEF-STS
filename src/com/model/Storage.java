@@ -21,7 +21,7 @@ public class Storage {
 	private static Student student5 = new Student("s5555555", "Ana Teo", "password", new GregorianCalendar(1700, 12, 12), "ana@email.com");
 	private static Student student6 = new Student("s6666666", "Julie Nguyen", "password", new GregorianCalendar(0001, 1, 1), "julie@email.com");
 
-	private static SysAdmin sysAdmin1 = new SysAdmin("a1111111", "Halil", "password");
+	private static User sysAdmin1 = new User("a1111111", "Halil", "password", Role.SYSADMIN);
 
 	// add courses
 	private static Course course1 = new Course("COSC2102B", "Software Engineering Project (PtB)", 4);

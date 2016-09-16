@@ -2,10 +2,8 @@ package com.view;
 
 import java.util.Scanner;
 
-import com.model.Coordinator;
 import com.model.Storage;
 import com.model.Student;
-import com.model.SysAdmin;
 import com.model.User;
 
 public class Menu {
@@ -66,7 +64,7 @@ public class Menu {
 				// currentUser.checkStudentResults();
 				break;
 			case 2:
-				((Coordinator) currentUser).createStudentAccount();
+				currentUser.createStudentAccount();
 				break;
 			case 3:
 				// currentUser.uploadEnrolment();
@@ -92,10 +90,10 @@ public class Menu {
 				// currentUser.setUpRoles();
 				break;
 			case 2:
-				((SysAdmin) currentUser).setUpNewProgram();
+				currentUser.setUpNewProgram();
 				break;
 			case 3:
-				((SysAdmin) currentUser).createStudentAccount();
+				currentUser.createStudentAccount();
 				break;
 			case 4:
 				// currentUser.uploadEnrolment();
