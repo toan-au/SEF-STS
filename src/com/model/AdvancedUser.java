@@ -44,10 +44,12 @@ public abstract class AdvancedUser extends User {
 	}
 
 	protected void createStudentAccount(String userId, String password, String fullName) {
-		System.out.println("Please enter the student's birthday like so: DD/MM/YYYY");
+		System.out.println("Please enter the student's birthdate (day only)");
 		StudentProgressSystem.scanner.useDelimiter("/");
 		int day = StudentProgressSystem.scanner.nextInt();
+		System.out.println("Please enter the student's birth month");
 		int month = StudentProgressSystem.scanner.nextInt();
+		System.out.println("Please enter the student's birth year");
 		int year = StudentProgressSystem.scanner.nextInt();
 		StudentProgressSystem.scanner.reset();
 
