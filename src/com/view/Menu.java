@@ -50,9 +50,7 @@ public class Menu {
 
 	private static void displayFacAdminMenu() {
 		System.out.println("Please enter a student id:");
-		Student student = (Student) Storage.getUser(scanner.nextLine());
-		System.out.println("Here are your students' results...");
-		student.checkResults();
+		((Student) Storage.getUser(scanner.nextLine())).checkResults();
 	}
 
 	private static void displayCoordinatorMenu() {

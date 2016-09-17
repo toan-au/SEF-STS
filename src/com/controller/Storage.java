@@ -54,10 +54,10 @@ public class Storage {
 
 	public static void init() {
 		// enrol students in courses
-		student1.enrolCourse("COSC2102B");
-		student1.enrolCourse("AERO2394");
-		student1.enrolCourse("GRAP2324");
-		student1.enrolCourse("HUSO2177");
+		student1.setCourse("COSC2102B");
+		student1.setCourse("AERO2394");
+		student1.setCourse("GRAP2324");
+		student1.setCourse("HUSO2177");
 
 		users.add(student1);
 		users.add(student2);
@@ -129,8 +129,8 @@ public class Storage {
 	
 	
 	public static void printAllUsers() {
-		for(int i = 0; i < users.size(); i++) {
-			System.out.println(users.toArray()[i]);
+		for(User user : users) {
+			System.out.println(user);
 		}
 	}
 
