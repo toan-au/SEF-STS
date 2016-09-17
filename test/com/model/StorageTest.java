@@ -2,8 +2,6 @@ package com.model;
 
 import static org.junit.Assert.*;
 
-import java.util.GregorianCalendar;
-
 import org.junit.Test;
 
 import com.controller.Storage;
