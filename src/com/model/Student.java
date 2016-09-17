@@ -1,8 +1,12 @@
 package com.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import com.controller.Storage;
 
@@ -19,10 +23,6 @@ public class Student extends User {
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		courses = new HashMap<Course, Double>(24);
-	}
-
-	public String getGivenNames() {
-		return name;
 	}
 
 	public Calendar getDateOfBirth() {
@@ -53,12 +53,12 @@ public class Student extends User {
 		this.email = email;
 	}
 
-	public void enrolCourse(String courseId) {
+	public void setCourse(String courseId) {
 		Course course = Storage.getCourse(courseId);
 		courses.put(course, 0.0);
 	}
 
-	public void enrolProgram(String programCode) {
+	public void setProgram(String programCode) {
 		this.setProgram(Storage.getProgram(programCode));
 	}
 
@@ -67,6 +67,33 @@ public class Student extends User {
 		for (Map.Entry<Course, Double> result : courses.entrySet()) {
 			System.out.println(result.getKey().getCourseId() + " " + result.getKey().getCourseName() + " : " + result.getValue());
 		}
+	}
+
+	public static ArrayList<Student> meetsProgramRequirement(File file, boolean meetRequirements) {
+		Scanner scanner;
+		ArrayList<Student> students = new ArrayList<>();
+		Student tempStudent;
+
+		try {
+			scanner = new Scanner(new File("/*students.txt*/"));
+			while (scanner.hasNext()) {
+				tempStudent = ((Student) Storage.getUser(scanner.next()));
+				if (meetRequirements == tempStudent.meetsProgramRequirements())
+					students.add(tempStudent);
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return students;
+	}
+
+	public void uploadEnrolment(Student student, Map<Course, Double> enrolments) {
+
+	}
+
+	public static void uploadEnrolment(Map<Student, Map<Course, Double>> enrolments) {
 
 	}
 

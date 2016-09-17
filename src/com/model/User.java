@@ -1,11 +1,8 @@
 package com.model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.Map;
 import java.util.Scanner;
 
 import com.Starter;
@@ -67,26 +64,8 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public ArrayList<Student> meetsProgramRequirement(File file, boolean meetRequirements) {
-		Scanner scanner;
-		ArrayList<Student> students = new ArrayList<>();
-		Student tempStudent;
 
-		try {
-			scanner = new Scanner(new File("/*students.txt*/"));
-			while (scanner.hasNext()) {
-				tempStudent = ((Student) Storage.getUser(scanner.next()));
-				if (meetRequirements == tempStudent.meetsProgramRequirements())
-					students.add(tempStudent);
-			}
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return students;
-	}
-
+	
 	protected void createStudentAccount(String userId, String password, String fullName) {
 		System.out.println("Please enter the student's birthday like so: DD/MM/YYYY");
 		StudentProgressSystem.scanner.useDelimiter("/");
@@ -109,13 +88,6 @@ public class User implements Serializable {
 
 	}
 
-	public void uploadEnrolment(Student student, Map<Course, Double> enrolments) {
-
-	}
-
-	public void uploadEnrolment(Map<Student, Map<Course, Double>> enrolments) {
-
-	}
 
 	public void createAccount() {
 		Scanner scanner = new Scanner(System.in);
