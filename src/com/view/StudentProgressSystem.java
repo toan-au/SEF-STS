@@ -34,11 +34,11 @@ public class StudentProgressSystem {
 		temp.createAccount();
 		Storage.users.remove(temp);
 		
-		System.out.println(Storage.users.toString());
+		Storage.printAllUsers();
 		System.out.println();
-		System.out.println(Storage.courses.toString());
+		Storage.printAllCourses();
 		System.out.println();
-		System.out.println(Storage.programs.toString());
+		Storage.printAllPrograms();
 		System.out.println();
 	}
 
