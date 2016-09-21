@@ -67,13 +67,5 @@ public class Starter {
 		student1.setCourse("AERO2394");
 		student1.setCourse("GRAP2324");
 		student1.setCourse("HUSO2177");
-
-		Storage.users.add(student1);
-		Storage.users.add(student2);
-		Storage.users.add(student3);
-		Storage.users.add(student4);
-		Storage.users.add(student5);
-		Storage.users.add(student6);
-		Storage.users.add(sysAdmin1);
 	}
 }

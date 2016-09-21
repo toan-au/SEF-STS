@@ -23,6 +23,7 @@ public class Student extends User {
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		courses = new HashMap<Course, Double>(24);
+		Storage.users.add(this);
 	}
 
 	public Calendar getDateOfBirth() {
