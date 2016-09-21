@@ -29,6 +29,8 @@ public abstract class AdvancedUser extends User {
 				System.out.println("No program with that ID code. Please try again: ");
 				continue;
 			}
+			
+			
 		}
 	}
 
