@@ -65,7 +65,17 @@ public abstract class AdvancedUser extends User {
 	}
 
 	public void setCreditPointsNeeded(Program program) {
-
+		int creditPoints;
+		
+		//prompt user for the credit points required
+		System.out.println("How many credit points would you like " + program.getProgramCode() +" to require? ");
+		creditPoints = StudentProgressSystem.scanner.nextInt();
+		
+		//set the credit points
+		program.setRequiredCredits(creditPoints);
+		
+		//give user feedback
+		System.out.println(program.getProgramCode() + "'s credit points have been set to " + creditPoints);
 	}
 
 	public void setCoreCourses(Program program, ArrayList<Course> course) {
