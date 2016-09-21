@@ -17,6 +17,7 @@ public abstract class AdvancedUser extends User {
 	public void editProgram() {
 		boolean loop = true;
 		String idInput;
+		String selection;
 		Program temp;
 		
 		while(loop) {
@@ -30,6 +31,21 @@ public abstract class AdvancedUser extends User {
 				continue;
 			}
 			
+			//show user menu how they can edit programs
+			System.out.println("How would you like to edit \"" + temp.getProgramCode() + "\"");
+			System.out.println("1 - Set credit points needed");
+			System.out.println("2 - Set core courses");
+			System.out.println("3 - Set specialization courses");
+			System.out.println("4 - back");
+			
+			//get user input
+			selection = StudentProgressSystem.scanner.next();
+			
+			//run a method based on user's selection
+			switch(selection) {
+			
+			
+			}
 			
 		}
 	}
