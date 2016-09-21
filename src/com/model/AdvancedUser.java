@@ -31,31 +31,36 @@ public abstract class AdvancedUser extends User {
 				continue;
 			}
 			
-			//show user menu how they can edit programs
-			System.out.println("How would you like to edit \"" + temp.getProgramCode() + "\"");
-			System.out.println("1 - Set credit points needed");
-			System.out.println("2 - Set core courses");
-			System.out.println("3 - Set specialization courses");
-			System.out.println("4 - back");
-			
-			//get user input
-			selection = StudentProgressSystem.scanner.nextInt();
-			
-			//run a method based on user's selection
-			switch(selection) {
-			case 1:
-				setCreditPointsNeeded(temp);
-				break;
-			case 2:
-				//setCoreCourses();
-				break;
-			case 3:
-				setSpecializationCourses(temp);
-				break;
-			case 4:
-				loop = false;
-				break;
-			}
+			do {
+				//show user menu how they can edit programs
+				System.out.println("How would you like to edit \"" + temp.getProgramCode() + "\"");
+				System.out.println("1 - Set credit points needed");
+				System.out.println("2 - Set core courses");
+				System.out.println("3 - Set specialization courses");
+				System.out.println("4 - back");
+				
+				//get user input
+				selection = StudentProgressSystem.scanner.nextInt();
+				
+				//run a method based on user's selection
+				switch(selection) {
+				case 1:
+					setCreditPointsNeeded(temp);
+					break;
+				case 2:
+					//setCoreCourses();
+					break;
+				case 3:
+					setSpecializationCourses(temp);
+					break;
+				case 4:
+					loop = false;
+					break;
+				default:
+					System.out.println("That isn't an option, please try again.");
+					break;
+				}
+			} while(loop);
 		}
 	}
 
