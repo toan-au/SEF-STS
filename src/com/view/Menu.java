@@ -58,7 +58,11 @@ public class Menu {
 
 	private static void displayCoordinatorMenu() {
 		while (true) {
-			System.out.println("1 - Check student results\n" + "2 - Create a student account\n" + "3 - Upload enrolment\n" + "4 - log out");
+			System.out.println("1 - Check student results");
+			System.out.println("2 - Create a student account"); 
+			System.out.println("3 - Upload enrolment");
+			System.out.println("4 - Edit Program");
+			System.out.println("5 - log out");
 			int choice = scanner.nextInt();
 
 			switch (choice) {
@@ -72,6 +76,9 @@ public class Menu {
 				// currentUser.uploadEnrolment();
 				break;
 			case 4:
+				((Coordinator)currentUser).editProgram();
+				break;
+			case 5:
 				System.out.println("Logging out...\n");
 				return;
 			default:
@@ -83,8 +90,12 @@ public class Menu {
 
 	private static void displaySysAdminMenu() {
 		while (true) {
-			System.out.println(
-					"1 - Set up roles\n" + "2 - Set up a new program\n" + "3 - Create a student account\n" + "4 - Upload enrolment\n" + "5 - log out");
+			System.out.println("1 - Set up roles");
+			System.out.println("2 - Set up new program");
+			System.out.println("3 - Create student account");
+			System.out.println("4 - Upload Enrolments");
+			System.out.println("5 - Edit a Program");
+			System.out.println("6 - log out");
 
 			int choice = scanner.nextInt();
 			switch (choice) {
@@ -101,6 +112,9 @@ public class Menu {
 				// currentUser.uploadEnrolment();
 				break;
 			case 5:
+				((SysAdmin)currentUser).editProgram();
+				break;
+			case 6:
 				System.out.println("Logging out...\n");
 				return;
 			default:
