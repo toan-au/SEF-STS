@@ -94,7 +94,7 @@ public class Program implements Serializable{
 	
 	@Override 
 	public String toString(){
-		return"\n" + programCode;
+		return"\n" + programCode + " " + requiredCredits;
 	}
 
 }
