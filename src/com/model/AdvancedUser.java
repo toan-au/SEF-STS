@@ -13,6 +13,24 @@ public abstract class AdvancedUser extends User {
 	public AdvancedUser(String id, String name, String password) {
 		super(id, name, password);
 	}
+	
+	public void editProgram() {
+		boolean loop = true;
+		String idInput;
+		Program temp;
+		
+		while(loop) {
+			System.out.println("Enter the ID of the course you would like to edit: ");
+			idInput = StudentProgressSystem.scanner.next();
+			
+			temp = Storage.getProgram(idInput);
+			
+			if(temp == null) {
+				System.out.println("No program with that ID code. Please try again: ");
+				continue;
+			}
+		}
+	}
 
 	public void setCreditPointsNeeded(Program program, int credits) {
 
