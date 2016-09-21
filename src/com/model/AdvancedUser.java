@@ -17,7 +17,7 @@ public abstract class AdvancedUser extends User {
 	public void editProgram() {
 		boolean loop = true;
 		String idInput;
-		String selection;
+		int selection;
 		Program temp;
 		
 		while(loop) {
@@ -39,18 +39,27 @@ public abstract class AdvancedUser extends User {
 			System.out.println("4 - back");
 			
 			//get user input
-			selection = StudentProgressSystem.scanner.next();
+			selection = StudentProgressSystem.scanner.nextInt();
 			
 			//run a method based on user's selection
 			switch(selection) {
-			
-			
+			case 1:
+				setCreditPointsNeeded(temp);
+				break;
+			case 2:
+				//setCoreCourses();
+				break;
+			case 3:
+				setSpecializationCourses(temp);
+				break;
+			case 4:
+				loop = false;
+				break;
 			}
-			
 		}
 	}
 
-	public void setCreditPointsNeeded(Program program, int credits) {
+	public void setCreditPointsNeeded(Program program) {
 
 	}
 
@@ -62,7 +71,7 @@ public abstract class AdvancedUser extends User {
 
 	}
 
-	public void setSpecializationCourses(Program program, ArrayList<Course> courses, String specialization) {
+	public void setSpecializationCourses(Program program) {
 
 	}
 
