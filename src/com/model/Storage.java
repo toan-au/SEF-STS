@@ -51,14 +51,6 @@ public class Storage {
 		student1.enrolCourse("AERO2394");
 		student1.enrolCourse("GRAP2324");
 		student1.enrolCourse("HUSO2177");
-
-		users.add(student1);
-		users.add(student2);
-		users.add(student3);
-		users.add(student4);
-		users.add(student5);
-		users.add(student6);
-		users.add(sysAdmin1);
 	}
 
 	public static User getUser(String id) {
