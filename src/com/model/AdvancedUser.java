@@ -20,7 +20,7 @@ public abstract class AdvancedUser extends User {
 		Program temp;
 		
 		while(loop) {
-			System.out.println("Enter the ID of the course you would like to edit: ");
+			System.out.println("Enter the ID of the program you would like to edit: ");
 			idInput = StudentProgressSystem.scanner.next();
 			
 			temp = Storage.getProgram(idInput);
