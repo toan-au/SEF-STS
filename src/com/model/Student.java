@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,14 +9,14 @@ public class Student extends User{
 
 	private Calendar dateOfBirth;
 	private String email;
-	private Map<Course, Double> courses;
+	private ArrayList<CourseEnrolment> courses;
 	private Program program;
 
 	public Student(String id, String name, String password, Calendar dateOfBirth, String email) {
 		super(id, name, password);
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
-		courses = new HashMap<Course, Double>(24);
+		courses = new ArrayList<CourseEnrolment>();
 	}
 
 	public String getGivenNames() {
@@ -30,7 +31,7 @@ public class Student extends User{
 		return email;
 	}
 
-	public Map<Course, Double> getCourses() {
+	public ArrayList<CourseEnrolment> getCourses() {
 		return courses;
 	}
 
@@ -55,6 +56,7 @@ public class Student extends User{
 		
 		CourseEnrolment enrolment = new CourseEnrolment(this, course, semester, year);
 		Storage.courseEnrolments.add(enrolment);
+		courses.add(enrolment);
 	}
 
 	public void enrolProgram(String programCode) {
