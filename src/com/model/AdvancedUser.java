@@ -79,7 +79,7 @@ public abstract class AdvancedUser extends User {
 	}
 
 	public void setCoreCourses(Program program, ArrayList<Course> course) {
-
+		
 	}
 
 	public void setSpecializationCourses(Program program, ArrayList<Course> courses, String specialization, SpecializationMode mode) {
@@ -124,7 +124,7 @@ public abstract class AdvancedUser extends User {
 	}
 
 	public void createStudentAccount(ArrayList<Student> student) {
-
+	
 	}
 
 	public void uploadEnrolment(Student student, Map<Course, Double> enrolments) {

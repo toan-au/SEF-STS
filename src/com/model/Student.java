@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,14 +9,14 @@ public class Student extends User{
 
 	private Calendar dateOfBirth;
 	private String email;
-	private Map<Course, Double> courses;
+	private ArrayList<CourseEnrolment> courses;
 	private Program program;
 
 	public Student(String id, String name, String password, Calendar dateOfBirth, String email) {
 		super(id, name, password);
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
-		courses = new HashMap<Course, Double>(24);
+		courses = new ArrayList<CourseEnrolment>();
 	}
 
 	public String getGivenNames() {
@@ -30,7 +31,7 @@ public class Student extends User{
 		return email;
 	}
 
-	public Map<Course, Double> getCourses() {
+	public ArrayList<CourseEnrolment> getCourses() {
 		return courses;
 	}
 
@@ -50,9 +51,12 @@ public class Student extends User{
 		this.email = email;
 	}
 
-	public void enrolCourse(String courseId) {
+	public void enrolCourse(String courseId, int semester, int year) {
 		Course course = Storage.getCourse(courseId);
-		courses.put(course, 0.0);
+		
+		CourseEnrolment enrolment = new CourseEnrolment(this, course, semester, year);
+		Storage.courseEnrolments.add(enrolment);
+		courses.add(enrolment);
 	}
 
 	public void enrolProgram(String programCode) {
@@ -60,9 +64,19 @@ public class Student extends User{
 	}
 
 	public void checkStudentResults() {
+		String status;
 		System.out.println("Your results are:");
-		for (Map.Entry<Course, Double> result : courses.entrySet()) {
-			System.out.println(result.getKey().getCourseId() + " " + result.getKey().getCourseName() + " : " + result.getValue());
+		System.out.println("course ID \t semester \t year \t status");
+		
+		//iterate over the courses Arraylist and print the ID and status of the student
+		for(int i = 0; i < courses.size(); i++) {
+			// if the student has failed the course then print "failed"  otherwise "pass"
+			if(courses.get(i).isFailed()) {
+				status = "failed";
+			} else {
+				status = "pass";
+			}
+			System.out.println(courses.get(i).getCourse().getCourseId() + "\t\t" +  courses.get(i).getSemester() + "\t" + courses.get(i).getYear() +"\t" + status); 
 		}
 
 	}

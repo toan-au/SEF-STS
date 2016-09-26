@@ -18,7 +18,7 @@ public class StudentTest {
 		Calendar s1DateOfBirth = s1.getDateOfBirth();
 		String s1Email = s1.getEmail();
 		// s1.checkStudentResults();
-		s1.enrolCourse("hello");
+		s1.enrolCourse("hello", 2 , 2016);
 
 		assertEquals("Toan Au", s1Name);
 		assertEquals("s3589104", s1Id);

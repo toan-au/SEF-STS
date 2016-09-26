@@ -12,6 +12,7 @@ public class Storage {
 	public static ArrayList<User> users = new ArrayList<User>();
 	public static ArrayList<Course> courses = new ArrayList<Course>();
 	public static ArrayList<Program> programs = new ArrayList<Program>();
+	public static ArrayList<CourseEnrolment> courseEnrolments = new ArrayList<CourseEnrolment>();
 
 	// add a student
 	private static Student student1 = new Student("s1111111", "Toan Au", "password", new GregorianCalendar(1993, 12, 25), "toan@email.com");
@@ -47,10 +48,10 @@ public class Storage {
 
 	public static void init() {
 		// enrol students in courses
-		student1.enrolCourse("COSC2102B");
-		student1.enrolCourse("AERO2394");
-		student1.enrolCourse("GRAP2324");
-		student1.enrolCourse("HUSO2177");
+		student1.enrolCourse("COSC2102B", 2, 2016);
+		student1.enrolCourse("AERO2394", 2, 2016);
+		student1.enrolCourse("GRAP2324", 2, 2016);
+		student1.enrolCourse("HUSO2177", 2, 2016);
 	}
 
 	public static User getUser(String id) {
