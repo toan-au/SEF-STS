@@ -50,9 +50,11 @@ public class Student extends User{
 		this.email = email;
 	}
 
-	public void enrolCourse(String courseId) {
+	public void enrolCourse(String courseId, int semester, int year) {
 		Course course = Storage.getCourse(courseId);
-		courses.put(course, 0.0);
+		
+		CourseEnrolment enrolment = new CourseEnrolment(this, course, semester, year);
+		Storage.courseEnrolments.add(enrolment);
 	}
 
 	public void enrolProgram(String programCode) {
