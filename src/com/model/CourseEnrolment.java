@@ -8,9 +8,9 @@ public class CourseEnrolment {
 	private int semester;
 	private boolean failed;
 	
-	public CourseEnrolment(String studentId, String courseId, int semester, int year) {
-		student = (Student) Storage.getUser(studentId);
-		course = Storage.getCourse(courseId);
+	public CourseEnrolment(Student student, Course course, int semester, int year) {
+		this.student = student;
+		this.course = course;
 		this.semester = semester;
 		this.year = year;
 		failed = false;
