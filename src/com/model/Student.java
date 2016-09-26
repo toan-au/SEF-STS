@@ -64,9 +64,19 @@ public class Student extends User{
 	}
 
 	public void checkStudentResults() {
+		String status;
 		System.out.println("Your results are:");
-		for (Map.Entry<Course, Double> result : courses.entrySet()) {
-			System.out.println(result.getKey().getCourseId() + " " + result.getKey().getCourseName() + " : " + result.getValue());
+		System.out.println("course ID \t status");
+		
+		//iterate over the courses Arraylist and print the ID and status of the student
+		for(int i = 0; i < courses.size(); i++) {
+			// if the student has failed the course then print "failed"  otherwise "pass"
+			if(courses.get(i).isFailed()) {
+				status = "failed";
+			} else {
+				status = "pass";
+			}
+			System.out.println(courses.get(i).getCourse().getCourseId() + "\t" + status); 
 		}
 
 	}
