@@ -8,6 +8,7 @@ public class courseEnrolment {
 	private int semester;
 	private boolean failed;
 	
+	
 	public courseEnrolment(String studentId, String courseId, int semester, int year) {
 		student = (Student) Storage.getUser(studentId);
 		course = Storage.getCourse(courseId);
@@ -16,6 +17,7 @@ public class courseEnrolment {
 		failed = false;
 	}
 	
+	//If we want to say the student has failed that course then we indicate it with a boolean in the constructor
 	public courseEnrolment(String studentId, String courseId, int semester, int year, boolean failed) {
 		student = (Student) Storage.getUser(studentId);
 		course = Storage.getCourse(courseId);
@@ -23,4 +25,6 @@ public class courseEnrolment {
 		this.year = year;
 		this.failed = failed;
 	}
+	
+	
 }
