@@ -134,4 +134,57 @@ public abstract class AdvancedUser extends User {
 	public void uploadEnrolment(Map<Student, Map<Course, Double>> enrolments) {
 
 	}
+	
+	protected void updateStudentAccount(String userId, String password, String fullName) {
+		String idInput;
+		String passwordInput;
+		String nameInput;
+		int dayInput;
+		int monthInput;
+		int yearInput;
+		int updateInput;
+		boolean updateFlat;
+		updateFlat = true;
+		
+		while(updateFlat){
+			System.out.println("Which part you want to change?");
+			System.out.println("1.Email");
+			System.out.println("2.userId");
+			System.out.println("3.Password");
+			System.out.println("4.fullName");
+			System.out.println("5.exit");
+			updateInput = StudentProgressSystem.scanner.nextInt();
+			if (updateInput == 1){
+				System.out.println("Please enter the student's birthdate (day only)");
+				StudentProgressSystem.scanner.useDelimiter("/");
+				dayInput = StudentProgressSystem.scanner.nextInt();
+				System.out.println("Please enter the student's birth month");
+				monthInput = StudentProgressSystem.scanner.nextInt();
+				System.out.println("Please enter the student's birth year");
+				yearInput = StudentProgressSystem.scanner.nextInt();
+				StudentProgressSystem.scanner.reset();
+			}else if (updateInput == 2){
+				System.out.println("Please enter the student's id");
+				idInput = StudentProgressSystem.scanner.next();	
+			}else if (updateInput == 3){
+				System.out.println("Enter the student's password");
+				passwordInput = StudentProgressSystem.scanner.next();
+			}else if (updateInput == 4){
+				System.out.println("Enter the student's Name");
+				nameInput = StudentProgressSystem.scanner.next();
+			}else if (updateInput == 5){
+				updateFlat = false;
+				System.out.println("Exit Update function");
+			}else{
+				System.out.println("Invalid input, please input number from 1 to 5.");
+			}
+		}
+		
+		
+		
+
+		System.out.println("Please enter the student's email.");
+		String email = StudentProgressSystem.scanner.next();
+	}
+	
 }
