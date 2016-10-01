@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.Scanner;
@@ -137,23 +138,24 @@ public abstract class AdvancedUser extends User {
 	
 	protected void updateStudentAccount(String userId, String password, String fullName) {
 		String idInput, passwordInput, nameInput;
+		User userCheck;
 		int dayInput, monthInput, yearInput, updateInput;
 		boolean checkInputFlag, updateFlat;
+		//two flag for loop
 		updateFlat = true;
 		checkInputFlag = true;
-		
 		//Check user is exist or not.
 		while(checkInputFlag){
 			System.out.println("Please enter the student's id that you want to change");
 			idInput = StudentProgressSystem.scanner.next();
-			if (idInput == idInput){
+			userCheck = Storage.getUser(idInput);
+			if (userCheck != null){
 				checkInputFlag = false;
 			}else{
 				System.out.println("This user is not exist, please input an exist user.");
 			}
 		}
 		
-		Storage.getObject;
 		
 		//Using while loop to change the user's detail until exit.
 		while(updateFlat){
@@ -176,7 +178,7 @@ public abstract class AdvancedUser extends User {
 				yearInput = StudentProgressSystem.scanner.nextInt();
 				StudentProgressSystem.scanner.reset();
 				//update the birthday
-				setDateOfBirth(dayInput, monthInput, yearInput);
+				setDateOfBirth(new GregorianCalendar(yearInput, monthInput, dayInput));
 				
 			}else if (updateInput == 2){
 				//update the user id
