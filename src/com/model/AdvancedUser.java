@@ -124,7 +124,7 @@ public abstract class AdvancedUser extends User {
 
 	// Allows Advanced users to create bulk student accounts by uploading them in a file
 	public void createStudentAccounts() {
-		String fileName;
+		String fileName, userId, fullName, password, email, birthday;
 		String line;
 		File file;
 		FileInputStream fis;
@@ -150,24 +150,19 @@ public abstract class AdvancedUser extends User {
 			while((line = reader.readLine()) != null) {
 				System.out.println(line);
 				String [] resultMember = line.split(":");
-				for (int j = 0; j < resultMember.length; j++){
-						//objMember[i] = new StandardMember(resultMember[0], resultMember[1]);
-
-				}
-//				System.out.println(resultMember[0]);
-//				System.out.println(resultMember[1]);
-//				System.out.println(resultMember[2]);
-//				System.out.println(resultMember[3]);
-//				System.out.println(resultMember[4]);
-			String [] birthdayString = resultMember[3].split("/");
-			for (int k = 0; k < birthdayString.length; k++){
+				userId = resultMember[0];
+				fullName = resultMember[1];
+				password = resultMember[2];
+				birthday = resultMember[3];
+				email = resultMember[4];
+				
+				String [] birthdayString = birthday.split("/");
 				resultDay = Integer.parseInt(birthdayString[0]);
 				resultMonth = Integer.parseInt(birthdayString[1]);
 				resultYear = Integer.parseInt(birthdayString[2]);
-			}
-			System.out.println(resultDay);
-			System.out.println(resultMonth);
-			System.out.println(resultYear);
+
+			@SuppressWarnings("unused")
+			Student student = new Student(userId, fullName, password, new GregorianCalendar(resultYear, resultMonth, resultDay), email);
 			}
 			
 		} catch (FileNotFoundException e) {
