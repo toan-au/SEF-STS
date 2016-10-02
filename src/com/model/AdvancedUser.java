@@ -1,7 +1,10 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.Scanner;
@@ -136,88 +139,38 @@ public abstract class AdvancedUser extends User {
 
 	}
 	
-	protected void updateStudentAccount(String userId, String password, String fullName) {
-		String idInput, passwordInput, nameInput;
-		User userCheck;
-		int dayInput, monthInput, yearInput, updateInput;
-		boolean checkInputFlag, updateFlat;
-		//two flag for loop
-		updateFlat = true;
-		checkInputFlag = true;
-		//Check user is exist or not.
-		while(checkInputFlag){
-			System.out.println("Please enter the student's id that you want to change, or input exit to quit.");
-			idInput = StudentProgressSystem.scanner.next();
-			userCheck = Storage.getUser(idInput);
-			if (userCheck != null){
-				checkInputFlag = false;
-			}else if (idInput == "exit"){
-				checkInputFlag = false;
-				updateFlat = false;
-				System.out.println("Exit Update function");
-			}else{
-				System.out.println("This user is not exist, please input an exist user.");
+	protected void uploadStudentAccount(Student student[]){
+		//Read Student File
+	    	try {
+	    		//set the file name.
+				FileReader frMember = new FileReader("student.txt");
+				BufferedReader brMember = new BufferedReader(frMember);
+				//using for loop to read the file line by line.
+				for (int i = 0; i < student.length; i++){
+					String stMember = brMember.readLine();
+					if(stMember != null){
+						//set the character ":" which to split different data.
+						String [] resultMember = stMember.split("|");
+						for (int j = 0; j < resultMember.length; j++){
+								student[i] = new Student(resultMember[0], resultMember[1],resultMember[2], resultMember[3]);
+						}
+					}
+				}
+				brMember.close();
+				System.out.println("Read Member file successful!");
+				
+			} catch (FileNotFoundException rmfn) {
+				// TODO Auto-generated catch block
+				// if the file is not exist, show the message.
+				System.out.println("Error: read Member file failed! It is not exist.");
+			} catch (IOException rmfi) {
+				// TODO Auto-generated catch block
+				// if some error happened, show error message that read failed.
+				System.out.println("Error: read Member file failed!");
+			} catch (Throwable rmft){
+	    		System.out.println("Read File failed!");
 			}
-		}
 		
-		
-		//Using while loop to change the user's detail until exit.
-		while(updateFlat){
-			System.out.println("Which part you want to change?");
-			System.out.println("1.Email");
-			System.out.println("2.userId");
-			System.out.println("3.Password");
-			System.out.println("4.fullName");
-			System.out.println("5.exit");
-			updateInput = StudentProgressSystem.scanner.nextInt();
-			
-			if (updateInput == 1){
-				//get user input
-				System.out.println("Please enter the student's birthdate (day only)");
-				StudentProgressSystem.scanner.useDelimiter("/");
-				dayInput = StudentProgressSystem.scanner.nextInt();
-				System.out.println("Please enter the student's birth month");
-				monthInput = StudentProgressSystem.scanner.nextInt();
-				System.out.println("Please enter the student's birth year");
-				yearInput = StudentProgressSystem.scanner.nextInt();
-				StudentProgressSystem.scanner.reset();
-				//update the birthday
-				setDateOfBirth(new GregorianCalendar(yearInput, monthInput, dayInput));
-				
-			}else if (updateInput == 2){
-				//update the user id
-				System.out.println("Please enter the student's id");
-				idInput = StudentProgressSystem.scanner.next();
-				setId(idInput);
-				
-			}else if (updateInput == 3){
-				//update the password
-				System.out.println("Enter the student's password");
-				passwordInput = StudentProgressSystem.scanner.next();
-				setPassword(passwordInput);
-				
-			}else if (updateInput == 4){
-				//update user's name
-				System.out.println("Enter the student's Name");
-				nameInput = StudentProgressSystem.scanner.next();
-				setName(nameInput);
-				
-			}else if (updateInput == 5){
-				//exit the function
-				updateFlat = false;
-				System.out.println("Exit Update function");
-				
-			}else{
-				
-				System.out.println("Invalid input, please input number from 1 to 5.");
-			}
-		}
-		
-		
-		
-
-		System.out.println("Please enter the student's email.");
-		String email = StudentProgressSystem.scanner.next();
 	}
 	
 }
