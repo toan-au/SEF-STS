@@ -1,10 +1,9 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.io.*;
 import java.util.GregorianCalendar;
 import java.util.Map;
-import java.util.Scanner;
-
 import com.view.StudentProgressSystem;
 
 public abstract class AdvancedUser extends User {
@@ -123,8 +122,27 @@ public abstract class AdvancedUser extends User {
 				+ "This account is now ready to be used.");
 	}
 
-	public void createStudentAccount(ArrayList<Student> student) {
-	
+	// Allows Advanced users to create bulk student accounts by uploading them in a file
+	public void createStudentAccounts() {
+		String fileName;
+		File file;
+		FileReader fr;
+		BufferedReader br;
+		
+		System.out.println("What is the name of your file?");
+		fileName = StudentProgressSystem.scanner.next();
+		
+		file = new File("../../" + fileName);
+		try {
+			fr = new FileReader(file);
+			br = new BufferedReader(fr);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 	public void uploadEnrolment(Student student, Map<Course, Double> enrolments) {
