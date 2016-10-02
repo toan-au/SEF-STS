@@ -60,7 +60,7 @@ public class Menu {
 		while (true) {
 			System.out.println("1 - Check student results");
 			System.out.println("2 - Create a student account"); 
-			System.out.println("3 - Upload enrolment");
+			System.out.println("3 - Upload multiple student accounts");
 			System.out.println("4 - Edit Program");
 			System.out.println("5 - log out");
 			int choice = scanner.nextInt();
@@ -73,12 +73,14 @@ public class Menu {
 				((Coordinator) currentUser).createStudentAccount();
 				break;
 			case 3:
+				((Coordinator)currentUser).createStudentAccounts();
+			case 4:
 				// currentUser.uploadEnrolment();
 				break;
-			case 4:
+			case 5:
 				((Coordinator)currentUser).editProgram();
 				break;
-			case 5:
+			case 6:
 				System.out.println("Logging out...\n");
 				return;
 			default:
@@ -93,7 +95,7 @@ public class Menu {
 			System.out.println("1 - Set up roles");
 			System.out.println("2 - Set up new program");
 			System.out.println("3 - Create student account");
-			System.out.println("4 - Upload Enrolments");
+			System.out.println("4 - Upload multiple student accounts");
 			System.out.println("5 - Edit a Program");
 			System.out.println("6 - log out");
 
@@ -109,7 +111,7 @@ public class Menu {
 				((SysAdmin) currentUser).createStudentAccount();
 				break;
 			case 4:
-				// currentUser.uploadEnrolment();
+				((SysAdmin) currentUser).createStudentAccounts();
 				break;
 			case 5:
 				((SysAdmin)currentUser).editProgram();
