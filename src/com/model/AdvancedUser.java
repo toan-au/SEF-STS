@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -149,15 +150,15 @@ public abstract class AdvancedUser extends User {
 				for (int i = 0; i < student.length; i++){
 					String stMember = brMember.readLine();
 					if(stMember != null){
-						//set the character ":" which to split different data.
+						//set the character "|" which to split different data.
 						String [] resultMember = stMember.split("|");
 						for (int j = 0; j < resultMember.length; j++){
-								student[i] = new Student(resultMember[0], resultMember[1],resultMember[2], resultMember[3]);
+								student[i] = new Student(resultMember[0], resultMember[1],resultMember[2], resultMember[3], resultMember[4]);
 						}
 					}
 				}
 				brMember.close();
-				System.out.println("Read Member file successful!");
+				System.out.println("Read Student file successful!");
 				
 			} catch (FileNotFoundException rmfn) {
 				// TODO Auto-generated catch block
