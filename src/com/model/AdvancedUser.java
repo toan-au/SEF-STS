@@ -130,7 +130,11 @@ public abstract class AdvancedUser extends User {
 		FileInputStream fis;
 		InputStreamReader isr;
 		BufferedReader reader;
+		int resultDay, resultMonth, resultYear;
 		boolean loop = true;
+		resultDay = 0;
+		resultMonth = 0;
+		resultYear = 0;
 		
 		System.out.println("What is the name of your file?");
 		
@@ -150,12 +154,20 @@ public abstract class AdvancedUser extends User {
 						//objMember[i] = new StandardMember(resultMember[0], resultMember[1]);
 
 				}
-				System.out.println(resultMember[0]);
-				System.out.println(resultMember[1]);
-				System.out.println(resultMember[2]);
-				System.out.println(resultMember[3]);
-				System.out.println(resultMember[4]);
-				
+//				System.out.println(resultMember[0]);
+//				System.out.println(resultMember[1]);
+//				System.out.println(resultMember[2]);
+//				System.out.println(resultMember[3]);
+//				System.out.println(resultMember[4]);
+			String [] birthdayString = resultMember[3].split("/");
+			for (int k = 0; k < birthdayString.length; k++){
+				resultDay = Integer.parseInt(birthdayString[0]);
+				resultMonth = Integer.parseInt(birthdayString[1]);
+				resultYear = Integer.parseInt(birthdayString[2]);
+			}
+			System.out.println(resultDay);
+			System.out.println(resultMonth);
+			System.out.println(resultYear);
 			}
 			
 		} catch (FileNotFoundException e) {
