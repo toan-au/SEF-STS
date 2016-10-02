@@ -145,11 +145,16 @@ public abstract class AdvancedUser extends User {
 			
 			while((line = reader.readLine()) != null) {
 				System.out.println(line);
-				String [] resultMember = line.split("|");
+				String [] resultMember = line.split(":");
 				for (int j = 0; j < resultMember.length; j++){
 						//objMember[i] = new StandardMember(resultMember[0], resultMember[1]);
-					
+
 				}
+				System.out.println(resultMember[0]);
+				System.out.println(resultMember[1]);
+				System.out.println(resultMember[2]);
+				System.out.println(resultMember[3]);
+				System.out.println(resultMember[4]);
 				
 			}
 			
