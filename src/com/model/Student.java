@@ -78,7 +78,6 @@ public class Student extends User{
 			}
 			System.out.println(courses.get(i).getCourse().getCourseId() + "\t\t" +  courses.get(i).getSemester() + "\t" + courses.get(i).getYear() +"\t" + status); 
 		}
-
 	}
 	@Override 
 	public String toString(){
