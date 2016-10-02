@@ -146,23 +146,27 @@ public abstract class AdvancedUser extends User {
 			fis = new FileInputStream(fileName);
 			isr = new InputStreamReader(fis);
 			reader = new BufferedReader(isr);
-			
+			//use while loop to read the line
 			while((line = reader.readLine()) != null) {
-				System.out.println(line);
+				//use ":" to split the file
 				String [] resultMember = line.split(":");
+				//set different variables, and give them value
 				userId = resultMember[0];
 				fullName = resultMember[1];
 				password = resultMember[2];
 				birthday = resultMember[3];
 				email = resultMember[4];
 				
+				//use "/" to split birthday
 				String [] birthdayString = birthday.split("/");
+				//change the type from string to int.
 				resultDay = Integer.parseInt(birthdayString[0]);
 				resultMonth = Integer.parseInt(birthdayString[1]);
 				resultYear = Integer.parseInt(birthdayString[2]);
-
-			@SuppressWarnings("unused")
-			Student student = new Student(userId, fullName, password, new GregorianCalendar(resultYear, resultMonth, resultDay), email);
+				
+				//create new student
+				@SuppressWarnings("unused")
+				Student student = new Student(userId, fullName, password, new GregorianCalendar(resultYear, resultMonth, resultDay), email);
 			}
 			
 		} catch (FileNotFoundException e) {
