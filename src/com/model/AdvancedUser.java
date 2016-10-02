@@ -125,22 +125,34 @@ public abstract class AdvancedUser extends User {
 	// Allows Advanced users to create bulk student accounts by uploading them in a file
 	public void createStudentAccounts() {
 		String fileName;
+		String line;
 		File file;
-		FileReader fr;
-		BufferedReader br;
+		FileInputStream fis;
+		InputStreamReader isr;
+		BufferedReader reader;
+		boolean loop = true;
 		
 		System.out.println("What is the name of your file?");
-		fileName = StudentProgressSystem.scanner.next();
 		
-		file = new File("../../" + fileName);
+
+		fileName = StudentProgressSystem.scanner.next();
+		file = new File(fileName);
+
 		try {
-			fr = new FileReader(file);
-			br = new BufferedReader(fr);
+			fis = new FileInputStream(fileName);
+			isr = new InputStreamReader(fis);
+			reader = new BufferedReader(isr);
+			
+			while((line = reader.readLine()) != null) {
+				System.out.println(line);
+			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("File not found please try again. or enter 'q' to quit");
+		} catch (IOException e) {
+			System.out.println("error reading the file");
 		}
+
 		
 		
 	}
