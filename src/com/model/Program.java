@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Program implements Serializable{
+public class Program implements Serializable {
 	private String programCode;
 	private int versionNumber;
 	private int requiredCredits;
@@ -22,9 +22,9 @@ public class Program implements Serializable{
 		this.requiredCredits = requiredCredits;
 		this.isActive = isActive;
 		this.programType = programType;
-//		this.coreCourses = coreCourses;
-//		this.specializationMode = specializationMode;
-//		this.specializations = specializations;
+		// this.coreCourses = coreCourses;
+		// this.specializationMode = specializationMode;
+		// this.specializations = specializations;
 		Storage.programs.add(this);
 	}
 
@@ -91,10 +91,10 @@ public class Program implements Serializable{
 	public void setSpecializations(Map<String, ArrayList<Course>> specializations) {
 		this.specializations = specializations;
 	}
-	
-	@Override 
-	public String toString(){
-		return"\n" + programCode + " " + requiredCredits;
+
+	@Override
+	public String toString() {
+		return "\n" + programCode + " " + requiredCredits;
 	}
 
 }

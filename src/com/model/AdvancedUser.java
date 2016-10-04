@@ -3,52 +3,49 @@ package com.model;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Map;
-import java.util.Scanner;
-
 import com.view.StudentProgressSystem;
 
 public abstract class AdvancedUser extends User {
 
-
 	public AdvancedUser(String id, String name, String password) {
 		super(id, name, password);
 	}
-	
+
 	public void editProgram() {
 		boolean loop = true;
 		String idInput;
 		int selection;
 		Program temp;
-		
-		while(loop) {
+
+		while (loop) {
 			System.out.println("Enter the ID of the program you would like to edit: ");
 			idInput = StudentProgressSystem.scanner.next();
-			
+
 			temp = Storage.getProgram(idInput);
-			
-			if(temp == null) {
+
+			if (temp == null) {
 				System.out.println("No program with that ID code. Please try again: ");
 				continue;
 			}
-			
+
 			do {
-				//show user menu how they can edit programs
+				// show user menu how they can edit programs
 				System.out.println("How would you like to edit \"" + temp.getProgramCode() + "\"");
 				System.out.println("1 - Set credit points needed");
 				System.out.println("2 - Set core courses");
 				System.out.println("3 - Set specialization courses");
 				System.out.println("4 - back");
-				
-				//get user input
+
+				// get user input
 				selection = StudentProgressSystem.scanner.nextInt();
-				
-				//run a method based on user's selection
-				switch(selection) {
+
+				// run a method based on user's selection
+				switch (selection) {
 				case 1:
 					setCreditPointsNeeded(temp);
 					break;
 				case 2:
-					//setCoreCourses();
+					// setCoreCourses();
 					break;
 				case 3:
 					setSpecializationCourses(temp);
@@ -60,26 +57,26 @@ public abstract class AdvancedUser extends User {
 					System.out.println("That isn't an option, please try again.");
 					break;
 				}
-			} while(loop);
+			} while (loop);
 		}
 	}
 
 	public void setCreditPointsNeeded(Program program) {
 		int creditPoints;
-		
-		//prompt user for the credit points required
-		System.out.println("How many credit points would you like " + program.getProgramCode() +" to require? ");
+
+		// prompt user for the credit points required
+		System.out.println("How many credit points would you like " + program.getProgramCode() + " to require? ");
 		creditPoints = StudentProgressSystem.scanner.nextInt();
-		
-		//set the credit points
+
+		// set the credit points
 		program.setRequiredCredits(creditPoints);
-		
-		//give user feedback
+
+		// give user feedback
 		System.out.println(program.getProgramCode() + "'s credit points have been set to " + creditPoints);
 	}
 
 	public void setCoreCourses(Program program, ArrayList<Course> course) {
-		
+
 	}
 
 	public void setSpecializationCourses(Program program, ArrayList<Course> courses, String specialization, SpecializationMode mode) {
@@ -124,7 +121,7 @@ public abstract class AdvancedUser extends User {
 	}
 
 	public void createStudentAccount(ArrayList<Student> student) {
-	
+
 	}
 
 	public void uploadEnrolment(Student student, Map<Course, Double> enrolments) {

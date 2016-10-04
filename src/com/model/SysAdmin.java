@@ -36,8 +36,8 @@ public class SysAdmin extends AdvancedUser {
 			return;
 		}
 		if (!userId.startsWith("s"))
-			System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
-					+ "This account is now ready to be used..");
+			System.out.println("You have just created an account with the user name " + userId + "and password "
+					+ password + ".\n" + "This account is now ready to be used..");
 		scanner.close();
 	}
 
@@ -98,7 +98,8 @@ public class SysAdmin extends AdvancedUser {
 		// System.out.println("Enter the Specialization");
 		// inputSpecializations = input.next();
 
-		Program newProgram = new Program(inputProgramCode, inputVersionNumber, inputRequiredCredits, inputIsActive, inputProgramType);
+		Program newProgram = new Program(inputProgramCode, inputVersionNumber, inputRequiredCredits, inputIsActive,
+				inputProgramType);
 
 		// Store the new course to the array.
 		Storage.programs.add(newProgram);

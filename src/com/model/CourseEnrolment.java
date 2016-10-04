@@ -1,13 +1,13 @@
 package com.model;
 
 public class CourseEnrolment {
-	
+
 	private Student student;
 	private Course course;
 	private int year;
 	private int semester;
 	private boolean failed;
-	
+
 	public CourseEnrolment(Student student, Course course, int semester, int year) {
 		this.student = student;
 		this.course = course;
@@ -15,8 +15,8 @@ public class CourseEnrolment {
 		this.year = year;
 		failed = false;
 	}
-	
-	//If we want to say the student has failed that course then we indicate it with a boolean in the constructor
+
+	// If we want to say the student has failed that course then we indicate it with a boolean in the constructor
 	public CourseEnrolment(String studentId, String courseId, int semester, int year, boolean failed) {
 		student = (Student) Storage.getUser(studentId);
 		course = Storage.getCourse(courseId);
@@ -24,7 +24,7 @@ public class CourseEnrolment {
 		this.year = year;
 		this.failed = failed;
 	}
-	
+
 	public Student getStudent() {
 		return student;
 	}
@@ -65,9 +65,4 @@ public class CourseEnrolment {
 		this.failed = failed;
 	}
 
-
-	
-	
-	
-	
 }

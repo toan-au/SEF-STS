@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student extends User{
+public class Student extends User {
 
 	private Calendar dateOfBirth;
 	private String email;
@@ -42,7 +42,7 @@ public class Student extends User{
 	public void setProgram(Program program) {
 		this.program = program;
 	}
-	
+
 	public void setDateOfBirth(Calendar dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
@@ -53,7 +53,7 @@ public class Student extends User{
 
 	public void enrolCourse(String courseId, int semester, int year) {
 		Course course = Storage.getCourse(courseId);
-		
+
 		CourseEnrolment enrolment = new CourseEnrolment(this, course, semester, year);
 		Storage.courseEnrolments.add(enrolment);
 		courses.add(enrolment);
@@ -67,22 +67,24 @@ public class Student extends User{
 		String status;
 		System.out.println("Your results are:");
 		System.out.println("course ID \t semester \t year \t status");
-		
-		//iterate over the courses Arraylist and print the ID and status of the student
-		for(int i = 0; i < courses.size(); i++) {
-			// if the student has failed the course then print "failed"  otherwise "pass"
-			if(courses.get(i).isFailed()) {
+
+		// iterate over the courses Arraylist and print the ID and status of the student
+		for (int i = 0; i < courses.size(); i++) {
+			// if the student has failed the course then print "failed" otherwise "pass"
+			if (courses.get(i).isFailed()) {
 				status = "failed";
 			} else {
 				status = "pass";
 			}
-			System.out.println(courses.get(i).getCourse().getCourseId() + "\t\t" +  courses.get(i).getSemester() + "\t" + courses.get(i).getYear() +"\t" + status); 
+			System.out.println(courses.get(i).getCourse().getCourseId() + "\t\t" + courses.get(i).getSemester() + "\t"
+					+ courses.get(i).getYear() + "\t" + status);
 		}
 	}
-	@Override 
-	public String toString(){
+
+	@Override
+	public String toString() {
 		return "\n" + id + " " + name + " " + "dateOfBirth" + " " + email;
-		
+
 	}
 
 }

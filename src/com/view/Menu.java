@@ -59,7 +59,7 @@ public class Menu {
 	private static void displayCoordinatorMenu() {
 		while (true) {
 			System.out.println("1 - Check student results");
-			System.out.println("2 - Create a student account"); 
+			System.out.println("2 - Create a student account");
 			System.out.println("3 - Upload enrolment");
 			System.out.println("4 - Edit Program");
 			System.out.println("5 - log out");
@@ -76,7 +76,7 @@ public class Menu {
 				// currentUser.uploadEnrolment();
 				break;
 			case 4:
-				((Coordinator)currentUser).editProgram();
+				((Coordinator) currentUser).editProgram();
 				break;
 			case 5:
 				System.out.println("Logging out...\n");
@@ -112,7 +112,7 @@ public class Menu {
 				// currentUser.uploadEnrolment();
 				break;
 			case 5:
-				((SysAdmin)currentUser).editProgram();
+				((SysAdmin) currentUser).editProgram();
 				break;
 			case 6:
 				System.out.println("Logging out...\n");

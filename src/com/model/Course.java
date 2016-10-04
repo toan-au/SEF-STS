@@ -2,7 +2,7 @@ package com.model;
 
 import java.io.Serializable;
 
-public class Course implements Serializable{
+public class Course implements Serializable {
 	private String courseId, courseName;
 	private int credits;
 
@@ -36,9 +36,9 @@ public class Course implements Serializable{
 	public void setCredits(int credits) {
 		this.credits = credits;
 	}
-	
-	@Override 
-	public String toString(){
+
+	@Override
+	public String toString() {
 		return "\n" + courseId + " " + courseName;
 	}
 }
