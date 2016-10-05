@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class Storage {
-	public static ArrayList<User> users = new ArrayList<User>();
-	public static ArrayList<Course> courses = new ArrayList<Course>();
-	public static ArrayList<Program> programs = new ArrayList<Program>();
-	public static ArrayList<CourseEnrolment> courseEnrolments = new ArrayList<CourseEnrolment>();
+	public static ArrayList<User> users = new ArrayList<>();
+	public static ArrayList<Course> courses = new ArrayList<>();
+	public static ArrayList<Program> programs = new ArrayList<>();
+	public static ArrayList<CourseEnrolment> courseEnrolments = new ArrayList<>();
 
 	// add a student
 	private static Student student1 = new Student("s1111111", "Toan Au", "password", new GregorianCalendar(1993, 12, 25), "toan@email.com");

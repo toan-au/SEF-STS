@@ -17,12 +17,12 @@ public class Coordinator extends AdvancedUser {
 		setCoreCourses(program, course);
 	}
 
-	public ArrayList<Student> meetsProgramRequirement(File file, boolean meetRequirements) {
+	public static ArrayList<Student> meetsProgramRequirement(String filename, boolean meetRequirements) {
 		Scanner student;
-		ArrayList<Student> students = new ArrayList<Student>();
+		ArrayList<Student> students = new ArrayList<>();
 
 		try {
-			student = new Scanner(new File("/*students.txt*/"));
+			student = new Scanner(new File(filename));
 
 			while (student.hasNext()) {
 				// students.add(student.next());
@@ -32,11 +32,13 @@ public class Coordinator extends AdvancedUser {
 			// test - students.add(Ana);
 			// tempo code to get an idea of what's going to happen in this block
 			for (Student s : students) {
-				// if (s.getCredits() == 12)
-				System.out.println("The student meets the program requirements.");
+				if (s.getCredits() == 12 && meetRequirements)
+					System.out.println("The student " + s + " meets the program requirements.");
+				else
+					System.out.println("The student " + s + " doesn't meet the program requirements.");
 			}
-
 		} catch (FileNotFoundException e) {
+			System.out.println("Couldn't find the selected file.");
 			e.printStackTrace();
 		}
 

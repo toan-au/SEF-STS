@@ -10,7 +10,7 @@ public class SysAdmin extends AdvancedUser {
 		super(id, name, password);
 	}
 
-	public void createAccount() {
+	public static void createAccount() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Create a new User Account:\n" + "Please add an Id:");
 		String userId = scanner.next();
@@ -41,7 +41,7 @@ public class SysAdmin extends AdvancedUser {
 		scanner.close();
 	}
 
-	public void setUpNewProgram() {
+	public static void setUpNewProgram() {
 		System.out.println("Enter the Program's Code");
 		String inputProgramCode = StudentProgressSystem.scanner.next();
 

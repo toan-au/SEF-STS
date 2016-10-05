@@ -40,7 +40,7 @@ public abstract class User implements Serializable {
 		this.password = password;
 	}
 
-	public void checkStudentResults() {
+	public static void checkStudentResults() {
 		String status;
 		String studentId;
 		Student student;
@@ -71,6 +71,7 @@ public abstract class User implements Serializable {
 		return false;
 	}
 
+	@Override
 	public String toString() {
 		return "\n" + id + " " + name;
 

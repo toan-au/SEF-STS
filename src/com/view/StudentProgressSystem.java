@@ -31,7 +31,7 @@ public class StudentProgressSystem {
 		System.out.println("fancy admin mode activated");
 		SysAdmin temp = new SysAdmin("temp", "temp", "temp");
 
-		temp.createAccount();
+		SysAdmin.createAccount();
 		Storage.users.remove(temp);
 
 		System.out.println(Storage.users.toString());

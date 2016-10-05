@@ -61,7 +61,7 @@ public abstract class AdvancedUser extends User {
 		}
 	}
 
-	public void setCreditPointsNeeded(Program program) {
+	public static void setCreditPointsNeeded(Program program) {
 		int creditPoints;
 
 		// prompt user for the credit points required
@@ -87,7 +87,7 @@ public abstract class AdvancedUser extends User {
 
 	}
 
-	public void createStudentAccount() {
+	public static void createStudentAccount() {
 		System.out.println("Enter the student's ID");
 		String inputId = StudentProgressSystem.scanner.next();
 
@@ -100,7 +100,7 @@ public abstract class AdvancedUser extends User {
 		createStudentAccount(inputId, inputPassword, inputName);
 	}
 
-	protected void createStudentAccount(String userId, String password, String fullName) {
+	protected static void createStudentAccount(String userId, String password, String fullName) {
 		System.out.println("Please enter the student's birthdate (day only)");
 		StudentProgressSystem.scanner.useDelimiter("/");
 		int day = StudentProgressSystem.scanner.nextInt();
