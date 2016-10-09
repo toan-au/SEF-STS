@@ -1,6 +1,9 @@
-package com.model;
+package com.model.users;
 
 import java.io.Serializable;
+
+import com.model.Course;
+import com.model.Storage;
 import com.view.StudentProgressSystem;
 
 public abstract class User implements Serializable {
@@ -73,7 +76,7 @@ public abstract class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\n" + id + " " + name;
+		return id + " " + name;
 
 	}
 

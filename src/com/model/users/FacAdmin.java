@@ -1,4 +1,4 @@
-package com.model;
+package com.model.users;
 
 public class FacAdmin extends User {
 

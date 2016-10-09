@@ -1,16 +1,22 @@
-package com.model;
+package com.model.users;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import com.model.Course;
+import com.model.CourseEnrolment;
+import com.model.Program;
+import com.model.Storage;
 
 public class Student extends User {
 
-	private Calendar dateOfBirth;
+	private GregorianCalendar dateOfBirth;
 	private String email;
 	private ArrayList<CourseEnrolment> courses;
 	private Program program;
 
-	public Student(String id, String name, String password, Calendar dateOfBirth, String email) {
+	public Student(String id, String name, String password, GregorianCalendar dateOfBirth, String email) {
 		super(id, name, password);
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
@@ -41,7 +47,7 @@ public class Student extends User {
 		this.program = program;
 	}
 
-	public void setDateOfBirth(Calendar dateOfBirth) {
+	public void setDateOfBirth(GregorianCalendar dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -81,7 +87,7 @@ public class Student extends User {
 
 	@Override
 	public String toString() {
-		return "\n" + id + " " + name + " " + "dateOfBirth" + " " + email;
+		return id + " " + name + " " + dateOfBirth + " " + email;
 
 	}
 

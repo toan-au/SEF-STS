@@ -7,6 +7,8 @@ import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
+import com.model.users.Student;
+
 public class StudentTest {
 
 	@Test

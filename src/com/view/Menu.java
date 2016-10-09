@@ -2,12 +2,12 @@ package com.view;
 
 import java.util.Scanner;
 
-import com.model.AdvancedUser;
-import com.model.Coordinator;
 import com.model.Storage;
-import com.model.Student;
-import com.model.SysAdmin;
-import com.model.User;
+import com.model.users.AdvancedUser;
+import com.model.users.Coordinator;
+import com.model.users.Student;
+import com.model.users.SysAdmin;
+import com.model.users.User;
 
 public class Menu {
 	private static User currentUser;

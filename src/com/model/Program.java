@@ -2,7 +2,7 @@ package com.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Program implements Serializable {
@@ -13,7 +13,7 @@ public class Program implements Serializable {
 	private ProgramType programType;
 	private ArrayList<Course> coreCourses;
 	private SpecializationMode specializationMode;
-	private Map<String, ArrayList<Course>> specializations;
+	private Specializations specializations;
 	Scanner input = new Scanner(System.in);
 
 	public Program(String programCode, int versionNumber, int requiredCredits, boolean isActive, ProgramType programType) {
@@ -23,8 +23,12 @@ public class Program implements Serializable {
 		this.isActive = isActive;
 		this.programType = programType;
 		// this.coreCourses = coreCourses;
-		// this.specializationMode = specializationMode;
-		// this.specializations = specializations;
+		this.specializationMode = specializationMode;
+		if (specializationMode == SpecializationMode.COURSEPOOL)
+			specializations = new CoursePool();
+		else
+			specializations = new FixedSet();
+		
 		Storage.programs.add(this);
 	}
 
@@ -56,8 +60,12 @@ public class Program implements Serializable {
 		return specializationMode;
 	}
 
-	public Map<String, ArrayList<Course>> getSpecializations() {
-		return specializations;
+	// TODO: IMPLEMENT THIS METHOD
+	public Collections getSpecializations() {
+		if(specializationMode == SpecializationMode.COURSEPOOL){
+			return specializations.getCourses();
+		}
+		else
 	}
 
 	public void setProgramCode(String programCode) {
@@ -88,13 +96,22 @@ public class Program implements Serializable {
 		this.specializationMode = specializationMode;
 	}
 
-	public void setSpecializations(Map<String, ArrayList<Course>> specializations) {
-		this.specializations = specializations;
+	// TODO IMPLEMENT THIS FUCNTION
+	public void setSpecializations() {
 	}
+
+	/*
+	 * spec mode:
+	 * if it's just a course pool:
+	 * course pool of all possible courses
+	 * if it's an actual mode:
+	 * ArrayList<SpecializationPipes>
+	 * SpecPipe: Map<String pipeName, ArrayList <Courses>>
+	 */
 
 	@Override
 	public String toString() {
-		return "\n" + programCode + " " + requiredCredits;
+		return programCode + " " + requiredCredits + " " + specializationMode;
 	}
 
 }

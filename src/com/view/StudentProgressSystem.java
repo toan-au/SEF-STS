@@ -3,8 +3,8 @@ package com.view;
 import java.util.Scanner;
 
 import com.model.Storage;
-import com.model.SysAdmin;
-import com.model.User;
+import com.model.users.SysAdmin;
+import com.model.users.User;
 
 public class StudentProgressSystem {
 
@@ -17,7 +17,7 @@ public class StudentProgressSystem {
 			System.out.println("Welcome to the Student Progress System. Press Enter to begin; q to exit.");
 			String input = scanner.nextLine();
 
-			if (input.equals("UpUpDownDownLeftRightLeftRightBA"))
+			if (input.equals("UpUpDownDownLeftRightLeftRightBA") || input.equals("meh"))
 				fancyAdminMode();
 			else if (input.equals("q"))
 				break;
@@ -29,17 +29,8 @@ public class StudentProgressSystem {
 
 	private static void fancyAdminMode() {
 		System.out.println("fancy admin mode activated");
-		SysAdmin temp = new SysAdmin("temp", "temp", "temp");
 
-		SysAdmin.createAccount();
-		Storage.users.remove(temp);
-
-		System.out.println(Storage.users.toString());
-		System.out.println();
-		System.out.println(Storage.courses.toString());
-		System.out.println();
-		System.out.println(Storage.programs.toString());
-		System.out.println();
+		System.out.println(Storage.print());
 	}
 
 	private static User logIn() {

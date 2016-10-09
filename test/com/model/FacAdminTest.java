@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.model.users.FacAdmin;
+
 public class FacAdminTest {
 
 	@Test

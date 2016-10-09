@@ -1,8 +1,13 @@
-package com.model;
+package com.model.users;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Map;
+
+import com.model.Course;
+import com.model.Program;
+import com.model.SpecializationMode;
+import com.model.Storage;
 import com.view.StudentProgressSystem;
 
 public abstract class AdvancedUser extends User {

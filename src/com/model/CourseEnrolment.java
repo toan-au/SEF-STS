@@ -1,5 +1,7 @@
 package com.model;
 
+import com.model.users.Student;
+
 public class CourseEnrolment {
 
 	private Student student;

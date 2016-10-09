@@ -39,6 +39,6 @@ public class Course implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\n" + courseId + " " + courseName;
+		return courseId + " " + courseName;
 	}
 }

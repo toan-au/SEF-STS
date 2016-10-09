@@ -7,6 +7,11 @@ import java.util.GregorianCalendar;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.model.users.Coordinator;
+import com.model.users.FacAdmin;
+import com.model.users.Student;
+import com.model.users.SysAdmin;
+
 public class SysAdminTest {
 
 	SysAdmin testAdmin;

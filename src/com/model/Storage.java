@@ -8,50 +8,51 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+import com.model.users.Student;
+import com.model.users.SysAdmin;
+import com.model.users.User;
+
 public class Storage {
 	public static ArrayList<User> users = new ArrayList<>();
 	public static ArrayList<Course> courses = new ArrayList<>();
 	public static ArrayList<Program> programs = new ArrayList<>();
 	public static ArrayList<CourseEnrolment> courseEnrolments = new ArrayList<>();
 
-	// add a student
-	private static Student student1 = new Student("s1111111", "Toan Au", "password", new GregorianCalendar(1993, 12, 25), "toan@email.com");
-	private static Student student2 = new Student("s2222222", "Bob Builder", "password", new GregorianCalendar(1990, 1, 1), "bob@email.com");
-	private static Student student3 = new Student("s3333333", "Harold Senpai", "password", new GregorianCalendar(1999, 6, 13), "harold@email.com");
-	private static Student student4 = new Student("s4444444", "Sophie Au", "password", new GregorianCalendar(1800, 5, 25), "sophie@email.com");
-	private static Student student5 = new Student("s5555555", "Ana Teo", "password", new GregorianCalendar(1700, 12, 12), "ana@email.com");
-	private static Student student6 = new Student("s6666666", "Julie Nguyen", "password", new GregorianCalendar(0001, 1, 1), "julie@email.com");
-
-	private static SysAdmin sysAdmin1 = new SysAdmin("a1111111", "Halil", "password");
-
-	// add courses
-	private static Course course1 = new Course("COSC2102B", "Software Engineering Project (PtB)", 4);
-	private static Course course2 = new Course("AERO2394", "Aeronautical Design", 4);
-	private static Course course3 = new Course("EEET2032", "Simulation Based Design", 4);
-	private static Course course4 = new Course("ISYS1013", "Systems Design", 4);
-
-	private static Course course5 = new Course("GRAP2324", "Advanced Imaging in 2D and 3D", 4);
-	private static Course course6 = new Course("VART2992", "3D Animation Advanced", 4);
-	private static Course course7 = new Course("GRAP2326", "3D Character: Create and Animate and Special Effects", 4);
-	private static Course course8 = new Course("INTE1033", "E-Commerce Development 2", 4);
-
-	private static Course course9 = new Course("ISYS2064", "Applications Development for PCs - Spreadsheets", 4);
-	private static Course course10 = new Course("MKTG1227", "Theory Development and Critical Analysis", 4);
-	private static Course course11 = new Course("HUSO2177", "Practicing Development", 4);
-	private static Course course12 = new Course("BUIL1161", "International Development", 4);
-
-	// add Programs
-	private static Program program1 = new Program("BP094", 1, 48, true, ProgramType.BACHELOR);
-	private static Program progtam2 = new Program("BP129", 2, 48, true, ProgramType.BACHELOR);
-	private static Program progtam3 = new Program("BP229", 3, 48, true, ProgramType.BACHELOR);
-	private static Program progtam4 = new Program("BP254", 4, 48, true, ProgramType.BACHELOR);
-
+	@SuppressWarnings("unused")
 	public static void init() {
+		Student tempStudent = new Student("s1111111", "Toan Au", "password", new GregorianCalendar(1993, 12, 25), "toan@email.com");
+		tempStudent = new Student("s2222222", "Bob Builder", "password", new GregorianCalendar(1990, 1, 1), "bob@email.com");
+		tempStudent = new Student("s3333333", "Harold Senpai", "password", new GregorianCalendar(1999, 6, 13), "harold@email.com");
+		tempStudent = new Student("s4444444", "Sophie Au", "password", new GregorianCalendar(1800, 5, 25), "sophie@email.com");
+		tempStudent = new Student("s5555555", "Ana Teo", "password", new GregorianCalendar(1700, 12, 12), "ana@email.com");
+		tempStudent = new Student("s6666666", "Julie Nguyen", "password", new GregorianCalendar(0001, 1, 1), "julie@email.com");
+		SysAdmin tempSysAd = new SysAdmin("a1111111", "Halil", "password");
+
+		Course tempCourse = new Course("COSC2102B", "Software Engineering Project (PtB)", 4);
+		tempCourse = new Course("AERO2394", "Aeronautical Design", 4);
+		tempCourse = new Course("EEET2032", "Simulation Based Design", 4);
+		tempCourse = new Course("ISYS1013", "Systems Design", 4);
+		tempCourse = new Course("GRAP2324", "Advanced Imaging in 2D and 3D", 4);
+		tempCourse = new Course("VART2992", "3D Animation Advanced", 4);
+		tempCourse = new Course("GRAP2326", "3D Character: Create and Animate and Special Effects", 4);
+		tempCourse = new Course("INTE1033", "E-Commerce Development 2", 4);
+		tempCourse = new Course("ISYS2064", "Applications Development for PCs - Spreadsheets", 4);
+		tempCourse = new Course("MKTG1227", "Theory Development and Critical Analysis", 4);
+		tempCourse = new Course("HUSO2177", "Practicing Development", 4);
+		tempCourse = new Course("BUIL1161", "International Development", 4);
+
+		Program tempProgram = new Program("BP094", 1, 48, true, ProgramType.BACHELOR);
+		tempProgram = new Program("BP129", 2, 48, true, ProgramType.BACHELOR);
+		tempProgram = new Program("BP229", 3, 48, true, ProgramType.BACHELOR);
+		tempProgram = new Program("BP254", 4, 48, true, ProgramType.BACHELOR);
+
+		Student toan = (Student) Storage.getUser("s1111111");
+
 		// enrol students in courses
-		student1.enrolCourse("COSC2102B", 2, 2016);
-		student1.enrolCourse("AERO2394", 2, 2016);
-		student1.enrolCourse("GRAP2324", 2, 2016);
-		student1.enrolCourse("HUSO2177", 2, 2016);
+		toan.enrolCourse("COSC2102B", 2, 2016);
+		toan.enrolCourse("AERO2394", 2, 2016);
+		toan.enrolCourse("GRAP2324", 2, 2016);
+		toan.enrolCourse("HUSO2177", 2, 2016);
 	}
 
 	public static User getUser(String id) {
@@ -111,12 +112,38 @@ public class Storage {
 		}
 	}
 
-	// List all data
+	public static String print() {
+		StringBuilder allEntries = new StringBuilder();
+		allEntries.append("Users:\n" + printUsers() + "\n");
+		allEntries.append("Courses:\n" + printCourses() + "\n");
+		allEntries.append("Programs:\n" + printPrograms() + "\n");
+		return allEntries.toString();
 
-	public static void printAllUsers() {
-		for (int i = 0; i < users.size(); i++) {
-			System.out.println(users.toArray()[i]);
-		}
+	}
+
+	// List all data
+	public static String printUsers() {
+		StringBuilder userString = new StringBuilder();
+		for (User user : users)
+			userString.append(user + "\n");
+
+		return userString.toString();
+	}
+
+	public static String printCourses() {
+		StringBuilder courseString = new StringBuilder();
+		for (Course course : courses)
+			courseString.append(course + "\n");
+
+		return courseString.toString();
+	}
+
+	public static String printPrograms() {
+		StringBuilder programString = new StringBuilder();
+		for (Program program : programs)
+			programString.append(program + "\n");
+
+		return programString.toString();
 	}
 
 }
