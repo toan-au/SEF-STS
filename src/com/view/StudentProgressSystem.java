@@ -1,62 +1,76 @@
 package com.view;
 
-import java.util.Scanner;
-
+import com.Global;
 import com.model.Storage;
-import com.model.users.SysAdmin;
+import com.model.users.Student;
 import com.model.users.User;
 
 public class StudentProgressSystem {
 
-	public static Scanner scanner;
-
 	public static void run() {
-		scanner = new Scanner(System.in);
-
 		while (true) {
-			System.out.println("Welcome to the Student Progress System. Press Enter to begin; q to exit.");
-			String input = scanner.nextLine();
+			System.out.println("Welcome to the Student Progress System. Press 'c' to begin; 'q' to exit.");
+			String input = Global.scanner.next();
 
-			if (input.equals("UpUpDownDownLeftRightLeftRightBA") || input.equals("meh"))
-				fancyAdminMode();
-			else if (input.equals("q"))
+			if (input.equals("q")) {
+				System.exit(0);
 				break;
-
-			Menu.displayMenu(logIn());
+			} else if (input.equals("c")) {
+				String tempUser = logIn();
+				if (tempUser == null)
+					continue;
+				Menu.displayMenu(tempUser);
+			} else if (input.equals("UpUpDownDownLeftRightLeftRightBA") || input.equals("meh")) {
+				fancyAdminMode();
+			}
 		}
-		scanner.close();
 	}
 
 	private static void fancyAdminMode() {
 		System.out.println("fancy admin mode activated");
 
+		User.checkStudentResults("s1111111");
 		System.out.println(Storage.print());
 	}
 
-	private static User logIn() {
-		User user = null;
-		boolean isLoggedIn = false;
+	private static String logIn() {
+		String inputId;
+		String inputPassword;
+		String loadedPassword = null;
 
-		System.out.println("Please enter your account details");
-		while (!isLoggedIn) {
+		System.out.println("Please enter your account details. Note: Entering 'q' cancels the log-in process");
+		while (true) {
 			System.out.println("ID: ");
-			String inputId = scanner.next();
-			user = Storage.getUser(inputId);
-			System.out.println(inputId);
-			if (user == null) {
+			inputId = Global.scanner.next();
+			if (inputId.equals("q"))
+				return null;
+
+			if (inputId.startsWith("s")) {
+				Student student = Storage.getStudent(inputId);
+				System.out.println("loaded user");
+				if (student != null)
+					loadedPassword = student.getPassword();
+			} else {
+				User user = Storage.getUser(inputId);
+				if (user != null)
+					loadedPassword = user.getPassword();
+			}
+			
+			if (loadedPassword == null) {
 				System.out.println("The ID you entered does not exist. Please try again");
 				continue;
 			}
 
 			System.out.println("Password: ");
-			String passwordEntry = scanner.next();
-			if (!user.getPassword().equals(passwordEntry)) {
+			inputPassword = Global.scanner.next();
+			if (inputPassword.equals("q"))
+				return null;
+			if (!loadedPassword.equals(inputPassword)) {
 				System.out.println("The Password you entered does not match the ID. Please try again");
 				continue;
 			}
-			isLoggedIn = true;
+			System.out.println("Logging in...\n");
+			return inputId;
 		}
-		System.out.println("Logging in...\n");
-		return user;
 	}
 }

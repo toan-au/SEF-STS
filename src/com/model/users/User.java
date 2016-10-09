@@ -3,9 +3,10 @@ package com.model.users;
 import java.io.Serializable;
 
 import com.model.Course;
+import com.model.CourseEnrolment;
 import com.model.Storage;
-import com.view.StudentProgressSystem;
 
+@SuppressWarnings("serial")
 public abstract class User implements Serializable {
 	protected String name;
 	protected String id;
@@ -16,7 +17,6 @@ public abstract class User implements Serializable {
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		Storage.users.add(this);
 	}
 
 	public String getName() {
@@ -43,30 +43,16 @@ public abstract class User implements Serializable {
 		this.password = password;
 	}
 
-	public static void checkStudentResults() {
+	public static void checkStudentResults(String studentId) {
 		String status;
-		String studentId;
-		Student student;
+		Student student = Storage.getStudent(studentId);
 
-		System.out.println("Which student would you like to check?");
-		studentId = StudentProgressSystem.scanner.next();
-
-		student = (Student) Storage.getUser(studentId);
-
-		System.out.println("results are:");
-		System.out.println("course ID \t semester \t year \t status");
+		System.out.println("course ID\t" + "semester\t" + "year\t" + "status");
 
 		// iterate over the courses Arraylist and print the ID and status of the student
-		for (int i = 0; i < student.getCourses().size(); i++) {
-			// if the student has failed the course then print "failed" otherwise "pass"
-			if (student.getCourses().get(i).isFailed()) {
-				status = "failed";
-			} else {
-				status = "pass";
-			}
-			System.out.println(student.getCourses().get(i).getCourse().getCourseId() + "\t\t"
-					+ student.getCourses().get(i).getSemester() + "\t" + student.getCourses().get(i).getYear() + "\t"
-					+ status);
+		for (CourseEnrolment course : student.getCourses()) {
+			status = course.isFailed() ? "failed" : "pass";
+			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
 		}
 	}
 

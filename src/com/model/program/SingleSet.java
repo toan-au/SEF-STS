@@ -1,8 +1,10 @@
 package com.model.program;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SingleSet {
+@SuppressWarnings("serial")
+public class SingleSet implements Serializable{
 	ArrayList<String> courses;
 	String setName;
 

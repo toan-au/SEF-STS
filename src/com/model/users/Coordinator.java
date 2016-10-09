@@ -8,6 +8,7 @@ import java.util.Scanner;
 import com.model.Course;
 import com.model.program.Program;
 
+@SuppressWarnings("serial")
 public class Coordinator extends AdvancedUser {
 
 	Program program;

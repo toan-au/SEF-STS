@@ -2,6 +2,7 @@ package com.model;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Course implements Serializable {
 	private String courseId, courseName;
 	private int credits;

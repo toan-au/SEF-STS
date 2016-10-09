@@ -8,15 +8,17 @@ import com.model.Course;
 import com.model.Storage;
 import com.model.program.Program;
 import com.model.program.SpecializationMode;
-import com.view.StudentProgressSystem;
+import com.Global;
 
+@SuppressWarnings("serial")
 public abstract class AdvancedUser extends User {
 
 	public AdvancedUser(String id, String name, String password) {
 		super(id, name, password);
+		Storage.users.add(this);
 	}
 
-	public void editProgram() {
+	public static void editProgram() {
 		boolean loop = true;
 		String idInput;
 		int selection;
@@ -24,7 +26,7 @@ public abstract class AdvancedUser extends User {
 
 		while (loop) {
 			System.out.println("Enter the ID of the program you would like to edit: ");
-			idInput = StudentProgressSystem.scanner.next();
+			idInput = Global.scanner.next();
 
 			temp = Storage.getProgram(idInput);
 
@@ -42,7 +44,7 @@ public abstract class AdvancedUser extends User {
 				System.out.println("4 - back");
 
 				// get user input
-				selection = StudentProgressSystem.scanner.nextInt();
+				selection = Global.scanner.nextInt();
 
 				// run a method based on user's selection
 				switch (selection) {
@@ -71,7 +73,7 @@ public abstract class AdvancedUser extends User {
 
 		// prompt user for the credit points required
 		System.out.println("How many credit points would you like " + program.getProgramCode() + " to require? ");
-		creditPoints = StudentProgressSystem.scanner.nextInt();
+		creditPoints = Global.scanner.nextInt();
 
 		// set the credit points
 		program.setRequiredCredits(creditPoints);
@@ -88,35 +90,35 @@ public abstract class AdvancedUser extends User {
 
 	}
 
-	public void setSpecializationCourses(Program program) {
+	public static void setSpecializationCourses(Program program) {
 
 	}
 
 	public static void createStudentAccount() {
 		System.out.println("Enter the student's ID");
-		String inputId = StudentProgressSystem.scanner.next();
+		String inputId = Global.scanner.next();
 
 		System.out.println("Enter the student's password");
-		String inputPassword = StudentProgressSystem.scanner.next();
+		String inputPassword = Global.scanner.next();
 
 		System.out.println("Enter the student's Name");
-		String inputName = StudentProgressSystem.scanner.next();
+		String inputName = Global.scanner.next();
 
 		createStudentAccount(inputId, inputPassword, inputName);
 	}
 
 	protected static void createStudentAccount(String userId, String password, String fullName) {
 		System.out.println("Please enter the student's birthdate (day only)");
-		StudentProgressSystem.scanner.useDelimiter("/");
-		int day = StudentProgressSystem.scanner.nextInt();
+		Global.scanner.useDelimiter("/");
+		int day = Global.scanner.nextInt();
 		System.out.println("Please enter the student's birth month");
-		int month = StudentProgressSystem.scanner.nextInt();
+		int month = Global.scanner.nextInt();
 		System.out.println("Please enter the student's birth year");
-		int year = StudentProgressSystem.scanner.nextInt();
-		StudentProgressSystem.scanner.reset();
+		int year = Global.scanner.nextInt();
+		Global.scanner.reset();
 
 		System.out.println("Please enter the student's email.");
-		String email = StudentProgressSystem.scanner.next();
+		String email = Global.scanner.next();
 
 		@SuppressWarnings("unused")
 		Student student = new Student(userId, fullName, password, new GregorianCalendar(year, month, day), email);

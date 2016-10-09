@@ -9,6 +9,7 @@ import com.model.CourseEnrolment;
 import com.model.Storage;
 import com.model.program.Program;
 
+@SuppressWarnings("serial")
 public class Student extends User {
 
 	private GregorianCalendar dateOfBirth;
@@ -21,6 +22,8 @@ public class Student extends User {
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		courses = new ArrayList<>();
+		Storage.students.add(this);
+
 	}
 
 	public String getGivenNames() {
@@ -65,24 +68,6 @@ public class Student extends User {
 
 	public void enrolProgram(String programCode) {
 		this.setProgram(Storage.getProgram(programCode));
-	}
-
-	public static void checkStudentResults(Student student) {
-		String status;
-		System.out.println("Your results are:");
-		System.out.println("course ID \t semester \t year \t status");
-
-		// iterate over the courses Arraylist and print the ID and status of the student
-		for (int i = 0; i < student.courses.size(); i++) {
-			// if the student has failed the course then print "failed" otherwise "pass"
-			if (student.courses.get(i).isFailed()) {
-				status = "failed";
-			} else {
-				status = "pass";
-			}
-			System.out.println(student.courses.get(i).getCourse().getCourseId() + "\t\t" + student.courses.get(i).getSemester() + "\t"
-					+ student.courses.get(i).getYear() + "\t" + status);
-		}
 	}
 
 	@Override

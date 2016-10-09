@@ -7,6 +7,7 @@ import com.model.program.Program;
 import com.model.program.ProgramType;
 import com.model.program.SpecializationMode;
 
+@SuppressWarnings("serial")
 public class SysAdmin extends AdvancedUser {
 
 	public SysAdmin(String id, String name, String password) {

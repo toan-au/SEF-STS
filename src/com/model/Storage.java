@@ -1,10 +1,13 @@
 package com.model;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -15,8 +18,10 @@ import com.model.users.Student;
 import com.model.users.SysAdmin;
 import com.model.users.User;
 
+//FINISHED
 public class Storage {
 	public static ArrayList<User> users = new ArrayList<>();
+	public static ArrayList<Student> students = new ArrayList<>();
 	public static ArrayList<Course> courses = new ArrayList<>();
 	public static ArrayList<Program> programs = new ArrayList<>();
 	public static ArrayList<CourseEnrolment> courseEnrolments = new ArrayList<>();
@@ -49,19 +54,25 @@ public class Storage {
 		tempProgram = new Program("BP229", "SEF", 3, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
 		tempProgram = new Program("BP254", "Computer Studies", 4, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
 
-		Student toan = (Student) Storage.getUser("s1111111");
-
-		// enrol students in courses
-		toan.enrolCourse("COSC2102B", 2, 2016);
-		toan.enrolCourse("AERO2394", 2, 2016);
-		toan.enrolCourse("GRAP2324", 2, 2016);
-		toan.enrolCourse("HUSO2177", 2, 2016);
+		User toan = Storage.getStudent("s1111111");
+		((Student) toan).enrolCourse("COSC2102B", 2, 2016);
+		((Student) toan).enrolCourse("AERO2394", 2, 2016);
+		((Student) toan).enrolCourse("GRAP2324", 2, 2016);
+		((Student) toan).enrolCourse("HUSO2177", 2, 2016);
 	}
 
 	public static User getUser(String id) {
 		for (User user : users) {
 			if (user.getId().equals(id))
 				return user;
+		}
+		return null;
+	}
+
+	public static Student getStudent(String id) {
+		for (Student student : students) {
+			if (student.getId().equals(id))
+				return student;
 		}
 		return null;
 	}
@@ -88,13 +99,20 @@ public class Storage {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ISL_filepath.dat"));
 			users = (ArrayList<User>) ois.readObject();
 			System.out.println("Users loaded");
+			students = (ArrayList<Student>) ois.readObject();
+			System.out.println("Students loaded");
 			courses = (ArrayList<Course>) ois.readObject();
 			System.out.println("Courses loaded");
 			programs = (ArrayList<Program>) ois.readObject();
 			System.out.println("Programs loaded");
+			courseEnrolments = (ArrayList<CourseEnrolment>) ois.readObject();
+			System.out.println("Enrolments loaded");
 			ois.close();
+		} catch (@SuppressWarnings("unused") FileNotFoundException e) {
+			System.out.println("No saved data was found. Proceeding to enter dummy data.\n");
+			init();
 		} catch (IOException | ClassNotFoundException e) {
-			System.out.println("Could not fetch saved data.");
+			System.out.println("Could not fetch saved data.\n");
 			e.printStackTrace();
 		}
 	}
@@ -105,13 +123,22 @@ public class Storage {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ISL_filepath.dat"));
 			oos.writeObject(users);
 			System.out.println("Users saved");
+			oos.writeObject(students);
+			System.out.println("Students saved");
 			oos.writeObject(courses);
 			System.out.println("Courses saved");
 			oos.writeObject(programs);
 			System.out.println("Programs saved");
+			oos.writeObject(courseEnrolments);
+			System.out.println("Enrolments saved");
 			oos.close();
 		} catch (IOException e) {
-			System.out.println("Could not save data	.");
+			System.out.println("Could not save data.");
+			try {
+				Files.deleteIfExists(new File("ISL_filepath.dat").toPath());
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		}
 	}
@@ -119,19 +146,27 @@ public class Storage {
 	public static String print() {
 		StringBuilder allEntries = new StringBuilder();
 		allEntries.append("Users:\n" + printUsers() + "\n");
+		allEntries.append("Students:\n" + printStudents() + "\n");
 		allEntries.append("Courses:\n" + printCourses() + "\n");
 		allEntries.append("Programs:\n" + printPrograms() + "\n");
+		allEntries.append("Enrolments:\n" + printEnrolments() + "\n");
 		return allEntries.toString();
-
 	}
 
-	// List all data
 	public static String printUsers() {
 		StringBuilder userString = new StringBuilder();
 		for (User user : users)
 			userString.append(user + "\n");
 
 		return userString.toString();
+	}
+
+	public static String printStudents() {
+		StringBuilder studentString = new StringBuilder();
+		for (Student student : students)
+			studentString.append(student + "\n");
+
+		return studentString.toString();
 	}
 
 	public static String printCourses() {
@@ -148,6 +183,14 @@ public class Storage {
 			programString.append(program + "\n");
 
 		return programString.toString();
+	}
+
+	private static String printEnrolments() {
+		StringBuilder enrolmentString = new StringBuilder();
+		for (CourseEnrolment enrolment : courseEnrolments)
+			enrolmentString.append(enrolment + "\n");
+
+		return enrolmentString.toString();
 	}
 
 }

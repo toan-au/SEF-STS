@@ -1,9 +1,11 @@
 package com.model;
 
+import java.io.Serializable;
+
 import com.model.users.Student;
 
-public class CourseEnrolment {
-
+@SuppressWarnings("serial")
+public class CourseEnrolment implements Serializable {
 	private Student student;
 	private Course course;
 	private int year;
@@ -31,16 +33,8 @@ public class CourseEnrolment {
 		return student;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
 	public Course getCourse() {
 		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
 	}
 
 	public int getYear() {

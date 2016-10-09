@@ -7,6 +7,7 @@ import java.util.Scanner;
 import com.model.Course;
 import com.model.Storage;
 
+@SuppressWarnings("serial")
 public class Program implements Serializable {
 	private String code;
 	private String name;
@@ -17,7 +18,6 @@ public class Program implements Serializable {
 	private ArrayList<Course> coreCourses;
 	private SpecializationMode mode;
 	private SpecializationSets specializations;
-	Scanner input = new Scanner(System.in);
 
 	public Program(String code, String name, int versionNumber, int requiredCredits, boolean isActive, ProgramType type, SpecializationMode mode) {
 		this.code = code;

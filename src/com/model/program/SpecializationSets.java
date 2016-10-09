@@ -1,8 +1,10 @@
 package com.model.program;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SpecializationSets {
+@SuppressWarnings("serial")
+public class SpecializationSets implements Serializable{
 
 	ArrayList<SingleSet> specializationSets;
 	SingleSet currentSet;
