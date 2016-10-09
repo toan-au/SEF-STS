@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.model.Storage;
 import com.model.program.Program;
 import com.model.program.ProgramType;
-import com.view.StudentProgressSystem;
+import com.model.program.SpecializationMode;
 
 public class SysAdmin extends AdvancedUser {
 
@@ -39,28 +39,32 @@ public class SysAdmin extends AdvancedUser {
 			return;
 		}
 		if (!userId.startsWith("s"))
-			System.out.println("You have just created an account with the user name " + userId + "and password "
-					+ password + ".\n" + "This account is now ready to be used..");
+			System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
+					+ "This account is now ready to be used..");
 		scanner.close();
 	}
 
 	public static void setUpNewProgram() {
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the Program's Code");
-		String inputProgramCode = StudentProgressSystem.scanner.next();
+		String inputProgramCode = scanner.next();
+
+		System.out.println("Enter the Program's Name");
+		String inputProgramName = scanner.next();
 
 		System.out.println("Enter the Version Number");
-		int inputVersionNumber = StudentProgressSystem.scanner.nextInt();
+		int inputVersionNumber = scanner.nextInt();
 
 		System.out.println("Enter the Program's Credit");
-		int inputRequiredCredits = StudentProgressSystem.scanner.nextInt();
+		int inputRequiredCredits = scanner.nextInt();
 
 		System.out.println("Is the program active? true/false");
-		boolean inputIsActive = StudentProgressSystem.scanner.nextBoolean();
+		boolean inputIsActive = scanner.nextBoolean();
 
 		ProgramType inputProgramType = null;
 		while (inputProgramType == null) {
 			System.out.println("Enter the Program's type");
-			String tempProgramType = StudentProgressSystem.scanner.next().toUpperCase();
+			String tempProgramType = scanner.next().toUpperCase();
 
 			if (tempProgramType.equals("BACHELOR"))
 				inputProgramType = ProgramType.BACHELOR;
@@ -73,6 +77,19 @@ public class SysAdmin extends AdvancedUser {
 			else
 				System.out.println("This type is not exist!!");
 		}
+
+		SpecializationMode inputSpecializationMode = null;
+		while (inputSpecializationMode == null) {
+			System.out.println("Enter the Specialization Mode");
+			String input = scanner.next().toUpperCase();
+			if (input.equals("COURSEPOOL"))
+				inputSpecializationMode = SpecializationMode.COURSEPOOL;
+			else if (input.equals("FIXEDSET"))
+				inputSpecializationMode = SpecializationMode.FIXEDSET;
+			else
+				System.out.println("This type is not exist!!");
+		}
+
 		// System.out.println("Enter the Core Course");
 		// tempProgramType = input.next();
 		// if (tempProgramType.equals("CoreCourse1")){
@@ -84,28 +101,11 @@ public class SysAdmin extends AdvancedUser {
 		// }else{
 		// System.out.println("This course is not exist!!");
 		// }
-		//
-		// System.out.println("Enter the Specialization Mode");
-		// tempSpMode = input.next();
-		// //change input to upper case
-		// tempSpMode = tempSpMode.toUpperCase();
-		//
-		// if (tempSpMode.equals("FIXEDSET")){
-		// inputSpecializationMode = SpecializationMode.FIXEDSET;
-		// }else if (tempSpMode.equals("COURSEPOOL")){
-		// inputSpecializationMode = SpecializationMode.COURSEPOOL;
-		// }else{
-		// System.out.println("This Mode is not exist!!");
-		// }
-		//
-		// System.out.println("Enter the Specialization");
-		// inputSpecializations = input.next();
 
-		Program newProgram = new Program(inputProgramCode, inputVersionNumber, inputRequiredCredits, inputIsActive,
-				inputProgramType);
-
-		// Store the new course to the array.
-		Storage.programs.add(newProgram);
+		scanner.close();
+		
+		Program newProgram = new Program(inputProgramCode, inputProgramName, inputVersionNumber, inputRequiredCredits, inputIsActive,
+				inputProgramType, inputSpecializationMode);
 
 		// inform user that the program has been created
 		System.out.println("Program " + newProgram.getProgramCode() + " has been created and added to the database");

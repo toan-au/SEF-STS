@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 
 import com.model.program.Program;
 import com.model.program.ProgramType;
+import com.model.program.SpecializationMode;
 import com.model.users.Student;
 import com.model.users.SysAdmin;
 import com.model.users.User;
@@ -43,10 +44,10 @@ public class Storage {
 		tempCourse = new Course("HUSO2177", "Practicing Development", 4);
 		tempCourse = new Course("BUIL1161", "International Development", 4);
 
-		Program tempProgram = new Program("BP094", 1, 48, true, ProgramType.BACHELOR);
-		tempProgram = new Program("BP129", 2, 48, true, ProgramType.BACHELOR);
-		tempProgram = new Program("BP229", 3, 48, true, ProgramType.BACHELOR);
-		tempProgram = new Program("BP254", 4, 48, true, ProgramType.BACHELOR);
+		Program tempProgram = new Program("BP094", "IT", 1, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
+		tempProgram = new Program("BP129", "CompSci", 2, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
+		tempProgram = new Program("BP229", "SEF", 3, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
+		tempProgram = new Program("BP254", "Computer Studies", 4, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
 
 		Student toan = (Student) Storage.getUser("s1111111");
 
@@ -81,7 +82,7 @@ public class Storage {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "resource" })
 	public static void fetchStoredData() {
 		try {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ISL_filepath.dat"));
@@ -98,6 +99,7 @@ public class Storage {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public static void saveStoredData() {
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ISL_filepath.dat"));

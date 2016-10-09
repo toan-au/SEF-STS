@@ -2,41 +2,44 @@ package com.model.program;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 import com.model.Course;
 import com.model.Storage;
 
 public class Program implements Serializable {
-	private String programCode;
+	private String code;
+	private String name;
 	private int versionNumber;
 	private int requiredCredits;
 	private boolean isActive;
-	private ProgramType programType;
+	private ProgramType type;
 	private ArrayList<Course> coreCourses;
-	private SpecializationMode specializationMode;
-	private Specializations specializations;
+	private SpecializationMode mode;
+	private SpecializationSets specializations;
 	Scanner input = new Scanner(System.in);
 
-	public Program(String programCode, int versionNumber, int requiredCredits, boolean isActive, ProgramType programType) {
-		this.programCode = programCode;
+	public Program(String code, String name, int versionNumber, int requiredCredits, boolean isActive, ProgramType type, SpecializationMode mode) {
+		this.code = code;
+		this.name = name;
 		this.versionNumber = versionNumber;
 		this.requiredCredits = requiredCredits;
 		this.isActive = isActive;
-		this.programType = programType;
-		// this.coreCourses = coreCourses;
-		this.specializationMode = specializationMode;
-		if (specializationMode == SpecializationMode.COURSEPOOL)
-			specializations = new CoursePool();
-		else
-			specializations = new FixedSet();
-		
+		this.type = type;
+		this.mode = mode;
+		specializations = new SpecializationSets(mode);
+
 		Storage.programs.add(this);
 	}
 
+	public Program(String code, String name, int versionNumber, int requiredCredits, boolean isActive, ArrayList<Course> coreCourses, ProgramType type, SpecializationMode mode) {
+		this(code, name, versionNumber, requiredCredits, isActive, type, mode);
+		this.coreCourses = coreCourses;
+	}
+
+	
 	public String getProgramCode() {
-		return programCode;
+		return code;
 	}
 
 	public int getVersionNumber() {
@@ -52,7 +55,7 @@ public class Program implements Serializable {
 	}
 
 	public ProgramType getProgramType() {
-		return programType;
+		return type;
 	}
 
 	public ArrayList<Course> getCoreCourses() {
@@ -60,7 +63,7 @@ public class Program implements Serializable {
 	}
 
 	public SpecializationMode getSpecializationMode() {
-		return specializationMode;
+		return mode;
 	}
 
 	// TODO: IMPLEMENT THIS METHOD
@@ -68,7 +71,7 @@ public class Program implements Serializable {
 	}
 
 	public void setProgramCode(String programCode) {
-		this.programCode = programCode;
+		this.code = programCode;
 	}
 
 	public void setVersionNumber(int versionNumber) {
@@ -84,7 +87,7 @@ public class Program implements Serializable {
 	}
 
 	public void setProgramType(ProgramType programType) {
-		this.programType = programType;
+		this.type = programType;
 	}
 
 	public void setCoreCourses(ArrayList<Course> coreCourses) {
@@ -92,7 +95,7 @@ public class Program implements Serializable {
 	}
 
 	public void setSpecializationMode(SpecializationMode specializationMode) {
-		this.specializationMode = specializationMode;
+		this.mode = specializationMode;
 	}
 
 	// TODO IMPLEMENT THIS FUCNTION
@@ -110,7 +113,7 @@ public class Program implements Serializable {
 
 	@Override
 	public String toString() {
-		return programCode + " " + requiredCredits + " " + specializationMode;
+		return code + " " + name + " " + requiredCredits + " " + mode;
 	}
 
 }
