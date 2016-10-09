@@ -1,7 +1,6 @@
 package com.model.users;
 
-import java.util.Scanner;
-
+import com.Global;
 import com.model.Storage;
 import com.model.program.Program;
 import com.model.program.ProgramType;
@@ -15,13 +14,12 @@ public class SysAdmin extends AdvancedUser {
 	}
 
 	public static void createAccount() {
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Create a new User Account:\n" + "Please add an Id:");
-		String userId = scanner.next();
+		String userId = Global.scanner.next();
 		System.out.println("Please add a password:");
-		String password = scanner.next();
+		String password = Global.scanner.next();
 		System.out.println("Please add the user's name:");
-		String fullName = scanner.nextLine();
+		String fullName = Global.scanner.nextLine();
 
 		if (userId.startsWith("a")) {
 			Storage.users.add(new SysAdmin(userId, fullName, password));
@@ -36,36 +34,33 @@ public class SysAdmin extends AdvancedUser {
 			createStudentAccount(userId, password, fullName);
 		} else {
 			System.out.println("The account name you have entered is not valid");
-			scanner.close();
 			return;
 		}
 		if (!userId.startsWith("s"))
 			System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
 					+ "This account is now ready to be used..");
-		scanner.close();
 	}
 
 	public static void setUpNewProgram() {
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the Program's Code");
-		String inputProgramCode = scanner.next();
+		String inputProgramCode = Global.scanner.next();
 
 		System.out.println("Enter the Program's Name");
-		String inputProgramName = scanner.next();
+		String inputProgramName = Global.scanner.next();
 
 		System.out.println("Enter the Version Number");
-		int inputVersionNumber = scanner.nextInt();
+		int inputVersionNumber = Global.scanner.nextInt();
 
 		System.out.println("Enter the Program's Credit");
-		int inputRequiredCredits = scanner.nextInt();
+		int inputRequiredCredits = Global.scanner.nextInt();
 
 		System.out.println("Is the program active? true/false");
-		boolean inputIsActive = scanner.nextBoolean();
+		boolean inputIsActive = Global.scanner.nextBoolean();
 
 		ProgramType inputProgramType = null;
 		while (inputProgramType == null) {
 			System.out.println("Enter the Program's type");
-			String tempProgramType = scanner.next().toUpperCase();
+			String tempProgramType = Global.scanner.next().toUpperCase();
 
 			if (tempProgramType.equals("BACHELOR"))
 				inputProgramType = ProgramType.BACHELOR;
@@ -82,7 +77,7 @@ public class SysAdmin extends AdvancedUser {
 		SpecializationMode inputSpecializationMode = null;
 		while (inputSpecializationMode == null) {
 			System.out.println("Enter the Specialization Mode");
-			String input = scanner.next().toUpperCase();
+			String input = Global.scanner.next().toUpperCase();
 			if (input.equals("COURSEPOOL"))
 				inputSpecializationMode = SpecializationMode.COURSEPOOL;
 			else if (input.equals("FIXEDSET"))
@@ -103,8 +98,7 @@ public class SysAdmin extends AdvancedUser {
 		// System.out.println("This course is not exist!!");
 		// }
 
-		scanner.close();
-		
+	
 		Program newProgram = new Program(inputProgramCode, inputProgramName, inputVersionNumber, inputRequiredCredits, inputIsActive,
 				inputProgramType, inputSpecializationMode);
 

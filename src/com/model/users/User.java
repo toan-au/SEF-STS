@@ -56,7 +56,7 @@ public abstract class User implements Serializable {
 		}
 	}
 
-	public boolean meetsCourseCompletion(Student student, Course course) {
+	public static boolean meetsCourseCompletion(Student student, Course course) {
 		return false;
 	}
 

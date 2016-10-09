@@ -76,9 +76,6 @@ public class Student extends User {
 
 	}
 
-	/**
-	 * @return
-	 */
 	public int getCredits() {
 		// TODO Auto-generated method stub
 		return 0;

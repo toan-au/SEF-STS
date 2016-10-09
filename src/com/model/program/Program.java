@@ -2,8 +2,6 @@ package com.model.program;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import com.model.Course;
 import com.model.Storage;
 
