@@ -13,8 +13,7 @@ public class StudentProgressSystem {
 			String input = Global.scanner.next();
 
 			if (input.equals("q")) {
-				System.exit(0);
-				break;
+				return;
 			} else if (input.equals("c")) {
 				String tempUser = logIn();
 				if (tempUser == null)
@@ -55,7 +54,7 @@ public class StudentProgressSystem {
 				if (user != null)
 					loadedPassword = user.getPassword();
 			}
-			
+
 			if (loadedPassword == null) {
 				System.out.println("The ID you entered does not exist. Please try again");
 				continue;

@@ -104,12 +104,11 @@ public abstract class AdvancedUser extends User {
 		System.out.println("Enter the student's Name");
 		String inputName = Global.scanner.next();
 
-		createStudentAccount(inputId, inputPassword, inputName);
+		createStudentAccount(inputId, inputName, inputPassword);
 	}
 
-	protected static void createStudentAccount(String userId, String password, String fullName) {
+	protected static void createStudentAccount(String userId, String fullName, String password) {
 		System.out.println("Please enter the student's birthdate (day only)");
-		Global.scanner.useDelimiter("/");
 		int day = Global.scanner.nextInt();
 		System.out.println("Please enter the student's birth month");
 		int month = Global.scanner.nextInt();
@@ -123,7 +122,7 @@ public abstract class AdvancedUser extends User {
 		@SuppressWarnings("unused")
 		Student student = new Student(userId, fullName, password, new GregorianCalendar(year, month, day), email);
 
-		System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
+		System.out.println("You have just created an account with the user name " + userId + " and password " + password + ".\n"
 				+ "This account is now ready to be used.");
 	}
 

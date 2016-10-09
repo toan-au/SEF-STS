@@ -114,7 +114,7 @@ public class Menu {
 			int choice = Integer.parseInt(Global.scanner.next());
 			switch (choice) {
 			case 1:
-				// currentUser.setUpRoles();
+				SysAdmin.createAccount();
 				break;
 			case 2:
 				SysAdmin.setUpNewProgram();

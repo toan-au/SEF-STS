@@ -8,6 +8,7 @@ public class DatabaseCalls {
 
 	private final static String tableName = "JDBC_TEST";
 
+	@SuppressWarnings("resource")
 	public static void initDatabase() {
 		// Connect to MySQL
 		Connection conn = null;
@@ -37,6 +38,7 @@ public class DatabaseCalls {
 		System.out.println("Dropped the table");
 	}
 
+	@SuppressWarnings("resource")
 	public static boolean executeUpdate(Connection conn, String command) throws SQLException {
 		Statement stmt = null;
 		try {

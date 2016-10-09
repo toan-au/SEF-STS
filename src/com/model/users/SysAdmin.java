@@ -19,6 +19,7 @@ public class SysAdmin extends AdvancedUser {
 		System.out.println("Please add a password:");
 		String password = Global.scanner.next();
 		System.out.println("Please add the user's name:");
+		Global.scanner.nextLine();
 		String fullName = Global.scanner.nextLine();
 
 		if (userId.startsWith("a")) {
@@ -31,7 +32,7 @@ public class SysAdmin extends AdvancedUser {
 			Storage.users.add(new FacAdmin(userId, fullName, password));
 
 		} else if (userId.startsWith("s")) {
-			createStudentAccount(userId, password, fullName);
+			createStudentAccount(userId, fullName, password);
 		} else {
 			System.out.println("The account name you have entered is not valid");
 			return;
