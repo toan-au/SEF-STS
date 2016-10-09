@@ -60,5 +60,11 @@ public class CourseEnrolment implements Serializable {
 	public void setFailed(boolean failed) {
 		this.failed = failed;
 	}
+	
+	@Override
+	public String toString(){
+		return student.getId() + " " + course.getCourseId() + " " + year + " " + semester + " " + failed;
+		
+	}
 
 }
