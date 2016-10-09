@@ -1,7 +1,9 @@
-package com.model;
+package com.model.program;
 
 import java.util.ArrayList;
 import java.util.Map;
+
+import com.model.CourseDoesNotExistException;
 
 public interface Specializations {
 

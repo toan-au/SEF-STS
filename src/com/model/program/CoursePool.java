@@ -1,6 +1,9 @@
-package com.model;
+package com.model.program;
 
 import java.util.ArrayList;
+
+import com.model.CourseDoesNotExistException;
+import com.model.Storage;
 
 public class CoursePool implements Specializations {
 

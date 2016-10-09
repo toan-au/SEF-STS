@@ -2,9 +2,9 @@ package com.model.users;
 
 import java.util.Scanner;
 
-import com.model.Program;
-import com.model.ProgramType;
 import com.model.Storage;
+import com.model.program.Program;
+import com.model.program.ProgramType;
 import com.view.StudentProgressSystem;
 
 public class SysAdmin extends AdvancedUser {

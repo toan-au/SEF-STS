@@ -5,9 +5,9 @@ import java.util.GregorianCalendar;
 import java.util.Map;
 
 import com.model.Course;
-import com.model.Program;
-import com.model.SpecializationMode;
 import com.model.Storage;
+import com.model.program.Program;
+import com.model.program.SpecializationMode;
 import com.view.StudentProgressSystem;
 
 public abstract class AdvancedUser extends User {

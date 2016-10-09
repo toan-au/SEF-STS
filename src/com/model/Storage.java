@@ -8,6 +8,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+import com.model.program.Program;
+import com.model.program.ProgramType;
 import com.model.users.Student;
 import com.model.users.SysAdmin;
 import com.model.users.User;

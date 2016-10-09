@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.model.Course;
-import com.model.Program;
+import com.model.program.Program;
 
 public class Coordinator extends AdvancedUser {
 

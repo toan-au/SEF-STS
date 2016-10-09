@@ -6,8 +6,8 @@ import java.util.GregorianCalendar;
 
 import com.model.Course;
 import com.model.CourseEnrolment;
-import com.model.Program;
 import com.model.Storage;
+import com.model.program.Program;
 
 public class Student extends User {
 

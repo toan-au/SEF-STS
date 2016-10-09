@@ -1,9 +1,12 @@
-package com.model;
+package com.model.program;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+
+import com.model.Course;
+import com.model.Storage;
 
 public class Program implements Serializable {
 	private String programCode;
@@ -61,11 +64,7 @@ public class Program implements Serializable {
 	}
 
 	// TODO: IMPLEMENT THIS METHOD
-	public Collections getSpecializations() {
-		if(specializationMode == SpecializationMode.COURSEPOOL){
-			return specializations.getCourses();
-		}
-		else
+	public void getSpecializations() {
 	}
 
 	public void setProgramCode(String programCode) {

@@ -1,6 +1,8 @@
-package com.model;
+package com.model.program;
 
 import java.util.ArrayList;
+
+import com.model.CourseDoesNotExistException;
 
 public class FixedSet implements Specializations {
 
