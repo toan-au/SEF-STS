@@ -173,8 +173,8 @@ public abstract class AdvancedUser extends User {
 				resultYear = Integer.parseInt(birthdayString[2]);
 				
 				//create new student
-				@SuppressWarnings("unused")
 				Student student = new Student(userId, fullName, password, new GregorianCalendar(resultYear, resultMonth, resultDay), email);
+				Storage.students.add(student);
 			}
 			
 		} catch (FileNotFoundException e) {
