@@ -132,7 +132,7 @@ public abstract class AdvancedUser extends User {
 				+ "This account is now ready to be used.");
 	}
 
-	public void createStudentAccounts() {
+	public static void createStudentAccounts() {
 		String fileName, userId, fullName, password, email, birthday;
 		String line;
 		File file;
