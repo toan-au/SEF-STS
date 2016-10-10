@@ -1,5 +1,11 @@
 package com.model.users;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Map;
@@ -126,8 +132,56 @@ public abstract class AdvancedUser extends User {
 				+ "This account is now ready to be used.");
 	}
 
-	public void createStudentAccount(ArrayList<Student> student) {
+	public void createStudentAccounts() {
+		String fileName, userId, fullName, password, email, birthday;
+		String line;
+		File file;
+		FileInputStream fis;
+		InputStreamReader isr;
+		BufferedReader reader;
+		int resultDay, resultMonth, resultYear;
+		resultDay = 0;
+		resultMonth = 0;
+		resultYear = 0;
+		
+		System.out.println("What is the name of your file?");
+		
 
+		fileName = Global.scanner.next();
+		file = new File(fileName);
+
+		try {
+			fis = new FileInputStream(fileName);
+			isr = new InputStreamReader(fis);
+			reader = new BufferedReader(isr);
+			//use while loop to read the line
+			while((line = reader.readLine()) != null) {
+				//use ":" to split the file
+				String [] resultMember = line.split(":");
+				//set different variables, and give them value
+				userId = resultMember[0];
+				fullName = resultMember[1];
+				password = resultMember[2];
+				birthday = resultMember[3];
+				email = resultMember[4];
+				
+				//use "/" to split birthday
+				String [] birthdayString = birthday.split("/");
+				//change the type from string to int.
+				resultDay = Integer.parseInt(birthdayString[0]);
+				resultMonth = Integer.parseInt(birthdayString[1]);
+				resultYear = Integer.parseInt(birthdayString[2]);
+				
+				//create new student
+				@SuppressWarnings("unused")
+				Student student = new Student(userId, fullName, password, new GregorianCalendar(resultYear, resultMonth, resultDay), email);
+			}
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found please try again. or enter 'q' to quit");
+		} catch (IOException e) {
+			System.out.println("error reading the file");
+		}
 	}
 
 	public void uploadEnrolment(Student student, Map<Course, Double> enrolments) {
