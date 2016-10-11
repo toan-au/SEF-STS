@@ -230,6 +230,119 @@ public abstract class AdvancedUser extends User {
 	}
 
 	public static void uploadEnrolments() {
+		String fileName, studentID, courseID;
+		String line;
+		Student resultStudent;
+		Course resultCourse;
+		File file;
+		FileInputStream fis;
+		InputStreamReader isr;
+		BufferedReader reader;
+		int year, semester, i, j;
+		int studentCount = 0;
+		year = 2016;
+		semester = 1;
+		i = 0;
+		j = 0;
 		
+		System.out.println("What is the name of your file?");
+		
+
+		fileName = Global.scanner.next();
+		file = new File(fileName);
+
+		try {
+			fis = new FileInputStream(fileName);
+			isr = new InputStreamReader(fis);
+			reader = new BufferedReader(isr);
+			//use while loop to read the line
+			while((line = reader.readLine()) != null) {
+				studentCount++;
+				//use ":" to split the file
+				String [] resultMember = line.split(":");
+				if(resultMember.length >= 24){
+					j = 6;
+					while(j > 0){
+					//set different variables, and give them value
+					studentID = resultMember[0];
+					resultStudent = Storage.getStudent(studentID);
+					for (i = 1; i < 5; i++){
+						courseID = resultMember[i];
+						resultCourse = Storage.getCourse(courseID);
+						//create new student
+						@SuppressWarnings("unused")
+						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						
+					}
+					year++;
+					semester++;
+					j--;
+					}
+				}else if(resultMember.length >= 16){
+					j = 4;
+					while(j > 0){
+					//set different variables, and give them value
+					studentID = resultMember[0];
+					resultStudent = Storage.getStudent(studentID);
+					for (i = 1; i < 5; i++){
+						courseID = resultMember[i];
+						resultCourse = Storage.getCourse(courseID);
+						//create new student
+						@SuppressWarnings("unused")
+						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						
+					}
+						year++;
+						semester++;
+						j--;
+					}
+				}else if(resultMember.length >= 8){
+					j = 2;
+					while(j > 0){
+					//set different variables, and give them value
+					studentID = resultMember[0];
+					resultStudent = Storage.getStudent(studentID);
+					for (i = 1; i < 5; i++){
+						courseID = resultMember[i];
+						resultCourse = Storage.getCourse(courseID);
+						//create new student
+						@SuppressWarnings("unused")
+						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						
+					}
+						year++;
+						semester++;
+						j--;
+					}
+				}else{
+					j = 1;
+					while(j > 0){
+					//set different variables, and give them value
+					studentID = resultMember[0];
+					resultStudent = Storage.getStudent(studentID);
+					for (i = 1; i < 5; i++){
+						courseID = resultMember[i];
+						resultCourse = Storage.getCourse(courseID);
+						//create new student
+						@SuppressWarnings("unused")
+						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						
+					}
+						year++;
+						semester++;
+						j--;
+					}
+				}
+				
+				
+	
+				System.out.println(studentCount + " student accounts have been created");
+			}
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found please try again. or enter 'q' to quit");
+		} catch (IOException e) {
+			System.out.println("error reading the file");
+		}
 	}
 }
