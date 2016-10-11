@@ -112,9 +112,10 @@ public class Menu {
 			System.out.println("2 - Set up new program");
 			System.out.println("3 - Create student account");
 			System.out.println("4 - Upload student accounts");
-			System.out.println("5 - Upload Enrolments");
-			System.out.println("6 - Edit a Program");
-			System.out.println("7 - log out");
+			System.out.println("5 - Upload Enrolment");
+			System.out.println("6 - Upload Enrolments");
+			System.out.println("7 - Edit a Program");
+			System.out.println("8 - log out");
 
 			int choice = Integer.parseInt(Global.scanner.next());
 			switch (choice) {
@@ -131,12 +132,15 @@ public class Menu {
 				AdvancedUser.createStudentAccounts();
 				break;
 			case 5:
-				// AdvancedUser.uploadEnrolments();
+				AdvancedUser.createEnrolment();
 				break;
 			case 6:
-				AdvancedUser.editProgram();
+				AdvancedUser.uploadEnrolments();
 				break;
 			case 7:
+				AdvancedUser.editProgram();
+				break;
+			case 8:
 				System.out.println("Logging out...\n");
 				return;
 			default:
