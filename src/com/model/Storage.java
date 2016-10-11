@@ -60,10 +60,8 @@ public class Storage {
 		tempProgram = new Program("BP254", "Computer Studies", 4, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
 
 		User toan = Storage.getStudent("s1111111");
-		((Student) toan).enrolCourse("COSC2102B", 2, 2016);
-		((Student) toan).enrolCourse("AERO2394", 2, 2016);
-		((Student) toan).enrolCourse("GRAP2324", 2, 2016);
-		((Student) toan).enrolCourse("HUSO2177", 2, 2016);
+		CourseEnrolment enrolment = new CourseEnrolment((Student)toan, tempCourse, 2, 2016);
+		((Student)toan).enrolCourse(enrolment);
 		
 		loadCouseFile("coursefile.txt");
 	}

@@ -19,8 +19,6 @@ public class CourseEnrolment implements Serializable {
 		this.year = year;
 		failed = false;
 		Storage.courseEnrolments.add(this);
-		
-		System.out.println(this.course.getCourseName() + " added");
 	}
 
 	// If we want to say the student has failed that course then we indicate it with a boolean in the constructor

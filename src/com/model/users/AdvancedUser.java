@@ -234,6 +234,7 @@ public abstract class AdvancedUser extends User {
 		String line;
 		Student resultStudent;
 		Course resultCourse;
+		CourseEnrolment courseEnrolment;
 		File file;
 		FileInputStream fis;
 		InputStreamReader isr;
@@ -260,7 +261,7 @@ public abstract class AdvancedUser extends User {
 				studentCount++;
 				//use ":" to split the file
 				String [] resultMember = line.split(":");
-				if(resultMember.length >= 24){
+				if(resultMember.length == 24){
 					j = 6;
 					while(j > 0){
 					//set different variables, and give them value
@@ -269,16 +270,24 @@ public abstract class AdvancedUser extends User {
 					for (i = 1; i < 5; i++){
 						courseID = resultMember[i];
 						resultCourse = Storage.getCourse(courseID);
-						//create new student
-						@SuppressWarnings("unused")
-						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
 						
+						if(courseID.length() >= 9) {
+							courseID = courseID.substring(0, courseID.length() - 1);
+							 courseEnrolment = new CourseEnrolment(studentID, courseID, semester,year, true);
+						} else {
+							//create new student
+							
+							 courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						}
+						resultStudent.enrolCourse(courseEnrolment);
+						System.out.println(courseID);
+						//System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
 					}
 					year++;
 					semester++;
 					j--;
 					}
-				}else if(resultMember.length >= 16){
+				}else if(resultMember.length == 16){
 					j = 4;
 					while(j > 0){
 					//set different variables, and give them value
@@ -287,16 +296,24 @@ public abstract class AdvancedUser extends User {
 					for (i = 1; i < 5; i++){
 						courseID = resultMember[i];
 						resultCourse = Storage.getCourse(courseID);
-						//create new student
-						@SuppressWarnings("unused")
-						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						
+						if(courseID.length() >= 9) {
+							courseID = courseID.substring(0, courseID.length() - 1);
+							 courseEnrolment = new CourseEnrolment(studentID, courseID, semester,year, true);
+						} else {
+							//create new student
+							courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						}
+						resultStudent.enrolCourse(courseEnrolment);
+						System.out.println(courseID);
+						//System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
 						
 					}
 						year++;
 						semester++;
 						j--;
 					}
-				}else if(resultMember.length >= 8){
+				}else if(resultMember.length == 8){
 					j = 2;
 					while(j > 0){
 					//set different variables, and give them value
@@ -306,9 +323,16 @@ public abstract class AdvancedUser extends User {
 						courseID = resultMember[i];
 						resultCourse = Storage.getCourse(courseID);
 						//create new student
-						@SuppressWarnings("unused")
-						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
-						
+						if(courseID.length() >= 9) {
+							courseID = courseID.substring(0, courseID.length() - 1);
+							courseEnrolment = new CourseEnrolment(studentID, courseID, semester,year, true);
+						} else {
+							//create new student
+							courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						}
+						resultStudent.enrolCourse(courseEnrolment);
+						System.out.println(courseID);
+						//System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
 					}
 						year++;
 						semester++;
@@ -323,10 +347,16 @@ public abstract class AdvancedUser extends User {
 					for (i = 1; i < 5; i++){
 						courseID = resultMember[i];
 						resultCourse = Storage.getCourse(courseID);
-						//create new student
-						@SuppressWarnings("unused")
-						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
-
+						if(courseID.length() >= 9) {
+							courseID = courseID.substring(0, courseID.length() - 1);
+							courseEnrolment = new CourseEnrolment(studentID, courseID, semester,year, true);
+						} else {
+							//create new student
+							courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
+						}
+						resultStudent.enrolCourse(courseEnrolment);
+						System.out.println(courseID);
+						//System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
 					}
 						year++;
 						semester++;
