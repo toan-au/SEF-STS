@@ -3,6 +3,7 @@ package com.view;
 import com.Global;
 import com.model.Storage;
 import com.model.users.AdvancedUser;
+import com.model.users.Coordinator;
 import com.model.users.SysAdmin;
 import com.model.users.User;
 
@@ -72,11 +73,12 @@ public class Menu {
 		System.out.println("Hello, " + Storage.getUser(userId).getName() + ". What would you like to do?");
 		while (true) {
 			System.out.println("1 - Check student results");
-			System.out.println("2 - Create a student account");
-			System.out.println("3 - upload student accounts");
-			System.out.println("4 - create enrolment");
-			System.out.println("5 - Edit Program");
-			System.out.println("6 - log out");
+			System.out.println("2 - Check program completion");
+			System.out.println("3 - Create a student account");
+			System.out.println("4 - upload student accounts");
+			System.out.println("5 - create enrolment");
+			System.out.println("6 - Edit Program");
+			System.out.println("7 - log out");
 			int choice = Integer.parseInt(Global.scanner.next());
 
 			switch (choice) {
@@ -84,18 +86,21 @@ public class Menu {
 				User.checkStudentResults();
 				break;
 			case 2:
-				AdvancedUser.createStudentAccount();
+				Coordinator.checkProgramCompletion();
 				break;
 			case 3:
-				AdvancedUser.createStudentAccounts();
+				AdvancedUser.createStudentAccount();
 				break;
 			case 4:
-				AdvancedUser.createEnrolment();
+				AdvancedUser.createStudentAccounts();
 				break;
 			case 5:
-				AdvancedUser.editProgram();
+				AdvancedUser.createEnrolment();
 				break;
 			case 6:
+				AdvancedUser.editProgram();
+				break;
+			case 7:
 				System.out.println("Logging out...\n");
 				return;
 			default:
