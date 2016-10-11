@@ -38,7 +38,7 @@ MKTG1208:Introduction to Advertising:12
 ECON1020:Prices and Markets:12
 ECON1010:Macroeconomics 1:12
 ENVI1051:Environmental Economics:12
-HUSO1081:Asian Economic Development>12
+HUSO1081:Asian Economic Development:12
 BAFI1008:Business Finance:12
 BAFI1017:International Finance:12
 BAFI1002:Financial Markets:12
@@ -81,8 +81,8 @@ COSC1252:Programming Using C++:12
 COSC1112:Operating Systems Principles:12
 COSC1224:Real-Time Rendering and 3D Games Programming:12
 INTE1070:Secure Electronic Commerce:12
-COSC2391:Software Architecture: Design and Implementation:12
-COSC2299:Software Engineering: Process and Tools:12
+COSC2391:Software Architecture Design and Implementation:12
+COSC2299:Software Engineering Process and Tools:12
 ISYS1085:Software Testing:12
 INTE1113:Web3D and Graphics Technologies:12
 ISYS1124:Web Database Applications:12

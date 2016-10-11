@@ -79,10 +79,8 @@ public class Storage {
 		int courseCount = 0;
 		resultCredit = 0;
 		
-		System.out.println("What is the name of your course file?");
-		
 
-		fileName = Global.scanner.next();
+		fileName = "coursefile.txt";
 		file = new File(fileName);
 
 		try {
@@ -103,7 +101,7 @@ public class Storage {
 				//create new student
 				@SuppressWarnings("unused")
 				Course course = new Course(courseId, courseName, resultCredit);
-				System.out.println(courseCount + " Courses have been created");
+				//System.out.println(courseCount + " Courses have been created");
 			}
 			
 		} catch (FileNotFoundException e) {
