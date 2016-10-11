@@ -188,7 +188,7 @@ public abstract class AdvancedUser extends User {
 		}
 	}
 
-	public void uploadEnrolment() {
+	public static void createEnrolment() {
 		boolean loop = true;
 		String courseId, studentId, inputSemester, inputYear;
 		int semester, year;
@@ -227,7 +227,7 @@ public abstract class AdvancedUser extends User {
 		}
 	}
 
-	public void uploadEnrolment(Map<Student, Map<Course, Double>> enrolments) {
-
+	public static void uploadEnrolments() {
+		
 	}
 }
