@@ -9,7 +9,8 @@ import com.view.StudentProgressSystem;
 public class Starter {
 
 	public static void main(String[] args) {
-		Storage.fetchStoredData();
+		//Storage.fetchStoredData();
+		Storage.init();
 		Global.scanner = new Scanner(System.in);
 		StudentProgressSystem.run();
 		Global.scanner.close();

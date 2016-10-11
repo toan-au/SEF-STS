@@ -44,6 +44,19 @@ public abstract class User implements Serializable {
 		this.password = password;
 	}
 
+	public static void checkStudentResults(String studentId) {
+		String status;
+		Student student = Storage.getStudent(studentId);
+
+		System.out.println("course ID\t" + "semester\t" + "year\t" + "status");
+
+		// iterate over the courses Arraylist and print the ID and status of the student
+		for (CourseEnrolment course : student.getCourses()) {
+			status = course.isFailed() ? "failed" : "pass";
+			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
+		}
+	}
+	
 	public static void checkStudentResults() {
 		String status;
 		String studentId;
@@ -61,6 +74,7 @@ public abstract class User implements Serializable {
 			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
 		}
 	}
+
 
 	public static boolean meetsCourseCompletion(Student student, Course course) {
 		return false;
