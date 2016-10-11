@@ -76,7 +76,7 @@ public class Storage {
 		InputStreamReader isr;
 		BufferedReader reader;
 		int resultCredit;
-		int studentCount = 0;
+		int courseCount = 0;
 		resultCredit = 0;
 		
 		System.out.println("What is the name of your course file?");
@@ -91,7 +91,7 @@ public class Storage {
 			reader = new BufferedReader(isr);
 			//use while loop to read the line
 			while((line = reader.readLine()) != null) {
-				studentCount++;
+				courseCount++;
 				//use ":" to split the file
 				String [] resultMember = line.split(":");
 				//set different variables, and give them value
@@ -103,7 +103,7 @@ public class Storage {
 				//create new student
 				@SuppressWarnings("unused")
 				Course course = new Course(courseId, courseName, resultCredit);
-				System.out.println(studentCount + " student accounts have been created");
+				System.out.println(courseCount + " Courses have been created");
 			}
 			
 		} catch (FileNotFoundException e) {
