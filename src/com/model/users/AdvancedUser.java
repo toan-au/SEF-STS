@@ -336,7 +336,7 @@ public abstract class AdvancedUser extends User {
 				
 				
 	
-				System.out.println(studentCount + " student accounts have been created");
+				System.out.println(studentCount + " student is enrolled");
 			}
 			
 		} catch (FileNotFoundException e) {
