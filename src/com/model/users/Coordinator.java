@@ -20,6 +20,10 @@ public class Coordinator extends AdvancedUser {
 	public void setCoreCourses(ArrayList<Course> course) {
 		setCoreCourses(program, course);
 	}
+	
+	public static void checkProgramRequirements() {
+		
+	}
 
 	public static ArrayList<Student> meetsProgramRequirement(String filename, boolean meetRequirements) {
 		Scanner student;

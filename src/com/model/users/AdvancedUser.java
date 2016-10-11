@@ -224,6 +224,8 @@ public abstract class AdvancedUser extends User {
 			year = Integer.parseInt(inputYear);
 			
 			new CourseEnrolment(student, course, semester, year);
+			System.out.println("student: " + student.getName() + " has been enrolled into " + course.getCourseId());
+			loop = false;
 		}
 	}
 

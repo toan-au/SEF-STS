@@ -2,6 +2,7 @@ package com.model.users;
 
 import java.io.Serializable;
 
+import com.Global;
 import com.model.Course;
 import com.model.CourseEnrolment;
 import com.model.Storage;
@@ -43,8 +44,13 @@ public abstract class User implements Serializable {
 		this.password = password;
 	}
 
-	public static void checkStudentResults(String studentId) {
+	public static void checkStudentResults() {
 		String status;
+		String studentId;
+		
+		System.out.println("Enter the ID of the student you want to check");
+		studentId = Global.scanner.next();
+		
 		Student student = Storage.getStudent(studentId);
 
 		System.out.println("course ID\t" + "semester\t" + "year\t" + "status");
