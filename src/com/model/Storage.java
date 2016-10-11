@@ -103,7 +103,7 @@ public class Storage {
 				Course course = new Course(courseId, courseName, resultCredit);
 				//System.out.println(courseCount + " Courses have been created");
 			}
-			
+			System.out.println(" Courses load successful!");
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found please try again. or enter 'q' to quit");
 		} catch (IOException e) {
