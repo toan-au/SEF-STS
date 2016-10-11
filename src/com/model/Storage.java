@@ -1,16 +1,19 @@
 package com.model;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+import com.Global;
 import com.model.program.Program;
 import com.model.program.ProgramType;
 import com.model.program.SpecializationMode;
@@ -59,8 +62,58 @@ public class Storage {
 		((Student) toan).enrolCourse("AERO2394", 2, 2016);
 		((Student) toan).enrolCourse("GRAP2324", 2, 2016);
 		((Student) toan).enrolCourse("HUSO2177", 2, 2016);
+		
+		loadCouseFile("coursefile.txt");
 	}
 	
+
+	private static void loadCouseFile(String filename) {
+		// TODO Auto-generated method stub
+		String fileName, courseId, courseName, courseCredit;
+		String line;
+		File file;
+		FileInputStream fis;
+		InputStreamReader isr;
+		BufferedReader reader;
+		int resultCredit;
+		int studentCount = 0;
+		resultCredit = 0;
+		
+		System.out.println("What is the name of your file?");
+		
+
+		fileName = Global.scanner.next();
+		file = new File(fileName);
+
+		try {
+			fis = new FileInputStream(fileName);
+			isr = new InputStreamReader(fis);
+			reader = new BufferedReader(isr);
+			//use while loop to read the line
+			while((line = reader.readLine()) != null) {
+				studentCount++;
+				//use ":" to split the file
+				String [] resultMember = line.split(":");
+				//set different variables, and give them value
+				courseId = resultMember[0];
+				courseName = resultMember[1];
+				courseCredit = resultMember[2];
+				
+				
+				//create new student
+				@SuppressWarnings("unused")
+				Course course = new Course(courseId, courseName, courseCredit);
+				System.out.println(studentCount + " student accounts have been created");
+			}
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found please try again. or enter 'q' to quit");
+		} catch (IOException e) {
+			System.out.println("error reading the file");
+		}
+		
+	}
+
 
 	public static User getUser(String id) {
 		for (User user : users) {
