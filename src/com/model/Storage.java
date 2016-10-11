@@ -79,7 +79,7 @@ public class Storage {
 		int studentCount = 0;
 		resultCredit = 0;
 		
-		System.out.println("What is the name of your file?");
+		System.out.println("What is the name of your course file?");
 		
 
 		fileName = Global.scanner.next();
@@ -98,11 +98,11 @@ public class Storage {
 				courseId = resultMember[0];
 				courseName = resultMember[1];
 				courseCredit = resultMember[2];
-				
+				resultCredit = Integer.parseInt(courseCredit);
 				
 				//create new student
 				@SuppressWarnings("unused")
-				Course course = new Course(courseId, courseName, courseCredit);
+				Course course = new Course(courseId, courseName, resultCredit);
 				System.out.println(studentCount + " student accounts have been created");
 			}
 			
