@@ -3,6 +3,9 @@ package com.model.program;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import com.model.Course;
+import com.model.Storage;
+
 @SuppressWarnings("serial")
 public class SingleSet implements Serializable{
 	ArrayList<String> courses;
@@ -26,7 +29,9 @@ public class SingleSet implements Serializable{
 	}
 
 	public void remove(String courseId) {
-		courses.remove(courseId);
+		
+		Course course = Storage.getCourse(courseId);
+		courses.remove(course);
 		// TODO No idea if it works like that with strings...
 	}
 

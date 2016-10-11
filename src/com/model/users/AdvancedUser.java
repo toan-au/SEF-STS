@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
 import java.util.Map;
 
 import com.model.Course;
+import com.model.CourseEnrolment;
 import com.model.Storage;
 import com.model.program.Program;
 import com.model.program.SpecializationMode;
@@ -140,6 +141,7 @@ public abstract class AdvancedUser extends User {
 		InputStreamReader isr;
 		BufferedReader reader;
 		int resultDay, resultMonth, resultYear;
+		int studentCount = 0;
 		resultDay = 0;
 		resultMonth = 0;
 		resultYear = 0;
@@ -156,6 +158,7 @@ public abstract class AdvancedUser extends User {
 			reader = new BufferedReader(isr);
 			//use while loop to read the line
 			while((line = reader.readLine()) != null) {
+				studentCount++;
 				//use ":" to split the file
 				String [] resultMember = line.split(":");
 				//set different variables, and give them value
@@ -175,6 +178,7 @@ public abstract class AdvancedUser extends User {
 				//create new student
 				@SuppressWarnings("unused")
 				Student student = new Student(userId, fullName, password, new GregorianCalendar(resultYear, resultMonth, resultDay), email);
+				System.out.println(studentCount + " student accounts have been created");
 			}
 			
 		} catch (FileNotFoundException e) {
@@ -184,8 +188,43 @@ public abstract class AdvancedUser extends User {
 		}
 	}
 
-	public void uploadEnrolment(Student student, Map<Course, Double> enrolments) {
-
+	public void uploadEnrolment() {
+		boolean loop = true;
+		String courseId, studentId, inputSemester, inputYear;
+		int semester, year;
+		Course course;
+		Student student;
+		
+		while(loop) {
+			System.out.println("Who do you wish to enrol into a course. Enter the student's ID");
+			studentId = Global.scanner.next();
+			
+			student = Storage.getStudent(studentId);
+			if(student == null) {
+				System.out.println("No student by that ID. please try again");
+				continue;
+			}
+			
+			System.out.println("Which course do you want to enrol them in? Please enter its ID");
+			courseId = Global.scanner.next();
+			
+			course = Storage.getCourse(courseId);
+			if(course == null) {
+				System.out.println("No course by that ID. please try again");
+				continue;
+			}
+			
+			System.out.println("Which semester are they enroling into?");
+			inputSemester = Global.scanner.next();
+			
+			System.out.println("Which year are they enroling into?");
+			inputYear = Global.scanner.next();
+			
+			semester = Integer.parseInt(inputSemester);
+			year = Integer.parseInt(inputYear);
+			
+			new CourseEnrolment(student, course, semester, year);
+		}
 	}
 
 	public void uploadEnrolment(Map<Student, Map<Course, Double>> enrolments) {

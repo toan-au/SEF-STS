@@ -60,6 +60,7 @@ public class Storage {
 		((Student) toan).enrolCourse("GRAP2324", 2, 2016);
 		((Student) toan).enrolCourse("HUSO2177", 2, 2016);
 	}
+	
 
 	public static User getUser(String id) {
 		for (User user : users) {
