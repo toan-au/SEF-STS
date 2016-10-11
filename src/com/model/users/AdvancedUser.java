@@ -326,7 +326,7 @@ public abstract class AdvancedUser extends User {
 						//create new student
 						@SuppressWarnings("unused")
 						CourseEnrolment courseEnrolement = new CourseEnrolment(resultStudent, resultCourse, semester, year);
-						
+
 					}
 						year++;
 						semester++;
