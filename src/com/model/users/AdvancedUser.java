@@ -7,7 +7,7 @@ import java.util.Map;
 import com.model.Course;
 import com.model.Storage;
 import com.model.program.Program;
-import com.model.program.SpecializationMode;
+import com.model.program.SpecializationSets;
 import com.Global;
 
 @SuppressWarnings("serial")
@@ -55,7 +55,7 @@ public abstract class AdvancedUser extends User {
 					// setCoreCourses();
 					break;
 				case 3:
-					setSpecializationCourses(temp);
+					//setSpecializationCourses(temp);
 					break;
 				case 4:
 					loop = false;
@@ -82,16 +82,18 @@ public abstract class AdvancedUser extends User {
 		System.out.println(program.getProgramCode() + "'s credit points have been set to " + creditPoints);
 	}
 
-	public void setCoreCourses(Program program, ArrayList<Course> course) {
-
+	public static void setCoreCourses(Program program, ArrayList<Course> course) {
+		program.setCoreCourses(course);
 	}
 
-	public void setSpecializationCourses(Program program, ArrayList<Course> courses, String specialization, SpecializationMode mode) {
-
+	public static void setSpecializationCourses(Program program, ArrayList<Course> courses, String specialization) {
+		SpecializationSets sets = program.getSpecializations();
+		sets.addCourse(specialization, (Course[]) courses.toArray());
 	}
 
-	public static void setSpecializationCourses(Program program) {
-
+	public static void setSpecializationCourses(Program program, ArrayList<Course> courses) {
+		SpecializationSets sets = program.getSpecializations();
+		sets.addCourse((Course[]) courses.toArray());
 	}
 
 	public static void createStudentAccount() {

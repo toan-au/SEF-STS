@@ -3,6 +3,8 @@ package com.model.program;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import com.model.Course;
+
 @SuppressWarnings("serial")
 public class SpecializationSets implements Serializable{
 
@@ -45,34 +47,34 @@ public class SpecializationSets implements Serializable{
 		return specializationSets;
 	}
 
-	public void addCourse(String... courseId) {
+	public void addCourse(Course... course) {
 		if (mode != SpecializationMode.COURSEPOOL) {
 			System.out.println("A set needs to be selected");
 			return;
 		}
-		addCourse("course pool", courseId);
+		addCourse("course pool", course);
 	}
 
-	public void addCourse(String set, String... courseId) {
-		for (String id : courseId)
-			getSet(set).add(id);
+	public void addCourse(String set, Course... courses) {
+		for (Course course : courses)
+			getSet(set).add(course);
 	}
 
-	public void removeCourse(String... courseId) {
+	public void removeCourse(Course... course) {
 		if (mode != SpecializationMode.COURSEPOOL) {
 			System.out.println("A set needs to be selected");
 			return;
 		}
-		removeCourse("course pool", courseId);
+		removeCourse("course pool", course);
 	}
 
-	public void removeCourse(String set, String... courseId) {
-		for (String id : courseId)
-			getSet(set).add(id);
+	public void removeCourse(String set, Course... courses) {
+		for (Course course : courses)
+			getSet(set).add(course);
 	}
 
-	public ArrayList<String> getCourses() {
-		ArrayList<String> courses = new ArrayList<>();
+	public ArrayList<Course> getCourses() {
+		ArrayList<Course> courses = new ArrayList<>();
 		for (SingleSet set : specializationSets)
 			courses.addAll(set.getCourses());
 		return courses;

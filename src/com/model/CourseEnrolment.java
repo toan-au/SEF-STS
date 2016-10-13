@@ -10,14 +10,14 @@ public class CourseEnrolment implements Serializable {
 	private Course course;
 	private int year;
 	private int semester;
-	private boolean failed;
+	private boolean hasFailed;
 
 	public CourseEnrolment(Student student, Course course, int semester, int year) {
 		this.student = student;
 		this.course = course;
 		this.semester = semester;
 		this.year = year;
-		failed = false;
+		hasFailed = false;
 	}
 
 	// If we want to say the student has failed that course then we indicate it with a boolean in the constructor
@@ -26,7 +26,7 @@ public class CourseEnrolment implements Serializable {
 		course = Storage.getCourse(courseId);
 		this.semester = semester;
 		this.year = year;
-		this.failed = failed;
+		this.hasFailed = failed;
 	}
 
 	public Student getStudent() {
@@ -54,17 +54,16 @@ public class CourseEnrolment implements Serializable {
 	}
 
 	public boolean isFailed() {
-		return failed;
+		return hasFailed;
 	}
 
 	public void setFailed(boolean failed) {
-		this.failed = failed;
+		this.hasFailed = failed;
 	}
-	
+
 	@Override
-	public String toString(){
-		return student.getId() + " " + course.getCourseId() + " " + year + " " + semester + " " + failed;
-		
+	public String toString() {
+		return student.getId() + " " + course.getCourseId() + " " + year + " " + semester + " " + hasFailed;
 	}
 
 }

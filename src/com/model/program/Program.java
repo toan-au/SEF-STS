@@ -65,7 +65,8 @@ public class Program implements Serializable {
 	}
 
 	// TODO: IMPLEMENT THIS METHOD
-	public void getSpecializations() {
+	public SpecializationSets getSpecializations() {
+		return specializations;
 	}
 
 	public void setProgramCode(String programCode) {
