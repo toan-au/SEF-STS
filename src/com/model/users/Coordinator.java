@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.Global;
-import com.model.Course;
 import com.model.CourseEnrolment;
 import com.model.Storage;
 import com.model.program.Program;
@@ -35,12 +34,11 @@ public class Coordinator extends AdvancedUser {
 	
 	public static void checkProgramCompletion() {
 		String fileName, line;
-		File file;
 		FileInputStream fis;
 		InputStreamReader isr;
 		BufferedReader reader;
 		int failed = 0;
-		ArrayList<CourseEnrolment> enrolments = new ArrayList<CourseEnrolment>(); 
+		ArrayList<CourseEnrolment> enrolments = new ArrayList<>(); 
 		
 		System.out.println("what is the name of the file which holds the student's you want to check?");
 		fileName = Global.scanner.next();

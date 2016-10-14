@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.model.Course;
-import com.model.Storage;
 
 @SuppressWarnings("serial")
 public class SingleSet implements Serializable{
