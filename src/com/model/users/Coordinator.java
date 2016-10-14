@@ -19,63 +19,54 @@ public class Coordinator extends AdvancedUser {
 
 	Program program;
 
-	public Coordinator(String id, String name, String password) {
+	public Coordinator(String id, String name, String password, String programId) {
 		super(id, name, password);
+		program = Storage.getProgram(programId);
 	}
 
-	public void setCoreCourses(ArrayList<String> courses) {
-		for (String courseId : courses)
-			program.setCoreCourse(courseId);
-	}
-	
 	public static void checkProgramRequirements() {
-		
 	}
-	
+
+	@SuppressWarnings("resource")
 	public static void checkProgramCompletion() {
 		String fileName, line;
-		FileInputStream fis;
-		InputStreamReader isr;
-		BufferedReader reader;
+		BufferedReader reader = null;
 		int failed = 0;
-		ArrayList<CourseEnrolment> enrolments = new ArrayList<>(); 
-		
-		System.out.println("what is the name of the file which holds the student's you want to check?");
+		ArrayList<CourseEnrolment> enrolments = new ArrayList<>();
+
+		System.out.println("What is the name of the file which holds the students you want to check?");
 		fileName = Global.scanner.next();
-		
 		try {
-			fis = new FileInputStream(fileName);
-			isr = new InputStreamReader(fis);
-			reader = new BufferedReader(isr);
-			
-			while((line = reader.readLine()) != null) {
-				for(CourseEnrolment enrolment : Storage.courseEnrolments) {
-					if(enrolment.getStudent().getName() == line) {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+
+			while ((line = reader.readLine()) != null) {
+				for (CourseEnrolment enrolment : Storage.courseEnrolments) {
+					if (line == enrolment.getStudent().getName() && !enrolment.hasPassed()) {
 						enrolments.add(enrolment);
-						if(!enrolment.hasPassed()) {
-							failed++;
-						}
+						failed++;
 					}
 				}
-				
-				if(failed>0) {
+				if (failed > 0)
 					System.out.println(line + " has failed " + failed + " courses and will need to repeat them");
-				} else {
-					System.out.println(line + " is currently in progress to completing the program");
-				}
-				
-				failed = 0;
+				else
+					System.out.println(line + " is currently on track to completing the program");
 			}
-			
-			
-			
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found exiting to the menu");
+			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("Couldn't find the file. you're on your own buddy");
+			System.out.println("Could not load the file.");
+			e.printStackTrace();
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					System.out.println("Couldn't close reader");
+					e.printStackTrace();
+				}
+			}
 		}
-		
-		
 	}
 
 	public static ArrayList<Student> meetsProgramRequirement(String filename, boolean meetRequirements) {

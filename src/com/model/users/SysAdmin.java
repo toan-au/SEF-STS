@@ -19,13 +19,14 @@ public class SysAdmin extends AdvancedUser {
 		System.out.println("Please add a password:");
 		String password = Global.scanner.next();
 		System.out.println("Please add the user's name:");
-		Global.scanner.nextLine();
 		String fullName = Global.scanner.nextLine();
 
 		if (userId.startsWith("a")) {
 			Storage.users.add(new SysAdmin(userId, fullName, password));
 		} else if (userId.startsWith("c")) {
-			Storage.users.add(new Coordinator(userId, fullName, password));
+			System.out.println("Please enter the coordinator's programId:");
+			String programId = Global.scanner.nextLine();
+			Storage.users.add(new Coordinator(userId, fullName, password, programId));
 		} else if (userId.startsWith("f")) {
 			Storage.users.add(new FacAdmin(userId, fullName, password));
 		} else if (userId.startsWith("s")) {
@@ -89,7 +90,8 @@ public class SysAdmin extends AdvancedUser {
 
 		setCoreCourses(newProgram);
 		setSpecializationSetsAndCourses(newProgram);
-	
-		System.out.println("Program " + newProgram.getProgramCode() + " " + newProgram.getProgramName() + " has been created and added to the database");
+
+		System.out.println(
+				"Program " + newProgram.getProgramCode() + " " + newProgram.getProgramName() + " has been created and added to the database");
 	}
 }

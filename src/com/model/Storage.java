@@ -31,6 +31,11 @@ public class Storage {
 
 	@SuppressWarnings("unused")
 	public static void init() {
+		Program tempProgram = new Program("BP094", "IT", 1, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
+		tempProgram = new Program("BP129", "CompSci", 2, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
+		tempProgram = new Program("BP229", "SEF", 3, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
+		tempProgram = new Program("BP254", "Computer Studies", 4, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
+
 		Student tempStudent = new Student("s1111111", "Toan Au", "password", new GregorianCalendar(1993, 12, 25), "toan@email.com");
 		tempStudent = new Student("s2222222", "Bob Builder", "password", new GregorianCalendar(1990, 1, 1), "bob@email.com");
 		tempStudent = new Student("s3333333", "Harold Senpai", "password", new GregorianCalendar(1999, 6, 13), "harold@email.com");
@@ -38,7 +43,7 @@ public class Storage {
 		tempStudent = new Student("s5555555", "Ana Teo", "password", new GregorianCalendar(1700, 12, 12), "ana@email.com");
 		tempStudent = new Student("s6666666", "Julie Nguyen", "password", new GregorianCalendar(0001, 1, 1), "julie@email.com");
 		SysAdmin tempSysAd = new SysAdmin("a1111111", "Halil", "password");
-		Coordinator coordinator1 = new Coordinator("c1111111", "Harold Zang", "password");
+		Coordinator coordinator1 = new Coordinator("c1111111", "Harold Zang", "password", "BP094");
 
 		Course tempCourse = new Course("COSC2102B", "Software Engineering Project (PtB)", 12);
 		tempCourse = new Course("AERO2394", "Aeronautical Design", 12);
@@ -52,11 +57,6 @@ public class Storage {
 		tempCourse = new Course("MKTG1227", "Theory Development and Critical Analysis", 12);
 		tempCourse = new Course("HUSO2177", "Practicing Development", 12);
 		tempCourse = new Course("BUIL1161", "International Development", 12);
-
-		Program tempProgram = new Program("BP094", "IT", 1, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
-		tempProgram = new Program("BP129", "CompSci", 2, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
-		tempProgram = new Program("BP229", "SEF", 3, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
-		tempProgram = new Program("BP254", "Computer Studies", 4, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
 
 		User toan = Storage.getStudent("s1111111");
 		CourseEnrolment enrolment = new CourseEnrolment((Student) toan, tempCourse, 2, 2016);
