@@ -13,7 +13,6 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-import com.Global;
 import com.model.program.Program;
 import com.model.program.ProgramType;
 import com.model.program.SpecializationMode;
@@ -63,15 +62,14 @@ public class Storage {
 		CourseEnrolment enrolment = new CourseEnrolment((Student)toan, tempCourse, 2, 2016);
 		((Student)toan).enrolCourse(enrolment);
 		
-		loadCouseFile("coursefile.txt");
+		loadCourseFile("coursefile.txt");
 	}
 	
 
-	private static void loadCouseFile(String filename) {
+	private static void loadCourseFile(String fileName) {
 		// TODO Auto-generated method stub
-		String fileName, courseId, courseName, courseCredit;
+		String courseId, courseName, courseCredit;
 		String line;
-		File file;
 		FileInputStream fis;
 		InputStreamReader isr;
 		BufferedReader reader;
@@ -79,12 +77,8 @@ public class Storage {
 		int courseCount = 0;
 		resultCredit = 0;
 		
-
-		fileName = "coursefile.txt";
-		file = new File(fileName);
-
 		try {
-			fis = new FileInputStream(fileName);
+			fis = new FileInputStream(new File(fileName));
 			isr = new InputStreamReader(fis);
 			reader = new BufferedReader(isr);
 			//use while loop to read the line
@@ -101,7 +95,7 @@ public class Storage {
 				//create new student
 				@SuppressWarnings("unused")
 				Course course = new Course(courseId, courseName, resultCredit);
-				//System.out.println(courseCount + " Courses have been created");
+				System.out.println(courseCount + " Courses have been created");
 			}
 			System.out.println(" Courses load successful!");
 		} catch (FileNotFoundException e) {
