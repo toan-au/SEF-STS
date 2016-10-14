@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import com.model.Course;
 import com.model.CourseEnrolment;
@@ -89,11 +88,11 @@ public class AdvancedUser extends User {
 		System.out.println("Enter the student's ID");
 		String inputId = Global.scanner.next();
 
-		System.out.println("Enter the student's password");
-		String inputPassword = Global.scanner.next();
-
 		System.out.println("Enter the student's Name");
 		String inputName = Global.scanner.next();
+
+		System.out.println("Enter the student's password");
+		String inputPassword = Global.scanner.next();
 
 		createStudentAccount(inputId, inputName, inputPassword);
 	}
@@ -105,25 +104,21 @@ public class AdvancedUser extends User {
 		int month = Global.scanner.nextInt();
 		System.out.println("Please enter the student's birth year");
 		int year = Global.scanner.nextInt();
-		Global.scanner.reset();
 
 		System.out.println("Please enter the student's email.");
 		String email = Global.scanner.next();
 
-		@SuppressWarnings("unused")
 		Student student = new Student(userId, fullName, password, new GregorianCalendar(year, month, day), email);
 
-		System.out.println("You have just created an account with the user name " + userId + " and password " + password + ".\n"
+		System.out.println("You have just created an account with the user name " + student.getId() + " and password " + student.getPassword() + ".\n"
 				+ "This account is now ready to be used.");
 	}
 
+	@SuppressWarnings({ "resource", "unused" })
 	public static void createStudentAccounts() {
-		String fileName, userId, fullName, password, email, birthday;
+		String userId, fullName, password, email, birthday;
 		String line;
-		File file;
-		FileInputStream fis;
-		InputStreamReader isr;
-		BufferedReader reader;
+		BufferedReader reader = null;
 		int resultDay, resultMonth, resultYear;
 		int studentCount = 0;
 		resultDay = 0;
@@ -132,19 +127,12 @@ public class AdvancedUser extends User {
 
 		System.out.println("What is the name of your file?");
 
-		fileName = Global.scanner.next();
-		file = new File(fileName);
-
 		try {
-			fis = new FileInputStream(fileName);
-			isr = new InputStreamReader(fis);
-			reader = new BufferedReader(isr);
-			// use while loop to read the line
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(Global.scanner.next())));
+
 			while ((line = reader.readLine()) != null) {
-				studentCount++;
 				// use ":" to split the file
 				String[] resultMember = line.split(":");
-				// set different variables, and give them value
 				userId = resultMember[0];
 				fullName = resultMember[1];
 				password = resultMember[2];
@@ -153,75 +141,71 @@ public class AdvancedUser extends User {
 
 				// use "/" to split birthday
 				String[] birthdayString = birthday.split("/");
-				// change the type from string to int.
 				resultDay = Integer.parseInt(birthdayString[0]);
 				resultMonth = Integer.parseInt(birthdayString[1]);
 				resultYear = Integer.parseInt(birthdayString[2]);
 
 				// create new student
-				@SuppressWarnings("unused")
 				Student student = new Student(userId, fullName, password, new GregorianCalendar(resultYear, resultMonth, resultDay), email);
+				studentCount++;
 				System.out.println(studentCount + " student accounts have been created");
 			}
 
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found please try again. or enter 'q' to quit");
+			System.out.println("File not found.");
 		} catch (IOException e) {
-			System.out.println("error reading the file");
+			System.out.println("Error reading the file.");
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					System.out.println("Couldn't close reader");
+				}
+			}
 		}
 	}
 
 	public static void createEnrolment() {
-		boolean loop = true;
-		String courseId, studentId, inputSemester, inputYear;
-		int semester, year;
-		Course course;
 		Student student;
+		Course course;
+		int semester, year;
 
-		while (loop) {
+		while (true) {
 			System.out.println("Who do you wish to enrol into a course. Enter the student's ID");
-			studentId = Global.scanner.next();
-
-			student = Storage.getStudent(studentId);
+			student = Storage.getStudent(Global.scanner.next());
 			if (student == null) {
 				System.out.println("No student by that ID. please try again");
 				continue;
 			}
 
 			System.out.println("Which course do you want to enrol them in? Please enter its ID");
-			courseId = Global.scanner.next();
-
-			course = Storage.getCourse(courseId);
+			course = Storage.getCourse(Global.scanner.next());
 			if (course == null) {
 				System.out.println("No course by that ID. please try again");
 				continue;
 			}
 
 			System.out.println("Which semester are they enroling into?");
-			inputSemester = Global.scanner.next();
+			semester = Integer.parseInt(Global.scanner.next());
 
 			System.out.println("Which year are they enroling into?");
-			inputYear = Global.scanner.next();
+			year = Integer.parseInt(Global.scanner.next());
 
-			semester = Integer.parseInt(inputSemester);
-			year = Integer.parseInt(inputYear);
-
-			new CourseEnrolment(student, course, semester, year);
-			System.out.println("student: " + student.getName() + " has been enrolled into " + course.getCourseId());
-			loop = false;
+			CourseEnrolment courseEnrolment = new CourseEnrolment(student, course, semester, year);
+			System.out.println(courseEnrolment.getStudent().getName() + " has been enrolled into " + courseEnrolment.getCourse().getCourseId());
+			return;
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public static void uploadEnrolments() {
-		String fileName, studentID, courseID;
+		String studentID, courseID;
 		String line;
 		Student resultStudent;
 		Course resultCourse;
 		CourseEnrolment courseEnrolment;
-		File file;
-		FileInputStream fis;
-		InputStreamReader isr;
-		BufferedReader reader;
+		BufferedReader reader = null;
 		int year, semester, i, j;
 		int studentCount = 0;
 		year = 2016;
@@ -230,14 +214,8 @@ public class AdvancedUser extends User {
 		j = 0;
 
 		System.out.println("What is the name of your file?");
-
-		fileName = Global.scanner.next();
-		file = new File(fileName);
-
 		try {
-			fis = new FileInputStream(fileName);
-			isr = new InputStreamReader(fis);
-			reader = new BufferedReader(isr);
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(Global.scanner.next()))));
 			// use while loop to read the line
 			while ((line = reader.readLine()) != null) {
 				studentCount++;
@@ -351,8 +329,20 @@ public class AdvancedUser extends User {
 
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found please try again. or enter 'q' to quit");
+			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("error reading the file");
+			e.printStackTrace();
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					System.out.println("Couldn't close reader");
+					e.printStackTrace();
+				}
+			}
+
 		}
 	}
 }
