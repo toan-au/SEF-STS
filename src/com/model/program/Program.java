@@ -30,13 +30,18 @@ public class Program implements Serializable {
 		Storage.programs.add(this);
 	}
 
-	public Program(String code, String name, int versionNumber, int requiredCredits, boolean isActive, ArrayList<Course> coreCourses, ProgramType type, SpecializationMode mode) {
+	public Program(String code, String name, int versionNumber, int requiredCredits, boolean isActive, ArrayList<Course> coreCourses,
+			ProgramType type, SpecializationMode mode) {
 		this(code, name, versionNumber, requiredCredits, isActive, type, mode);
 		this.coreCourses = coreCourses;
 	}
 
 	public String getProgramCode() {
 		return code;
+	}
+
+	public String getProgramName() {
+		return name;
 	}
 
 	public int getVersionNumber() {
@@ -63,13 +68,16 @@ public class Program implements Serializable {
 		return mode;
 	}
 
-	// TODO: IMPLEMENT THIS METHOD
 	public SpecializationSets getSpecializations() {
 		return specializations;
 	}
 
 	public void setProgramCode(String programCode) {
 		this.code = programCode;
+	}
+
+	public void setProgramName(String programName) {
+		this.name = programName;
 	}
 
 	public void setVersionNumber(int versionNumber) {
@@ -89,7 +97,7 @@ public class Program implements Serializable {
 	}
 
 	public void setCoreCourse(String courseId) {
-		Course newCoreCourse = Storage.getCourse(courseId); 
+		Course newCoreCourse = Storage.getCourse(courseId);
 		coreCourses.add(newCoreCourse);
 	}
 
@@ -97,44 +105,16 @@ public class Program implements Serializable {
 		this.mode = specializationMode;
 	}
 
-	// TODO IMPLEMENT THIS FUCNTION
-	public void setSpecializations(String setName, ArrayList<String> courses) {
-		if (specializations.getSet(setName) == null){
+	public void setSpecializations(String setName, String courseId) {
+		if (specializations.getSet(setName) == null) {
 			specializations.addSet(setName);
 		}
-		specializations.addCourse(setName, courses);
+		specializations.addCourse(setName, courseId);
 	}
-
-	/*
-	 * spec mode:
-	 * if it's just a course pool:
-	 * course pool of all possible courses
-	 * if it's an actual mode:
-	 * ArrayList<SpecializationPipes>
-	 * SpecPipe: Map<String pipeName, ArrayList <Courses>>
-	 */
 
 	@Override
 	public String toString() {
 		return code + " " + name + " " + requiredCredits + " " + mode;
-	}
-
-	/**
-	 * @return
-	 */
-	public String getProgramName() {
-		return name;
-	}
-
-	/**
-	 * @param setName
-	 * @param courseId
-	 */
-	public void setSpecializations(String setName, String courseId) {
-		if (specializations.getSet(setName) == null){
-			specializations.addSet(setName);
-		}
-		specializations.addCourse(setName, courseId);
 	}
 
 }
