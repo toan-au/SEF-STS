@@ -18,6 +18,7 @@ public class CourseEnrolment implements Serializable {
 		this.semester = semester;
 		this.year = year;
 		hasFailed = false;
+		Storage.courseEnrolments.add(this);
 	}
 
 	// If we want to say the student has failed that course then we indicate it with a boolean in the constructor
@@ -27,6 +28,7 @@ public class CourseEnrolment implements Serializable {
 		this.semester = semester;
 		this.year = year;
 		this.hasFailed = failed;
+		Storage.courseEnrolments.add(this);
 	}
 
 	public Student getStudent() {

@@ -1,19 +1,23 @@
 package com.model;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+import com.Global;
 import com.model.program.Program;
 import com.model.program.ProgramType;
 import com.model.program.SpecializationMode;
+import com.model.users.Coordinator;
 import com.model.users.Student;
 import com.model.users.SysAdmin;
 import com.model.users.User;
@@ -35,19 +39,20 @@ public class Storage {
 		tempStudent = new Student("s5555555", "Ana Teo", "password", new GregorianCalendar(1700, 12, 12), "ana@email.com");
 		tempStudent = new Student("s6666666", "Julie Nguyen", "password", new GregorianCalendar(0001, 1, 1), "julie@email.com");
 		SysAdmin tempSysAd = new SysAdmin("a1111111", "Halil", "password");
+		Coordinator coordinator1 = new Coordinator("c1111111", "Harold Zang", "password");
 
-		Course tempCourse = new Course("COSC2102B", "Software Engineering Project (PtB)", 4);
-		tempCourse = new Course("AERO2394", "Aeronautical Design", 4);
-		tempCourse = new Course("EEET2032", "Simulation Based Design", 4);
-		tempCourse = new Course("ISYS1013", "Systems Design", 4);
-		tempCourse = new Course("GRAP2324", "Advanced Imaging in 2D and 3D", 4);
-		tempCourse = new Course("VART2992", "3D Animation Advanced", 4);
-		tempCourse = new Course("GRAP2326", "3D Character: Create and Animate and Special Effects", 4);
-		tempCourse = new Course("INTE1033", "E-Commerce Development 2", 4);
-		tempCourse = new Course("ISYS2064", "Applications Development for PCs - Spreadsheets", 4);
-		tempCourse = new Course("MKTG1227", "Theory Development and Critical Analysis", 4);
-		tempCourse = new Course("HUSO2177", "Practicing Development", 4);
-		tempCourse = new Course("BUIL1161", "International Development", 4);
+		Course tempCourse = new Course("COSC2102B", "Software Engineering Project (PtB)", 12);
+		tempCourse = new Course("AERO2394", "Aeronautical Design", 12);
+		tempCourse = new Course("EEET2032", "Simulation Based Design", 12);
+		tempCourse = new Course("ISYS1013", "Systems Design", 12);
+		tempCourse = new Course("GRAP2324", "Advanced Imaging in 2D and 3D", 12);
+		tempCourse = new Course("VART2992", "3D Animation Advanced", 12);
+		tempCourse = new Course("GRAP2326", "3D Character: Create and Animate and Special Effects", 12);
+		tempCourse = new Course("INTE1033", "E-Commerce Development 2", 12);
+		tempCourse = new Course("ISYS2064", "Applications Development for PCs - Spreadsheets", 12);
+		tempCourse = new Course("MKTG1227", "Theory Development and Critical Analysis", 12);
+		tempCourse = new Course("HUSO2177", "Practicing Development", 12);
+		tempCourse = new Course("BUIL1161", "International Development", 12);
 
 		Program tempProgram = new Program("BP094", "IT", 1, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
 		tempProgram = new Program("BP129", "CompSci", 2, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
@@ -55,11 +60,58 @@ public class Storage {
 		tempProgram = new Program("BP254", "Computer Studies", 4, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
 
 		User toan = Storage.getStudent("s1111111");
-		((Student) toan).enrolCourse("COSC2102B", 2, 2016);
-		((Student) toan).enrolCourse("AERO2394", 2, 2016);
-		((Student) toan).enrolCourse("GRAP2324", 2, 2016);
-		((Student) toan).enrolCourse("HUSO2177", 2, 2016);
+		CourseEnrolment enrolment = new CourseEnrolment((Student)toan, tempCourse, 2, 2016);
+		((Student)toan).enrolCourse(enrolment);
+		
+		loadCouseFile("coursefile.txt");
 	}
+	
+
+	private static void loadCouseFile(String filename) {
+		// TODO Auto-generated method stub
+		String fileName, courseId, courseName, courseCredit;
+		String line;
+		File file;
+		FileInputStream fis;
+		InputStreamReader isr;
+		BufferedReader reader;
+		int resultCredit;
+		int courseCount = 0;
+		resultCredit = 0;
+		
+
+		fileName = "coursefile.txt";
+		file = new File(fileName);
+
+		try {
+			fis = new FileInputStream(fileName);
+			isr = new InputStreamReader(fis);
+			reader = new BufferedReader(isr);
+			//use while loop to read the line
+			while((line = reader.readLine()) != null) {
+				courseCount++;
+				//use ":" to split the file
+				String [] resultMember = line.split(":");
+				//set different variables, and give them value
+				courseId = resultMember[0];
+				courseName = resultMember[1];
+				courseCredit = resultMember[2];
+				resultCredit = Integer.parseInt(courseCredit);
+				
+				//create new student
+				@SuppressWarnings("unused")
+				Course course = new Course(courseId, courseName, resultCredit);
+				//System.out.println(courseCount + " Courses have been created");
+			}
+			System.out.println(" Courses load successful!");
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found please try again. or enter 'q' to quit");
+		} catch (IOException e) {
+			System.out.println("error reading the file");
+		}
+		
+	}
+
 
 	public static User getUser(String id) {
 		for (User user : users) {

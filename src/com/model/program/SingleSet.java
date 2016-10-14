@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.model.Course;
+import com.model.Storage;
 
 @SuppressWarnings("serial")
 public class SingleSet implements Serializable{
@@ -29,7 +30,6 @@ public class SingleSet implements Serializable{
 
 	public void remove(Course course) {
 		courses.remove(course);
-		// TODO No idea if it works like that with strings...
 	}
 
 }

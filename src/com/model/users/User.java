@@ -2,6 +2,7 @@ package com.model.users;
 
 import java.io.Serializable;
 
+import com.Global;
 import com.model.Course;
 import com.model.CourseEnrolment;
 import com.model.Storage;
@@ -55,6 +56,25 @@ public abstract class User implements Serializable {
 			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
 		}
 	}
+	
+	public static void checkStudentResults() {
+		String status;
+		String studentId;
+		
+		System.out.println("Enter the ID of the student you want to check");
+		studentId = Global.scanner.next();
+		
+		Student student = Storage.getStudent(studentId);
+
+		System.out.println("course ID\t" + "semester\t" + "year\t" + "status");
+
+		// iterate over the courses Arraylist and print the ID and status of the student
+		for (CourseEnrolment course : student.getCourses()) {
+			status = course.isFailed() ? "failed" : "pass";
+			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
+		}
+	}
+
 
 	public static boolean meetsCourseCompletion(Student student, Course course) {
 		return false;

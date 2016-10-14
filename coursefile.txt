@@ -1,0 +1,100 @@
+COSC2625:Building IT Systems:12
+COSC1078:Introduction to Information Technology:12
+COSC1321:Introduction to Programming:12
+COSC2628:User-centred Design:12
+COSC1073:Programming 1:12
+ISYS1055:Database Concepts:12
+ISYS1117:Software Engineering Fundamentals:12
+COSC2413:Web Programming:12
+COSC1147:Professional Computing Practice:12
+ISYS1106:Software Engineering Project Management:12
+COSC2408:Programming Project 1:12
+COSC2536:Security in Computing and Information Technology:12
+COSC1076:Advanced Programming Techniques:12
+COSC1092:Scripting Language Programming:12
+COSC2626:Cloud Computing:12
+COSC1131:Unix Systems Administration and Programming (Linux):12
+ACCT1046:Accounting in Organisations and Society:12
+JUST1016:Commercial Law:12
+ACCT2033:Financial Accounting and Analysis:12
+ACCT1048:Financial Accountability and Reporting:12
+ACCT1056:Auditing 1:12
+ACCT1022:Business Advisory Services:12
+JUST1028:Company Law:12
+ACCT1060:Management Accounting and Business:12
+ACCT1064:Cost Analysis and Applications:12
+ACCT1014:Accounting, Behaviour and Organisations:12
+JUST1031:Taxation 1:12
+JUST1046:Taxation 2:12
+COMM1033:Australian Cinema:12
+COMM1073:Television Cultures:12
+COMM1081:Music in Popular Culture:12
+COMM1086:Mass Media in Asia:12
+COMM1161:Foundations of Public Relations:12
+COMM2138:Modern Asia:12
+COMM2336:New Media, New Asia:12
+GRAP2175:Introduction to Graphic Design:12
+MKTG1208:Introduction to Advertising:12
+ECON1020:Prices and Markets:12
+ECON1010:Macroeconomics 1:12
+ENVI1051:Environmental Economics:12
+HUSO1081:Asian Economic Development:12
+BAFI1008:Business Finance:12
+BAFI1017:International Finance:12
+BAFI1002:Financial Markets:12
+MKTG1025:Marketing Principles:12
+MKTG1050:Buyer Behaviour:12
+MKTG1087:Retailing:12
+BUSM1311:The Entrepreneurial Process:12
+BUSM4052:Applied Entrepreneurship:12
+BUSM1321:Intrapreneurship:12
+BUSM4054:Global Entrepreneurship:12
+BUSM4053:Family Business and Entrepreneurship:12
+OMGT1082:Introduction to Logistics and Supply Chain Management:12
+OMGT1044:Retail and Service Logistics:12
+OMGT1070:Procurement Management and Global Sourcing:12
+OMGT1053:Supply Chain Management Strategy:12
+BUSM3123:Organisational Theory:12
+BUSM3115:Ethics and Governance:12
+BUSM3125:Strategic Management:12
+BUSM1222:International Business:12
+MATH2200:Introduction to Probability and Statistics:12
+MATH2201:Basic Statistical Methodologies:12
+MATH2203:Linear Models and Design of Experiments:12
+COSC2385:Networking 1:12
+COSC2384:Networking 2:12
+COSC2382:Advanced Networking 1:12
+COSC2383:Advanced Networking 2:12
+COSC1285:Algorithms and Analysis:12
+COSC1233:Broadcast Networks and Applications:12
+COSC1105:Computing Theory:12
+COSC1111:Data Communication and Net-Centric Computing:12
+COSC2406:Database Systems:12
+COSC1195:Distributed Systems:12
+COSC2104:Document Markup Languages:12
+COSC1186:Interactive 3D Graphics and Animation:12
+COSC2471:iPhone Software Engineering:12
+ISYS1073:Knowledge and Data Warehousing:12
+COSC2309:Mobile Application Development:12
+COSC1176:Network Programming:12
+COSC1252:Programming Using C++:12
+COSC1112:Operating Systems Principles:12
+COSC1224:Real-Time Rendering and 3D Games Programming:12
+INTE1070:Secure Electronic Commerce:12
+COSC2391:Software Architecture Design and Implementation:12
+COSC2299:Software Engineering Process and Tools:12
+ISYS1085:Software Testing:12
+INTE1113:Web3D and Graphics Technologies:12
+ISYS1124:Web Database Applications:12
+COSC1300:Web Servers and Web Technology:12
+COSC2627:Discrete Structures in Computing:12
+COSC2473:Introduction to Computer Systems and Platform Technologies:12
+COSC1283:Programming Techniques:12
+COSC2404:Database Administration:12
+COSC2271:Digital Media Computing:12
+COSC2354:Electronic Commerce and Enterprise Systems:12
+COSC2412:Unix Essentials for System Administrators:12
+COSC2277:Web Development Technologies:12
+COSC2409:Programming Project 2:12
+COSC2392:Web/Internet Project 1:12
+COSC2393:Web/Internet Project 2:12
