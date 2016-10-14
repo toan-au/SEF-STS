@@ -59,42 +59,34 @@ public class Storage {
 		tempProgram = new Program("BP254", "Computer Studies", 4, 48, true, ProgramType.BACHELOR, SpecializationMode.COURSEPOOL);
 
 		User toan = Storage.getStudent("s1111111");
-		CourseEnrolment enrolment = new CourseEnrolment((Student)toan, tempCourse, 2, 2016);
-		((Student)toan).enrolCourse(enrolment);
-		
+		CourseEnrolment enrolment = new CourseEnrolment((Student) toan, tempCourse, 2, 2016);
+		((Student) toan).enrolCourse(enrolment);
+
 		loadCourseFile("coursefile.txt");
 	}
-	
 
+	@SuppressWarnings({ "resource", "unused" })
 	private static void loadCourseFile(String fileName) {
-		// TODO Auto-generated method stub
-		String courseId, courseName, courseCredit;
+		String courseId, courseName;
+		int courseCredit;
 		String line;
-		FileInputStream fis;
-		InputStreamReader isr;
 		BufferedReader reader;
-		int resultCredit;
 		int courseCount = 0;
-		resultCredit = 0;
-		
+
 		try {
-			fis = new FileInputStream(new File(fileName));
-			isr = new InputStreamReader(fis);
-			reader = new BufferedReader(isr);
-			//use while loop to read the line
-			while((line = reader.readLine()) != null) {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fileName))));
+			// use while loop to read the line
+			while ((line = reader.readLine()) != null) {
 				courseCount++;
-				//use ":" to split the file
-				String [] resultMember = line.split(":");
-				//set different variables, and give them value
+				// use ":" to split the file
+				String[] resultMember = line.split(":");
+				// set different variables, and give them value
 				courseId = resultMember[0];
 				courseName = resultMember[1];
-				courseCredit = resultMember[2];
-				resultCredit = Integer.parseInt(courseCredit);
-				
-				//create new student
-				@SuppressWarnings("unused")
-				Course course = new Course(courseId, courseName, resultCredit);
+				courseCredit = Integer.parseInt(resultMember[2]);
+
+				// create new student
+				Course course = new Course(courseId, courseName, courseCredit);
 				System.out.println(courseCount + " Courses have been created");
 			}
 			System.out.println(" Courses load successful!");
@@ -103,9 +95,8 @@ public class Storage {
 		} catch (IOException e) {
 			System.out.println("error reading the file");
 		}
-		
-	}
 
+	}
 
 	public static User getUser(String id) {
 		for (User user : users) {
