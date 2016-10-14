@@ -52,7 +52,7 @@ public class Coordinator extends AdvancedUser {
 				for(CourseEnrolment enrolment : Storage.courseEnrolments) {
 					if(enrolment.getStudent().getName() == line) {
 						enrolments.add(enrolment);
-						if(enrolment.isFailed()) {
+						if(enrolment.hasFailed()) {
 							failed++;
 						}
 					}

@@ -52,7 +52,7 @@ public abstract class User implements Serializable {
 
 		// iterate over the courses Arraylist and print the ID and status of the student
 		for (CourseEnrolment course : student.getCourses()) {
-			status = course.isFailed() ? "failed" : "pass";
+			status = course.hasFailed() ? "failed" : "pass";
 			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
 		}
 	}
@@ -70,7 +70,7 @@ public abstract class User implements Serializable {
 
 		// iterate over the courses Arraylist and print the ID and status of the student
 		for (CourseEnrolment course : student.getCourses()) {
-			status = course.isFailed() ? "failed" : "pass";
+			status = course.hasFailed() ? "failed" : "pass";
 			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
 		}
 	}
