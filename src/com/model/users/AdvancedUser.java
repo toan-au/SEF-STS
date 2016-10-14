@@ -47,40 +47,45 @@ public class AdvancedUser extends User {
 				program.setRequiredCredits(Global.convertInputToInteger(Global.scanner.next()));
 				System.out.println(program.getProgramCode() + "'s credit points have been set to " + program.getRequiredCredits());
 				break;
-
-			case 2: // Setting core courses
-				System.out.println("Please enter the course ids, one per line. Cancel by entering 'q':");
-				while (true) {
-					String courseId = Global.scanner.next();
-					if (courseId.equals("q"))
-						break;
-					program.setCoreCourse(courseId);
-				}
+			case 2:
+				setCoreCourses(program);
 				break;
-
-			case 3: // setting spec courses
-				String setName;
-				if (program.getSpecializationMode() == SpecializationMode.FIXEDSET) {
-					System.out.println("Please specify the set you would like to add/extend:");
-					setName = Global.scanner.next();
-				} else
-					setName = "course pool";
-
-				System.out.println("Please enter the course ids, one per line. Cancel by entering 'q':");
-				while (true) {
-					String courseId = Global.scanner.next();
-					if (courseId.equals("q"))
-						break;
-					program.setSpecializations(setName, courseId);
-				}
+			case 3:
+				setSpecializationSetsAndCourses(program);
 				break;
-
 			case 4:
 				return;
 			default:
 				System.out.println("That isn't an option, please try again.");
 				break;
 			}
+		}
+	}
+
+	public static void setSpecializationSetsAndCourses(Program program) {
+		String setName;
+		if (program.getSpecializationMode() == SpecializationMode.FIXEDSET) {
+			System.out.println("Please specify the set you would like to add/extend:");
+			setName = Global.scanner.next();
+		} else
+			setName = "course pool";
+
+		System.out.println("Please enter the course ids, one per line. Cancel by entering 'q':");
+		while (true) {
+			String courseId = Global.scanner.next();
+			if (courseId.equals("q"))
+				break;
+			program.setSpecializations(setName, courseId);
+		}
+	}
+
+	public static void setCoreCourses(Program program) {
+		System.out.println("Please enter the course ids, one per line. Cancel by entering 'q':");
+		while (true) {
+			String courseId = Global.scanner.next();
+			if (courseId.equals("q"))
+				break;
+			program.setCoreCourse(courseId);
 		}
 	}
 

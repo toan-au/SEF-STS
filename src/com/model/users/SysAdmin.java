@@ -24,13 +24,10 @@ public class SysAdmin extends AdvancedUser {
 
 		if (userId.startsWith("a")) {
 			Storage.users.add(new SysAdmin(userId, fullName, password));
-
 		} else if (userId.startsWith("c")) {
 			Storage.users.add(new Coordinator(userId, fullName, password));
-
 		} else if (userId.startsWith("f")) {
 			Storage.users.add(new FacAdmin(userId, fullName, password));
-
 		} else if (userId.startsWith("s")) {
 			createStudentAccount(userId, fullName, password);
 		} else {
@@ -39,7 +36,7 @@ public class SysAdmin extends AdvancedUser {
 		}
 		if (!userId.startsWith("s"))
 			System.out.println("You have just created an account with the user name " + userId + "and password " + password + ".\n"
-					+ "This account is now ready to be used..");
+					+ "This account is now ready to be used...");
 	}
 
 	public static void setUpNewProgram() {
@@ -87,23 +84,12 @@ public class SysAdmin extends AdvancedUser {
 				System.out.println("This type is not exist!!");
 		}
 
-		// System.out.println("Enter the Core Course");
-		// tempProgramType = input.next();
-		// if (tempProgramType.equals("CoreCourse1")){
-		// inputCoreCourses = Storage.courses[0];
-		// }else if (tempProgramType.equals("CoreCourse2")){
-		// inputCoreCourses = Storage.courses[1];
-		// }else if (tempProgramType.equals("CoreCourse3")){
-		// inputCoreCourses = Storage.courses[2];
-		// }else{
-		// System.out.println("This course is not exist!!");
-		// }
-
-	
 		Program newProgram = new Program(inputProgramCode, inputProgramName, inputVersionNumber, inputRequiredCredits, inputIsActive,
 				inputProgramType, inputSpecializationMode);
 
-		// inform user that the program has been created
+		setCoreCourses(newProgram);
+		setSpecializationSetsAndCourses(newProgram);
+	
 		System.out.println("Program " + newProgram.getProgramCode() + " " + newProgram.getProgramName() + " has been created and added to the database");
 	}
 }
