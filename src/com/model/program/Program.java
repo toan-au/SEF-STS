@@ -119,4 +119,11 @@ public class Program implements Serializable {
 		return code + " " + name + " " + requiredCredits + " " + mode;
 	}
 
+	/**
+	 * @return
+	 */
+	public String getProgramName() {
+		return name;
+	}
+
 }

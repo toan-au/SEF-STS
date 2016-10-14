@@ -104,6 +104,6 @@ public class SysAdmin extends AdvancedUser {
 				inputProgramType, inputSpecializationMode);
 
 		// inform user that the program has been created
-		System.out.println("Program " + newProgram.getProgramCode() + " has been created and added to the database");
+		System.out.println("Program " + newProgram.getProgramCode() + " " + newProgram.getProgramName() + " has been created and added to the database");
 	}
 }
