@@ -6,6 +6,7 @@ import com.model.users.Student;
 import com.model.users.User;
 
 public class StudentProgressSystem {
+	private static String tempUser;
 
 	public static void run() {
 		while (true) {
@@ -15,8 +16,7 @@ public class StudentProgressSystem {
 			if (input.equals("q")) {
 				return;
 			} else if (input.equals("c")) {
-				String tempUser = logIn();
-				if (tempUser == null)
+				if (logIn() != null)
 					continue;
 				Menu.displayMenu(tempUser);
 			} else if (input.equals("UpUpDownDownLeftRightLeftRightBA") || input.equals("meh")) {
