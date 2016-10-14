@@ -7,7 +7,7 @@ import java.util.Map;
 import com.model.Course;
 import com.model.Storage;
 import com.model.program.Program;
-import com.model.program.SpecializationSets;
+import com.model.program.SpecializationMode;
 import com.Global;
 
 @SuppressWarnings("serial")
@@ -22,22 +22,22 @@ public abstract class AdvancedUser extends User {
 		boolean loop = true;
 		String idInput;
 		int selection;
-		Program temp;
+		Program program;
 
 		while (loop) {
 			System.out.println("Enter the ID of the program you would like to edit: ");
 			idInput = Global.scanner.next();
 
-			temp = Storage.getProgram(idInput);
+			program = Storage.getProgram(idInput);
 
-			if (temp == null) {
+			if (program == null) {
 				System.out.println("No program with that ID code. Please try again: ");
 				continue;
 			}
 
 			do {
 				// show user menu how they can edit programs
-				System.out.println("How would you like to edit \"" + temp.getProgramCode() + "\"");
+				System.out.println("How would you like to edit \"" + program.getProgramCode() + "\"");
 				System.out.println("1 - Set credit points needed");
 				System.out.println("2 - Set core courses");
 				System.out.println("3 - Set specialization courses");
@@ -49,13 +49,36 @@ public abstract class AdvancedUser extends User {
 				// run a method based on user's selection
 				switch (selection) {
 				case 1:
-					setCreditPointsNeeded(temp);
+					setCreditPointsNeeded(program);
 					break;
 				case 2:
-					// setCoreCourses();
+					while (true) {
+						System.out.println("Please enter the first course id, cancel by entering 'x':");
+						String courseId = Global.scanner.next();
+						if (courseId.equals("x"))
+							break;
+						program.setCoreCourse(courseId);
+					}
+
 					break;
 				case 3:
-					//setSpecializationCourses(temp);
+					String setName;
+					ArrayList<String> courses = new ArrayList<>();
+					
+					if (program.getSpecializationMode() == SpecializationMode.FIXEDSET) {
+						System.out.println("Please specify the set you would like to add/extend:");
+						setName = Global.scanner.next();
+					} else {
+						setName = "course pool";
+					}
+					while(true){
+						System.out.println("Please enter the first course id, cancel by entering 'x':");
+						String courseId = Global.scanner.next();
+						if (courseId.equals("x"))
+							break;
+						courses.add(courseId);
+					}
+					program.setSpecializations(setName, courses);
 					break;
 				case 4:
 					loop = false;
@@ -66,6 +89,7 @@ public abstract class AdvancedUser extends User {
 				}
 			} while (loop);
 		}
+
 	}
 
 	public static void setCreditPointsNeeded(Program program) {
@@ -80,20 +104,6 @@ public abstract class AdvancedUser extends User {
 
 		// give user feedback
 		System.out.println(program.getProgramCode() + "'s credit points have been set to " + creditPoints);
-	}
-
-	public static void setCoreCourses(Program program, ArrayList<Course> course) {
-		program.setCoreCourses(course);
-	}
-
-	public static void setSpecializationCourses(Program program, ArrayList<Course> courses, String specialization) {
-		SpecializationSets sets = program.getSpecializations();
-		sets.addCourse(specialization, (Course[]) courses.toArray());
-	}
-
-	public static void setSpecializationCourses(Program program, ArrayList<Course> courses) {
-		SpecializationSets sets = program.getSpecializations();
-		sets.addCourse((Course[]) courses.toArray());
 	}
 
 	public static void createStudentAccount() {

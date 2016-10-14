@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.model.Course;
 import com.model.program.Program;
 
 @SuppressWarnings("serial")
@@ -17,8 +16,9 @@ public class Coordinator extends AdvancedUser {
 		super(id, name, password);
 	}
 
-	public void setCoreCourses(ArrayList<Course> course) {
-		setCoreCourses(program, course);
+	public void setCoreCourses(ArrayList<String> courses) {
+		for (String courseId : courses)
+			program.setCoreCourse(courseId);
 	}
 
 	public static ArrayList<Student> meetsProgramRequirement(String filename, boolean meetRequirements) {

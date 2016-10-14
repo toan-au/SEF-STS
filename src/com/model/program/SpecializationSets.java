@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.model.Course;
+import com.model.Storage;
 
 @SuppressWarnings("serial")
 public class SpecializationSets implements Serializable{
@@ -47,7 +48,7 @@ public class SpecializationSets implements Serializable{
 		return specializationSets;
 	}
 
-	public void addCourse(Course... course) {
+	public void addCourse(ArrayList<String> course) {
 		if (mode != SpecializationMode.COURSEPOOL) {
 			System.out.println("A set needs to be selected");
 			return;
@@ -55,9 +56,9 @@ public class SpecializationSets implements Serializable{
 		addCourse("course pool", course);
 	}
 
-	public void addCourse(String set, Course... courses) {
-		for (Course course : courses)
-			getSet(set).add(course);
+	public void addCourse(String set, ArrayList<String> courses) {
+		for (String course : courses)
+			getSet(set).add(Storage.getCourse(course));
 	}
 
 	public void removeCourse(Course... course) {

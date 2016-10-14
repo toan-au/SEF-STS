@@ -35,7 +35,6 @@ public class Program implements Serializable {
 		this.coreCourses = coreCourses;
 	}
 
-	
 	public String getProgramCode() {
 		return code;
 	}
@@ -89,8 +88,9 @@ public class Program implements Serializable {
 		this.type = programType;
 	}
 
-	public void setCoreCourses(ArrayList<Course> coreCourses) {
-		this.coreCourses = coreCourses;
+	public void setCoreCourse(String courseId) {
+		Course newCoreCourse = Storage.getCourse(courseId); 
+		coreCourses.add(newCoreCourse);
 	}
 
 	public void setSpecializationMode(SpecializationMode specializationMode) {
@@ -98,7 +98,11 @@ public class Program implements Serializable {
 	}
 
 	// TODO IMPLEMENT THIS FUCNTION
-	public void setSpecializations() {
+	public void setSpecializations(String setName, ArrayList<String> courses) {
+		if (specializations.getSet(setName) == null){
+			specializations.addSet(setName);
+		}
+		specializations.addCourse(setName, courses);
 	}
 
 	/*
