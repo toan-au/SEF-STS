@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import com.model.Course;
 
 @SuppressWarnings("serial")
-public class SingleSet implements Serializable{
+public class SingleSet implements Serializable {
 	ArrayList<Course> courses;
 	String setName;
 
@@ -19,15 +19,19 @@ public class SingleSet implements Serializable{
 		return setName;
 	}
 
+	public void setName(String setName) {
+		this.setName = setName;
+	}
+
 	public ArrayList<Course> getCourses() {
 		return courses;
 	}
 
-	public void add(Course course) {
+	public void addCourse(Course course) {
 		courses.add(course);
 	}
 
-	public void remove(Course course) {
+	public void removeCourse(Course course) {
 		courses.remove(course);
 	}
 
