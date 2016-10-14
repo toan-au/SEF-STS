@@ -7,7 +7,7 @@ import com.model.Course;
 import com.model.Storage;
 
 @SuppressWarnings("serial")
-public class SpecializationSets implements Serializable{
+public class SpecializationSets implements Serializable {
 
 	ArrayList<SingleSet> specializationSets;
 	SingleSet currentSet;
@@ -18,6 +18,18 @@ public class SpecializationSets implements Serializable{
 		this.mode = mode;
 		if (mode == SpecializationMode.COURSEPOOL)
 			specializationSets.add(new SingleSet("course pool"));
+	}
+
+	public ArrayList<SingleSet> getAllSets() {
+		return specializationSets;
+	}
+
+	public SingleSet getSet(String setName) {
+		for (SingleSet set : specializationSets) {
+			if (set.getName().equals(setName))
+				return set;
+		}
+		return null;
 	}
 
 	public void addSet(String setName) {
@@ -36,57 +48,19 @@ public class SpecializationSets implements Serializable{
 		specializationSets.remove(getSet(setName));
 	}
 
-	public SingleSet getSet(String setName) {
-		for (SingleSet set : specializationSets) {
-			if (set.getName().equals(setName))
-				return set;
-		}
-		return null;
-	}
-
-	public ArrayList<SingleSet> getAllSets() {
-		return specializationSets;
-	}
-
-	public void addCourse(ArrayList<String> course) {
-		if (mode != SpecializationMode.COURSEPOOL) {
-			System.out.println("A set needs to be selected");
-			return;
-		}
-		addCourse("course pool", course);
-	}
-
-	public void addCourse(String set, ArrayList<String> courses) {
-		for (String course : courses)
-			getSet(set).add(Storage.getCourse(course));
-	}
-
-	public void removeCourse(Course... course) {
-		if (mode != SpecializationMode.COURSEPOOL) {
-			System.out.println("A set needs to be selected");
-			return;
-		}
-		removeCourse("course pool", course);
-	}
-
-	public void removeCourse(String set, Course... courses) {
-		for (Course course : courses)
-			getSet(set).add(course);
-	}
-
-	public ArrayList<Course> getCourses() {
+	public ArrayList<Course> getAllCourses() {
 		ArrayList<Course> courses = new ArrayList<>();
 		for (SingleSet set : specializationSets)
 			courses.addAll(set.getCourses());
 		return courses;
 	}
 
-	/**
-	 * @param setName
-	 * @param courseId
-	 */
+	public ArrayList<Course> getCourses(String setName) {
+		return getSet(setName).getCourses();
+	}
+
 	public void addCourse(String setName, String courseId) {
-		getSet(setName).add(Storage.getCourse(courseId));
+		getSet(setName).addCourse(Storage.getCourse(courseId));
 	}
 
 }
