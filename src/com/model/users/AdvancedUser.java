@@ -24,91 +24,65 @@ public class AdvancedUser extends User {
 	}
 
 	public static void editProgram() {
-		boolean loop = true;
-		String idInput;
-		int selection;
 		Program program;
 
-		while (loop) {
+		while (true) {
 			System.out.println("Enter the ID of the program you would like to edit: ");
-			idInput = Global.scanner.next();
-
-			program = Storage.getProgram(idInput);
+			program = Storage.getProgram(Global.scanner.next());
 
 			if (program == null) {
 				System.out.println("No program with that ID code. Please try again: ");
 				continue;
 			}
 
-			do {
-				// show user menu how they can edit programs
-				System.out.println("How would you like to edit \"" + program.getProgramCode() + "\"");
-				System.out.println("1 - Set credit points needed");
-				System.out.println("2 - Set core courses");
-				System.out.println("3 - Set specialization courses");
-				System.out.println("4 - back");
+			// show user menu how they can edit programs
+			System.out.println("How would you like to edit \"" + program.getProgramCode() + "\"");
+			System.out.println("1 - Set credit points needed");
+			System.out.println("2 - Set core courses");
+			System.out.println("3 - Set specialization courses");
+			System.out.println("4 - back");
 
-				// get user input
-				selection = Global.scanner.nextInt();
+			switch (Global.convertInputToInteger(Global.scanner.next())) {
+			case 1: // set credit points
+				System.out.println("How many credit points would you like " + program.getProgramCode() + " to require? ");
+				program.setRequiredCredits(Global.convertInputToInteger(Global.scanner.next()));
+				System.out.println(program.getProgramCode() + "'s credit points have been set to " + program.getRequiredCredits());
+				break;
 
-				// run a method based on user's selection
-				switch (selection) {
-				case 1:
-					setCreditPointsNeeded(program);
-					break;
-				case 2:
-					while (true) {
-						System.out.println("Please enter the first course id, cancel by entering 'x':");
-						String courseId = Global.scanner.next();
-						if (courseId.equals("x"))
-							break;
-						program.setCoreCourse(courseId);
-					}
-
-					break;
-				case 3:
-					String setName;
-					ArrayList<String> courses = new ArrayList<>();
-
-					if (program.getSpecializationMode() == SpecializationMode.FIXEDSET) {
-						System.out.println("Please specify the set you would like to add/extend:");
-						setName = Global.scanner.next();
-					} else {
-						setName = "course pool";
-					}
-					while (true) {
-						System.out.println("Please enter the first course id, cancel by entering 'x':");
-						String courseId = Global.scanner.next();
-						if (courseId.equals("x"))
-							break;
-						courses.add(courseId);
-					}
-					program.setSpecializations(setName, courses);
-					break;
-				case 4:
-					loop = false;
-					break;
-				default:
-					System.out.println("That isn't an option, please try again.");
-					break;
+			case 2: // Setting core courses
+				System.out.println("Please enter the course ids, one per line. Cancel by entering 'q':");
+				while (true) {
+					String courseId = Global.scanner.next();
+					if (courseId.equals("q"))
+						break;
+					program.setCoreCourse(courseId);
 				}
-			} while (loop);
+				break;
+
+			case 3: // setting spec courses
+				String setName;
+				if (program.getSpecializationMode() == SpecializationMode.FIXEDSET) {
+					System.out.println("Please specify the set you would like to add/extend:");
+					setName = Global.scanner.next();
+				} else
+					setName = "course pool";
+
+				System.out.println("Please enter the course ids, one per line. Cancel by entering 'q':");
+				while (true) {
+					String courseId = Global.scanner.next();
+					if (courseId.equals("q"))
+						break;
+					program.setSpecializations(setName, courseId);
+				}
+				break;
+
+			case 4:
+				return;
+			default:
+				System.out.println("That isn't an option, please try again.");
+				break;
+			}
 		}
-
-	}
-
-	public static void setCreditPointsNeeded(Program program) {
-		int creditPoints;
-
-		// prompt user for the credit points required
-		System.out.println("How many credit points would you like " + program.getProgramCode() + " to require? ");
-		creditPoints = Global.scanner.nextInt();
-
-		// set the credit points
-		program.setRequiredCredits(creditPoints);
-
-		// give user feedback
-		System.out.println(program.getProgramCode() + "'s credit points have been set to " + creditPoints);
 	}
 
 	public static void createStudentAccount() {

@@ -126,4 +126,15 @@ public class Program implements Serializable {
 		return name;
 	}
 
+	/**
+	 * @param setName
+	 * @param courseId
+	 */
+	public void setSpecializations(String setName, String courseId) {
+		if (specializations.getSet(setName) == null){
+			specializations.addSet(setName);
+		}
+		specializations.addCourse(setName, courseId);
+	}
+
 }

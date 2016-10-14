@@ -20,18 +20,12 @@ public class Menu {
 			displaySysAdminMenu(userId);
 	}
 
-	private static int convertInputToInteger(String input) {
-		if (input != null && input.length() == 1 && (input.charAt(0) > '0' || input.charAt(0) <= '9'))
-			return Character.getNumericValue(input.charAt(0));
-		return -1;
-	}
-
 	private static void displayStudentMenu(String userId) {
 		System.out.println("Hello, " + Storage.getStudent(userId).getName() + ". What would you like to do?");
 		while (true) {
 			System.out.println("1 - Check your results\n" + "2 - log out");
 
-			switch (convertInputToInteger(Global.scanner.next())) {
+			switch (Global.convertInputToInteger(Global.scanner.next())) {
 			case 1:
 				System.out.println("Your results are:");
 				User.checkStudentResults(userId);
@@ -76,7 +70,7 @@ public class Menu {
 			System.out.println("6 - Edit Program");
 			System.out.println("7 - log out");
 
-			switch (convertInputToInteger(Global.scanner.next())) {
+			switch (Global.convertInputToInteger(Global.scanner.next())) {
 			case 1:
 				System.out.print("Please enter a student id: ");
 				String input = Global.scanner.next();
@@ -125,7 +119,7 @@ public class Menu {
 			System.out.println("7 - Edit a Program");
 			System.out.println("8 - log out");
 
-			switch (convertInputToInteger(Global.scanner.next())) {
+			switch (Global.convertInputToInteger(Global.scanner.next())) {
 			case 1:
 				SysAdmin.createAccount();
 				break;

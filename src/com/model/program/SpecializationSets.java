@@ -81,4 +81,12 @@ public class SpecializationSets implements Serializable{
 		return courses;
 	}
 
+	/**
+	 * @param setName
+	 * @param courseId
+	 */
+	public void addCourse(String setName, String courseId) {
+		getSet(setName).add(Storage.getCourse(courseId));
+	}
+
 }
