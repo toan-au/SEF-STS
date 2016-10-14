@@ -19,16 +19,22 @@ public class Menu {
 			displaySysAdminMenu(userId);
 	}
 
+	private static int convertInputToInteger(String input) {
+		if (input != null && input.length() == 1 && (input.charAt(0) > '0' || input.charAt(0) <= '9'))
+			return Character.getNumericValue(input.charAt(0));
+		return -1;
+	}
+
 	private static void displayStudentMenu(String userId) {
 		System.out.println("Hello, " + Storage.getStudent(userId).getName() + ". What would you like to do?");
 		while (true) {
 			System.out.println("1 - Check your results\n" + "2 - log out");
-			int choice = Integer.parseInt(Global.scanner.next());
 
-			switch (choice) {
+			switch (convertInputToInteger(Global.scanner.next())) {
 			case 1:
 				System.out.println("Your results are:");
 				User.checkStudentResults(userId);
+				System.out.println("\n");
 				break;
 			case 2:
 				System.out.println("Logging out...\n");
@@ -36,35 +42,25 @@ public class Menu {
 			default:
 				System.out.println("Please input a valid choice");
 			}
-			System.out.println("\n");
 		}
 	}
 
 	private static void displayFacAdminMenu(String userId) {
-		System.out.println("Hello, " + Storage.getUser(userId).getName() + ". Please enter a student id:");
-		String studentId = Global.scanner.nextLine();
-
-		System.out.println("Here are " + Storage.getUser(studentId) + "'s results...");
-		User.checkStudentResults(studentId);
-
+		System.out.println("Hello, " + Storage.getUser(userId).getName() + ". Entering 'q' at any point will log you out.");
 		while (true) {
-			System.out.println("Want to see another student's results? Y/N");
-			String choice = Global.scanner.next().toUpperCase();
+			System.out.print("Please enter a student id: ");
+			String input = Global.scanner.next();
 
-			switch (choice) {
-			case "J":
-				System.out.println("Please enter a student id:");
-				studentId = Global.scanner.nextLine();
-				System.out.println("Here are " + Storage.getUser(studentId) + "'s results...");
-				User.checkStudentResults(studentId);
-				break;
-			case "N":
-				System.out.println("Logging out...\n");
-				return;
-			default:
-				System.out.println("Come on...");
-				break;
+			if (Storage.getUser(input) == null) {
+				if (input.equals("q")) {
+					System.out.println("Logging out...\n");
+					return;
+				}
+				System.out.println("The entered student id does not exist");
+				continue;
 			}
+			System.out.println("Here are " + Storage.getUser(input) + "'s results...");
+			User.checkStudentResults(input);
 		}
 	}
 
@@ -76,11 +72,18 @@ public class Menu {
 			System.out.println("3 - Upload enrolment");
 			System.out.println("4 - Edit Program");
 			System.out.println("5 - log out");
-			int choice = Integer.parseInt(Global.scanner.next());
 
-			switch (choice) {
+			switch (convertInputToInteger(Global.scanner.next())) {
 			case 1:
-				// currentUser.checkStudentResults();
+				System.out.print("Please enter a student id: ");
+				String input = Global.scanner.next();
+
+				if (Storage.getUser(input) == null) {
+					System.out.println("The entered student id does not exist");
+					break;
+				}
+				System.out.println("Here are " + Storage.getUser(input) + "'s results...");
+				User.checkStudentResults(input);
 				break;
 			case 2:
 				AdvancedUser.createStudentAccount();
@@ -111,8 +114,7 @@ public class Menu {
 			System.out.println("5 - Edit a Program");
 			System.out.println("6 - log out");
 
-			int choice = Integer.parseInt(Global.scanner.next());
-			switch (choice) {
+			switch (convertInputToInteger(Global.scanner.next())) {
 			case 1:
 				SysAdmin.createAccount();
 				break;
