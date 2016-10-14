@@ -1,0 +1,12 @@
+NOTES ON THE CODE
+
+? In Storage.java the loadCourseFile() seems a) out of place (this has nothing to do with stoage) and b) I'm not even sure why we have it...
+
+!!! In User, course completion is always returned as false, that doesn't sound right...
+
+!!! In Coordinator, checkProgramRequirements() is empty
+? checkProgramCompletion() seems a bit weird but that might just be me. Shouldn't we check if the student has re-taken a course?
+!!! meetsProgramRequirements() is not implemented properly
+
+
+!!! When we go into edit Program via the menu (Coordinator only I think), we should have options to edit/delete specializations, coreCourses and really anything.
