@@ -206,122 +206,43 @@ public class AdvancedUser extends User {
 		Course resultCourse;
 		CourseEnrolment courseEnrolment;
 		BufferedReader reader = null;
-		int year, semester, i, j;
+		int year, semester, j;
 		int studentCount = 0;
 		year = 2016;
 		semester = 1;
-		i = 0;
 		j = 0;
 
 		System.out.println("What is the name of your file?");
 		try {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(Global.scanner.next()))));
-			// use while loop to read the line
 			while ((line = reader.readLine()) != null) {
 				studentCount++;
 				// use ":" to split the file
 				String[] resultMember = line.split(":");
-				if (resultMember.length == 24) {
-					j = 6;
-					while (j > 0) {
-						// set different variables, and give them value
-						studentID = resultMember[0];
-						resultStudent = Storage.getStudent(studentID);
-						for (i = 1; i < 5; i++) {
-							courseID = resultMember[i];
-							resultCourse = Storage.getCourse(courseID);
+				j = resultMember.length / 4;
+				while (j > 0) {
+					// set different variables, and give them value
+					studentID = resultMember[0];
+					resultStudent = Storage.getStudent(studentID);
+					for (int i = 1; i < 5; i++) {
+						courseID = resultMember[i];
+						resultCourse = Storage.getCourse(courseID);
 
-							if (courseID.length() >= 9) {
-								courseID = courseID.substring(0, courseID.length() - 1);
-								courseEnrolment = new CourseEnrolment(studentID, courseID, semester, year, true);
-							} else {
-								// create new student
-
-								courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
-							}
-							resultStudent.enrolCourse(courseEnrolment);
-							System.out.println(courseID);
-							// System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
-						}
-						year++;
-						semester++;
-						j--;
-					}
-				} else if (resultMember.length == 16) {
-					j = 4;
-					while (j > 0) {
-						// set different variables, and give them value
-						studentID = resultMember[0];
-						resultStudent = Storage.getStudent(studentID);
-						for (i = 1; i < 5; i++) {
-							courseID = resultMember[i];
-							resultCourse = Storage.getCourse(courseID);
-
-							if (courseID.length() >= 9) {
-								courseID = courseID.substring(0, courseID.length() - 1);
-								courseEnrolment = new CourseEnrolment(studentID, courseID, semester, year, true);
-							} else {
-								// create new student
-								courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
-							}
-							resultStudent.enrolCourse(courseEnrolment);
-							System.out.println(courseID);
-							// System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
-
-						}
-						year++;
-						semester++;
-						j--;
-					}
-				} else if (resultMember.length == 8) {
-					j = 2;
-					while (j > 0) {
-						// set different variables, and give them value
-						studentID = resultMember[0];
-						resultStudent = Storage.getStudent(studentID);
-						for (i = 1; i < 5; i++) {
-							courseID = resultMember[i];
-							resultCourse = Storage.getCourse(courseID);
+						if (courseID.length() >= 9) {
+							courseID = courseID.substring(0, courseID.length() - 1);
+							courseEnrolment = new CourseEnrolment(studentID, courseID, semester, year, true);
+						} else {
 							// create new student
-							if (courseID.length() >= 9) {
-								courseID = courseID.substring(0, courseID.length() - 1);
-								courseEnrolment = new CourseEnrolment(studentID, courseID, semester, year, true);
-							} else {
-								// create new student
-								courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
-							}
-							resultStudent.enrolCourse(courseEnrolment);
-							System.out.println(courseID);
-							// System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
+							courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
 						}
-						year++;
-						semester++;
-						j--;
+						resultStudent.enrolCourse(courseEnrolment);
+						System.out.println(courseID);
+						// System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
+
 					}
-				} else {
-					j = 1;
-					while (j > 0) {
-						// set different variables, and give them value
-						studentID = resultMember[0];
-						resultStudent = Storage.getStudent(studentID);
-						for (i = 1; i < 5; i++) {
-							courseID = resultMember[i];
-							resultCourse = Storage.getCourse(courseID);
-							if (courseID.length() >= 9) {
-								courseID = courseID.substring(0, courseID.length() - 1);
-								courseEnrolment = new CourseEnrolment(studentID, courseID, semester, year, true);
-							} else {
-								// create new student
-								courseEnrolment = new CourseEnrolment(resultStudent, resultCourse, semester, year);
-							}
-							resultStudent.enrolCourse(courseEnrolment);
-							System.out.println(courseID);
-							// System.out.println(resultStudent.getName() + courseEnrolment.getCourse());
-						}
-						year++;
-						semester++;
-						j--;
-					}
+					year++;
+					semester++;
+					j--;
 				}
 
 				System.out.println(studentCount + " student is enrolled");
@@ -342,7 +263,6 @@ public class AdvancedUser extends User {
 					e.printStackTrace();
 				}
 			}
-
 		}
 	}
 }
