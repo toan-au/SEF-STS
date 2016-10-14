@@ -19,6 +19,14 @@ public class SpecializationSets implements Serializable {
 		if (mode == SpecializationMode.COURSEPOOL)
 			specializationSets.add(new SingleSet("course pool"));
 	}
+	
+	public ArrayList<String> getSetNames(){
+		ArrayList<String> setNames = new ArrayList<>();
+		for (SingleSet set : specializationSets) {
+			setNames.add(set.getName());
+		}
+		return setNames;
+	}
 
 	public ArrayList<SingleSet> getAllSets() {
 		return specializationSets;
