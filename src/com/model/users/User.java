@@ -13,7 +13,6 @@ public abstract class User implements Serializable {
 	protected String id;
 	protected String password;
 
-	// TODO: Is the ID going to be generated or assigned??
 	public User(String id, String name, String password) {
 		this.id = id;
 		this.name = name;
@@ -45,36 +44,17 @@ public abstract class User implements Serializable {
 	}
 
 	public static void checkStudentResults(String studentId) {
-		String status;
-		Student student = Storage.getStudent(studentId);
-
 		System.out.println("course ID\t" + "semester\t" + "year\t" + "status");
-
-		// iterate over the courses Arraylist and print the ID and status of the student
-		for (CourseEnrolment course : student.getCourses()) {
-			status = course.hasFailed() ? "failed" : "pass";
+		for (CourseEnrolment course : Storage.getStudent(studentId).getCourses()) {
+			String status = course.hasFailed() ? "failed" : "pass";
 			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
 		}
 	}
-	
+
 	public static void checkStudentResults() {
-		String status;
-		String studentId;
-		
 		System.out.println("Enter the ID of the student you want to check");
-		studentId = Global.scanner.next();
-		
-		Student student = Storage.getStudent(studentId);
-
-		System.out.println("course ID\t" + "semester\t" + "year\t" + "status");
-
-		// iterate over the courses Arraylist and print the ID and status of the student
-		for (CourseEnrolment course : student.getCourses()) {
-			status = course.hasFailed() ? "failed" : "pass";
-			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
-		}
+		checkStudentResults(Global.scanner.next());
 	}
-
 
 	public static boolean meetsCourseCompletion(Student student, Course course) {
 		return false;
