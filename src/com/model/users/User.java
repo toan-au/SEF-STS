@@ -46,7 +46,7 @@ public abstract class User implements Serializable {
 	public static void checkStudentResults(String studentId) {
 		System.out.println("course ID\t" + "semester\t" + "year\t" + "status");
 		for (CourseEnrolment course : Storage.getStudent(studentId).getCourses()) {
-			String status = course.hasPassed() ? "failed" : "pass";
+			String status = course.hasPassed() ? "pass" : "failed";
 			System.out.println(course.getCourse().getCourseId() + "\t" + course.getSemester() + "\t\t" + course.getYear() + "\t " + status);
 		}
 	}
