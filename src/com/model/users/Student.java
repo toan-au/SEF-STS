@@ -21,12 +21,8 @@ public class Student extends User {
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		courses = new ArrayList<>();
+		program = null;
 		Storage.students.add(this);
-
-	}
-
-	public String getGivenNames() {
-		return name;
 	}
 
 	public Calendar getDateOfBirth() {
@@ -63,18 +59,22 @@ public class Student extends User {
 	}
 
 	public void enrolProgram(String programCode) {
-		this.setProgram(Storage.getProgram(programCode));
+		setProgram(Storage.getProgram(programCode));
+	}
+
+	public int getCredits() {
+		int credits = 0;
+
+		for (CourseEnrolment enrolment : courses) {
+			if (enrolment.hasPassed())
+				credits += enrolment.getCourse().getCredits();
+		}
+		return credits;
 	}
 
 	@Override
 	public String toString() {
 		return id + " " + name + " " + dateOfBirth + " " + email;
-
-	}
-
-	public int getCredits() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }
